@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create:db": "psql -U greenroots -f app/data/create_tables.sql",
+    "db:create": "psql -U greenroots -f app/data/create_tables.sql",
+    "db:seed": "psql -U greenroots -f app/data/seeding_tables.sql",
+    "db:reset": "psql -U greenroots -d greenroots -f app/data/create_tables.sql && psql -U greenroots -d greenroots -f app/data/seeding_tables.sql",
     "start": "nodemon index.js"
   },
   "author": "",

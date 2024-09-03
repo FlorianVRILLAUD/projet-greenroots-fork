@@ -1,3 +1,5 @@
+COMMIT;
+
 BEGIN;
 
 INSERT INTO tree
@@ -9,13 +11,12 @@ VALUES
 ('Cèdre', 'cedre', 'cedre.jpg', 'Conifère', 30, 15, 18, 'France'),
 ('Noisetier', 'noisetier', 'noisetier.jpg', 'Arbre fruitier', 4, 15.60, 18.75, 'Danemark');
 
-INSERT INTO user
+INSERT INTO "user"
 ("role", "lastname", "firstname", "adress", "email", "password")
 VALUES
 ('admin', 'Green', 'Roots', '4 Rue Saint-Florentin, 75001 Paris', 'greenroots@gmail.com', 'uneracineverte'),
 ('user', 'Thomas', 'Desquet', '18 rue de Mars, 75003 Paris', 'thomdesquet@gmail.com', 'surlalune'),
 ('user', 'Kylian', 'Paquet', '7 avenue de Paris, 17000 La Rochelle', 'kikipaquet@gmail.com', 'untriple');
-
 
 INSERT INTO command
 ("date", "status", "total_price", "user_id")

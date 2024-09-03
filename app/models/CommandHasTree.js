@@ -5,8 +5,20 @@ class CommandHasTree extends Model {}
 
 CommandHasTree.init(
     {
-        command_id: DataTypes.INTEGER,
-        tree_id: DataTypes.INTEGER,
+        command_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+
+        tree_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+
+        quantity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }
     },
     {
         sequelize: sequelize(),

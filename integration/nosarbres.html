@@ -1,115 +1,380 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="../public/images/icones/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/reset.css">
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../public/css/stylesnosarbres.css">
-    <title>GreenRoots - Mes commandes</title>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../public/images/icones/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/css/reset.css">
+  <link rel="stylesheet" href="../public/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="../public/css/stylesnosarbres.css">
+  <title>GreenRoots - Mes commandes</title>
 </head>
-<body>
-    <header class="navbar">
-        <div class="logo">
-            <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
+<body class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+  <header class="navbar">
+    <div class="logo">
+      <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
+    </div>
+    <div class="icons">
+      <ul>
+        <li><a href="#"><img src="/public/images/icones/Loupe.svg" alt="Recherche"></a></li>
+        <li><a href="#"><img src="/public/images/icones/Panier 1.svg" alt="Panier"></a></li>
+        <li><a href="#"><img src="/public/images/icones/Burger.svg" alt="Menu Burger"></a></li>
+      </ul>
+    </div>
+  </header>
+  <hr class="navbar_end mx-5">
+  
+  <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
+    <h1>Nos arbres</h1>
+    
+    <!-- Première carte  -->
+    
+    <!--<article aria-labelledby="poire-title">
+      <div class="card">
+        <figure>
+          <img src="../public/images/poirier_middle.webp" alt="Image d'un poirier en fleur">-->  <!--Remplacer par le chemin image d'arbre -->
+        <!-- </figure>
+        <div class="card-content">
+          <h2 id="poire-title" class="has-text-centered">Poirier</h2>
+          <p class="has-text-centered">Famille Rosacée</p>
+          <p class="has-text-centered">À partir de 20 euros</p>
+          
+          <button id="button-card" href="#" aria-label="Poirier" class="button">Poirier</button>
         </div>
-        <div class="icons">
-            <ul>
-                <li><a href="#"><img src="/public/images/icones/Loupe.svg" alt="Recherche"></a></li>
-                <li><a href="#"><img src="/public/images/icones/Panier 1.svg" alt="Panier"></a></li>
-                <li><a href="#"><img src="/public/images/icones/Burger.svg" alt="Menu Burger"></a></li>
-            </ul>
+      </div>
+    </article> -->
+    
+    <!-- <article>
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img
+            class=" card-image"  
+            src="../public/images/poirier_middle.webp"
+            alt=""
+            />
+          </figure>
+          <div class="card-content">
+            <h2 id="poire-title" class="has-text-centered">Poirier</h2>
+            <p class="has-text-centered">Famille Rosacée</p>
+            <p class="has-text-centered">À partir de 20 euros</p>
+            
+          </div>
+          <button id="button-card" href="#" aria-label="Poirier" class="button">Poirier</button>
         </div>
-    </header>
-    <hr class="navbar_end">
-
-    <main>
-        <h1>Nos arbres</h1>
-
-         <!-- Première carte  -->
-
-         <!--<article aria-labelledby="poire-title">
-            <div class="card">
-                <figure>
-                    <img src="../public/images/poirier_middle.webp" alt="Image d'un poirier en fleur">-->  <!--Remplacer par le chemin image d'arbre -->
-                <!-- </figure>
-                <div class="card-content">
-                    <h2 id="poire-title" class="has-text-centered">Poirier</h2>
-                    <p class="has-text-centered">Famille Rosacée</p>
-                    <p class="has-text-centered">À partir de 20 euros</p>
-                     
-                    <button id="button-card" href="#" aria-label="Poirier" class="button">Poirier</button>
-                </div>
+      </div>
+    </article> -->
+    
+    <!-- Premiere carte  -->
+    <section class="card-tree is-flex-grow-1">
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
             </div>
-        </article> -->
-
-        <!-- <article>
-            <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img
-                      class=" card-image"  
-                      src="../public/images/poirier_middle.webp"
-                      alt=""
-                    />
-                  </figure>
-                  <div class="card-content">
-                    <h2 id="poire-title" class="has-text-centered">Poirier</h2>
-                    <p class="has-text-centered">Famille Rosacée</p>
-                    <p class="has-text-centered">À partir de 20 euros</p>
-                     
-                </div>
-                <button id="button-card" href="#" aria-label="Poirier" class="button">Poirier</button>
-                </div>
-              </div>
-        </article> -->
-
-        <article>
-            <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img
-                      src="../public/images/poirier_middle.webp"
-                      alt="Placeholder image"
-                    />
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="media">
-                  </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
               
-                  <div class="content">
-                    <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark">Poirier</h2>
-                    <p class="has-text-centered is-size-5">Famille Rosacée</p>
-                    <p class="has-text-centered is-size-5">À partir de 20 euros</p>
-                    
-                    
-                </div>
-                <button id="button-card" href="#" aria-label="Poirier" class="button">Plus de détails</button>
-                </div>
+              
             </div>
-        </article>
-
-        
-
-
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <h3>GreenRoots</h3>
-            <p>Lutter contre la déforestation en achetant des arbres à planter chez GreenRoots</p>
-            <ul class="footer-links">
-                <li><span class="a_propos">À Propos</span></li>
-                <li><a href="#">Conditions générales de vente (CGV)</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Vos informations personnelles (RGPD)</a></li>
-                <li><a href="#">Foire aux questions</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
         </div>
-    </footer>
+      </article>
+      
+      <!-- Deusieme  carte  -->
+      
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/photos/pin.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="pin-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Pin</h2>
+              <p class="has-text-centered is-size-5">Famille Conifiers</p>
+              <p class="has-text-centered is-size-5">À partir de 30 euros</p>
+              
+              
+            </div>
+            <button id="button-card-pin" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Troisieme carte  -->
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/photos/pin.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="mimosa-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Pin</h2>
+              <p class="has-text-centered is-size-5">Famille Conifiers</p>
+              <p class="has-text-centered is-size-5">À partir de 30 euros</p>
+              
+              
+            </div>
+            <button id="button-card-mimosa" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+              src="../public/images/poirier_middle.webp"
+              alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+            </div>
+            
+            <div class="content">
+              <h2 id="poire-title" class="title-card has-text-centered is-size-4 has-text-dark m-2">Poirier</h2>
+              <p class="has-text-centered is-size-5">Famille Rosacée</p>
+              <p class="has-text-centered is-size-5">À partir de 20 euros</p>
+              
+              
+            </div>
+            <button id="button-card" href="#" aria-label="Poirier" class="button is-size-4">Plus de détails</button>
+          </div>
+        </div>
+      </article>
+    </section>
+    
+    
+    
+  </main>
+  
+  <footer>
+    <div class="footer-content">
+      <h3>GreenRoots</h3>
+      <p>Lutter contre la déforestation en achetant des arbres à planter chez GreenRoots</p>
+      <ul class="footer-links">
+        <li><span class="a_propos">À Propos</span></li>
+        <li><a href="#">Conditions générales de vente (CGV)</a></li>
+        <li><a href="#">Mentions légales</a></li>
+        <li><a href="#">Vos informations personnelles (RGPD)</a></li>
+        <li><a href="#">Foire aux questions</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

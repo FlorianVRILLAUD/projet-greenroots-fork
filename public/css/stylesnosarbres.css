@@ -5,19 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-:root {
-  /* --bulma-primary-h: 0deg;
-  --bulma-primary-s: 0%;
-  --bulma-primary-l: 85%; */
-  --bulma-body-clor: #8c0606;
-}
-
 html {
     font-size: 62.5%;
 }
 
 body {
-    height: 100vh;
+  
+    min-height: 100vh;
     width: 100vw;
 }
 
@@ -73,14 +67,30 @@ h2, h3, h4, h5 {
     /* border-radius: 12; */
   }
   article {
+    
+    justify-content: center;
+    
     width: 200px;
     height: 300px;
   }
 
 
-  #button-card {
+  #button-card 
+   {
     width: 100%;
     background-color: #2B743A;
+    height: 4rem;
+  }
+  #button-card-pin {
+    width: 100%;
+    background-color: #2B743A;
+    height: 4rem;
+  }
+
+  #button-card-mimosa {
+    width: 100%;
+    background-color: #2B743A;
+    height: 4rem;
   }
  
 
@@ -90,9 +100,36 @@ h2, h3, h4, h5 {
 
   .content {
     line-height: 0.5rem;
-    height: 4.5rem;
-    
+    height: 4rem;
   }
+    
+ main {
+  width: auto;
+  gap:4rem;
+}
+
+@media (max-width: 1024px) { 
+  main {
+      flex-direction: column;
+  }
+}
+@media (min-width: 1024px) {
+
+  .card-tree {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 4rem;
+    flex-wrap: wrap;
+
+  } 
+
+  section {
+    margin: 0 0 0 8rem;
+  }
+}
+
+  
 
   
   

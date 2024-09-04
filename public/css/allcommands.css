@@ -8,7 +8,7 @@ html {
 body {
     min-height: 100vh;
     color: #3C3C3B;
-    max-width: 100vw;
+    max-width: auto;
 }
 
 body, .navbar {
@@ -36,11 +36,15 @@ h2, h3, h4, h5 {
     font-size: 2.4rem;
 }
 
+section {
+    margin: 0 2rem;
+}
+
 .container {
     background-color: #d9d9d9;
-    border-radius: 10px;
-    width: auto;
+    border-radius: 10px; 
 }
+
 
 img {
     height: 10rem;
@@ -49,7 +53,7 @@ img {
 }
 
 .content-card {
-    gap: 3rem;
+    gap: 2rem;
 }
 
 container, a {
@@ -62,20 +66,45 @@ section {
 
 
 @media (max-width: 1024px) { 
+    .content-card > ul > li {
+        display: none;
+    }
+
     .follow-command {
         display: none;
     }
+
+    .info-command {
+        width: 100%;
+    }
  }
 
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
+    
+    .mobile-link {
+        display: none;
+    }
+
+    body, .navbar {
+        font-size: 2.4rem;
+    
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
     .title-page {
-        margin: 23.5rem;
+        margin: 10rem;
+    }
+
+    section {
+        margin: 10rem
     }
 
     .container {
-      width: 100%;
       border-radius: 16px;
-      flex-direction: row;
+      margin: 0 10rem;
     }
 
     .container, header {
@@ -85,11 +114,13 @@ section {
     .content-card {
         margin-left: 10rem;
         gap: 18rem;
-        width: 55%;
     }
 
     img {
         height: 16rem;
         width: 24rem;
     }
+
+    
+    
 }

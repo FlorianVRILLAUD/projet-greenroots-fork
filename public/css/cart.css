@@ -8,12 +8,12 @@ body, .navbar {
 }
 
 .box {
-    background-color: #D9d9d9; /* Changez cette valeur pour la couleur souhaitée */
+    background-color: #D9d9d9; 
 }
 
 .button-custom {
-    background-color: #2B743A; /* Couleur de fond verte */
-    color: white; /* Couleur de la police blanche */
+    background-color: #2B743A; 
+    color: white; 
 }
 
 .text-green {

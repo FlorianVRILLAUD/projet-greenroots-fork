@@ -61,6 +61,7 @@ input {
     color: #0A290E;
     width: 100%;
     font-family: "Roboto";
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 textarea {
@@ -71,16 +72,17 @@ textarea {
     font-size: 1rem;
     color: #0A290E;
     width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .button-message { 
     display: inline-block; 
-    padding: 10px 10px; 
+    padding: 1rem 1rem; 
     background-color: #2b743a; 
     color: white; 
     text-decoration: none; 
     border-radius: 25px; 
-    font-size: 16px;
+    font-size: 1.6rem;
     width: 50%;
     font-family: "Montserrat";
     font-weight: bold;

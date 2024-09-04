@@ -7,6 +7,7 @@ html {
 
 body {
     min-height: 100vh;
+    width: 100%;
     color: #3C3C3B;
     max-width: auto;
 }
@@ -40,31 +41,6 @@ section {
     margin: 0 2rem;
 }
 
-.container {
-    background-color: #d9d9d9;
-    border-radius: 10px; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-
-main img {
-    height: 10rem;
-    width: 14rem;
-    border-radius: 8px;
-}
-
-.content-card {
-    gap: 2rem;
-}
-
-container, a {
-    color: #3C3C3B;
-}
-
-section {
-    gap: 5rem;
-}
-
 .buttons_profil { 
 
     width: 100%;
@@ -80,7 +56,7 @@ section {
 }
 
 .button_infos { 
-    display: inline-block; 
+    
     padding: 1rem 1rem; 
     background-color: #d9d9d9; 
     color: #3c3c3b; 
@@ -94,7 +70,7 @@ section {
 }
 
 .button_order { 
-    display: inline-block; 
+    
     padding: 1rem 1rem; 
     background-color: #2b743a; 
     color: #FFFFFF; 
@@ -108,8 +84,8 @@ section {
 }
 
 .button_fav { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
+    
+    padding: 10px 10px; 
     background-color: #d9d9d9; 
     color: #3c3c3b; 
     text-decoration: none; 
@@ -121,77 +97,114 @@ section {
     font-weight: bold;
 }
 
+article {
+    background-color: #d9d9d9;
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
 
-@media (max-width: 1024px) { 
-    .content-card > ul > li {
-        display: none;
-    }
+main img {
+    height: 16rem;
+    width: 80%;
+    margin: 0 10%;
+    border-radius: 10px;
+}
 
-    .follow-command {
-        display: none;
-    }
+.button-buy { 
+    padding: 1rem 1rem; 
+    background-color: #2b743a; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    font-size: 1.6rem;
+    
+    font-family: "Montserrat";
+    font-weight: bold;
+    transition: background-color 0.3s; 
+    margin: 1rem 25%;
+    width: 50%;
+    
+}
 
-    .info-command {
-        width: 100%;
-    }
 
-    .buttons_profil {
-        flex-direction: column;
-    }
 
-    .navbar-desktop {
-        display: none;
-    }
- }
+.button-back {  
+    padding: 1rem 1rem; 
+    background-color: #d9d9d9; 
+    color: #3c3c3b; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 1.6rem;
+    width: 50%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    margin: 0 25%;
+}
 
 @media (min-width: 1024px) {
-    
-    .mobile-link {
-        display: none;
-    }
 
-    body, .navbar {
-        font-size: 2.4rem;
-    
+    body {
+        max-width: auto;
     }
-
     h1 {
         font-size: 4rem;
     }
 
     .title-page {
-        margin: 10rem;
+        margin: 0 13rem;
     }
-
-    section {
-        margin: 10rem;
-    }
-
-    .container {
-      border-radius: 16px;
-      margin: 0 10rem;
-    }
-
-    .container, header {
-        padding: 1rem;
-    }
-
-    .content-card {
-        margin-left: 10rem;
-        gap: 18rem;
-    }
-
-    main img {
-        height: 16rem;
-        width: 24rem;
-    }
-
 
     .buttons_profil {
         flex-direction: row;
     }
 
     main {
+        margin: 0 10rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
-    } 
+        justify-content: flex-start;
+        flex-grow: 1;
+        gap: 5rem;
+        margin: 0 10rem;
+        
+    }
+
+    article {
+        
+        height: 42rem;
+        margin: 0 auto;
+        width: 20%;
+        background-color: #d9d9d9;
+        border-radius: 10px;
+    }
+
+
+    .button-back {
+        width: 20%;
+        margin: 0 40%;
+    }
+
 }
+
+@media (max-width: 1024px) {
+    .buttons_profil {
+        flex-direction: column;
+    }
+    
+    .navbar-desktop {
+        display: none;
+    }
+    
+}
+
+

@@ -1,0 +1,28 @@
+{
+  "name": "projet-greenroots",
+  "version": "1.0.0",
+  "description": "projet-greenroots",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:create": "psql -U greenroots -f app/data/create_tables.sql",
+    "db:seed": "psql -U greenroots -f app/data/seeding_tables.sql",
+    "db:reset": "psql -U greenroots -d greenroots -f app/data/create_tables.sql && psql -U greenroots -d greenroots -f app/data/seeding_tables.sql",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "eslint": "^9.9.1",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "pg": "^8.12.0",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

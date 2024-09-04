@@ -46,7 +46,7 @@ section {
 }
 
 
-img {
+main img {
     height: 10rem;
     width: 14rem;
     border-radius: 8px;
@@ -64,6 +64,62 @@ section {
     gap: 5rem;
 }
 
+.buttons_profil { 
+
+    width: 100%;
+
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px;
+
+    
+}
+
+.button_infos { 
+    display: inline-block; 
+    padding: 10px 10px; 
+    background-color: #d9d9d9; 
+    color: #3c3c3b; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    font-size: 16px;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    transition: background-color 0.3s; 
+}
+
+.button_order { 
+    display: inline-block; 
+    padding: 10px 10px; 
+    background-color: #2b743a; 
+    color: #FFFFFF; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 16px;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+.button_fav { 
+    display: inline-block; 
+    padding: 10px 10px; 
+    background-color: #d9d9d9; 
+    color: #3c3c3b; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 16px;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
 
 @media (max-width: 1024px) { 
     .content-card > ul > li {
@@ -76,6 +132,14 @@ section {
 
     .info-command {
         width: 100%;
+    }
+
+    .buttons_profil {
+        flex-direction: column;
+    }
+
+    .navbar-desktop {
+        display: none;
     }
  }
 
@@ -99,7 +163,7 @@ section {
     }
 
     section {
-        margin: 10rem
+        margin: 10rem;
     }
 
     .container {
@@ -116,11 +180,17 @@ section {
         gap: 18rem;
     }
 
-    img {
+    main img {
         height: 16rem;
         width: 24rem;
     }
 
-    
-    
+
+    .buttons_profil {
+        flex-direction: row;
+    }
+
+    main {
+        flex-direction: row;
+    } 
 }

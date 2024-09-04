@@ -1,0 +1,21 @@
+body, .navbar {
+    background-color: #F0F0F0;
+}
+
+.title {
+    color: black; 
+    text-align: center; 
+}
+
+.box {
+    background-color: #D9d9d9; /* Changez cette valeur pour la couleur souhaitée */
+}
+
+.button-custom {
+    background-color: #2B743A; /* Couleur de fond verte */
+    color: white; /* Couleur de la police blanche */
+}
+
+.text-green {
+    color: #1A361D;
+}

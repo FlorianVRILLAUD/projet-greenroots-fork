@@ -201,9 +201,9 @@ main img {
         flex-direction: column;
     }
     
-    .navbar-desktop {
+    /* .navbar-desktop {
         display: none;
-    }
+    } */
     
 }
 

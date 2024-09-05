@@ -135,14 +135,14 @@ section {
         width: 100%;
     }
 
-    .buttons_profil {
+    /* .buttons_profil {
         flex-direction: column;
     }
 
     .navbar-desktop {
         display: none;
-    }
- }
+    }*/
+ } 
 
 @media (min-width: 1024px) {
     

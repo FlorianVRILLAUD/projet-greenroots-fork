@@ -6,6 +6,7 @@ html {
 }
 
 body {
+    
     min-height: 100vh;
     width: 100%;
     color: #3C3C3B;
@@ -13,6 +14,7 @@ body {
 }
 
 body, .navbar {
+    
     background-color: #FFFFFF;
     font-family: "Roboto";
     font-size: 1.6rem;
@@ -52,10 +54,14 @@ article {
 }
 
 main img {
-    height: 16rem;
+    /* height: 16rem; */
     width: 80%;
     margin: 0 10%;
     border-radius: 10px;
+}
+
+.button {
+    background-color: #FFFFFF;
 }
 
 .button-back {  
@@ -71,3 +77,54 @@ main img {
     font-weight: bold;
     margin: 0 25%;
 }
+
+.button-buy { 
+    display: inline-block; 
+    padding: 1rem 1rem; 
+    background-color: #2b743a; 
+    color: #FFFFFF; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 1.6rem;
+    width: 50%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    margin: 0 25%;
+}
+
+@media (min-width: 1024px) {
+    .article-tree {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .title-tree {
+        margin: 3rem 0;
+        width: 100%;
+    }
+
+    .infos-tree {
+        display: flex;
+        flex-direction: column;
+        /* align-content: space-around; */
+        justify-content: space-around;
+        height: 40rem;
+       margin-top: 5%;
+        width: 50%;
+    }
+    .button-action {
+        width: 50%;
+        margin: 0 25%;
+
+    }
+
+
+  }
+  @media (max-width: 1024px) {
+    .text-tree {
+        margin: 3rem 0;
+    }
+  }

@@ -75,19 +75,7 @@ h2, h3, h4, h5 {
   }
 
 
-  #button-card 
-   {
-    width: 100%;
-    background-color: #2B743A;
-    height: 4rem;
-  }
-  #button-card-pin {
-    width: 100%;
-    background-color: #2B743A;
-    height: 4rem;
-  }
-
-  #button-card-mimosa {
+  .details {
     width: 100%;
     background-color: #2B743A;
     height: 4rem;

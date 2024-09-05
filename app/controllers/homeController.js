@@ -8,7 +8,7 @@ export default {
                 order: [['name', 'DESC']] 
             });
 
-            res.render("homepage", {trees: trees});
+            res.render("homePage", {trees: trees});
 
         } catch (error) {
             console.error('Erreur dans la récupération des abres:', error);

@@ -10,11 +10,15 @@ import router from './app/routers/router.js';
 const app = express();
 
 // Configure view engine
+app.set("views", "./app/views");
 app.set("view engine", "ejs");
-app.set("views", "./views");
+
 
 // Configure assets routes (static folder)
-app.use(express.static("./public"));
+app.use("/public", express.static("public"));
+
+//Making parsed data available in 'req.body'
+app.use(express.urlencoded({ extended: true })); 
 
 //Attach all defined routes to the Express application
 app.use(router);

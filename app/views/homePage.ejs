@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+    <div class="picture_homepage">
+        <img src="/public/images/photos/photo_bann.webp" alt="photo de forêt">
+    </div>
+    <div class="text_description">
+        <p>Green Roots est une plateforme dédiée à la vente d'arbres à planter, vous offrant la possibilité de participer activement à la lutte contre la déforestation et de soutenir la reforestation.</p>
+        <p>Face aux défis environnementaux actuels, il est essentiel de trouver des solutions et Green Roots se veut être une réponse à cette cause.</p>
+    </div>
+    <div class="button_container">
+        <a href="/trees" class="button">Voir tous les arbres</a>
+    </div>
+    
+    <div class="card-container">
+        <% trees.forEach(tree => { %>
+            <div class="card">
+                <a href="/tree/<%= tree.id %>">
+                    <img src="/public/images/<%= tree.image %>" alt="<%= tree.name %>" class="card-image">
+                    <div class="card-content">
+                        <h2><%= tree.name %></h2>
+                    </div>
+                </a>
+            </div>
+        <% }); %>
+    </div>
+    
+<%- include('partials/footer') %>

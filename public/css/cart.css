@@ -3,12 +3,17 @@ body, .navbar {
 }
 
 .title {
-    color: black; 
     text-align: center; 
 }
 
 .box {
     background-color: #D9d9d9; 
+}
+
+.button {
+    font-size: 1 rem;
+    font-weight: bolder;
+    color: #1A361D;
 }
 
 .button-custom {
@@ -19,3 +24,18 @@ body, .navbar {
 .text-green {
     color: #1A361D;
 }
+
+.button-custom {
+    font-size: medium;
+    font-weight: bolder ;
+}
+
+span {
+    font-weight: bolder;
+}
+
+@media (max-width: 1024px) { 
+    main {
+        flex-direction: column;
+    }
+ }

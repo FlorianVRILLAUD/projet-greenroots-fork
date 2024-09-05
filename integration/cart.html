@@ -2,39 +2,35 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="../public/images/icones/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/reset.css">
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../public/css/cart.css">
-    <title>GreenRoots - Mes commandes</title>
+    <title>Panier - GreenRoots</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .text-green {
+            color: #1A361D;
+        }
+        .button-custom {
+            background-color: #2B743A;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
-        </div>
-        <div class="icons">
-            <ul>
-                <li><a href="#"><img src="/public/images/icones/Loupe.svg" alt="Recherche"></a></li>
-                <li><a href="#"><img src="/public/images/icones/Panier 1.svg" alt="Panier"></a></li>
-                <li><a href="#"><img src="/public/images/icones/Burger.svg" alt="Menu Burger"></a></li>
-            </ul>
-        </div>
-    </header>
-    <hr class="navbar_end">
-
-    <main>
-        <section class="section">
-            <div class="container">
-                <h1 class="title has-text-centered" style="color: #1A361D;">Panier</h1>
-                <div class="box">
-                    <div class="columns is-vcentered">
-                        <div class="column">
-                            <p class="text-green"><strong>Nom :</strong> Chêne</p>
-                            <p class="text-green"><strong>Prix :</strong> 18,99 €</p>
-                            <div class="field has-addons">
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered text-green">Panier</h1>
+            <div class="box">
+                <div class="columns is-vcentered is-multiline">
+                    <div class="column is-12-mobile is-3-tablet">
+                        <figure class="image is-4by3">
+                            <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                        </figure>
+                    </div>
+                    <div class="column is-12-mobile is-5-tablet">
+                        <ul>
+                            <li class="text-green"><strong>Nom :</strong> Cèdre</li>
+                            
+                            <li class="text-green"><strong>Quantité :</strong><div class="field has-addons">
                                 <p class="control">
                                     <button class="button is-small">-</button>
                                 </p>
@@ -44,34 +40,23 @@
                                 <p class="control">
                                     <button class="button is-small">+</button>
                                 </p>
-                            </div>
-                            <a href="#" class="has-text-danger">Supprimer ></a>
+                            </div></li>
+                        </ul>
+                        
+                    </div>
+                    <div class="column is-12-mobile is-4-tablet has-text-right">
+                        <div class="buttons is-flex is-flex-direction-column is-align-items-flex-end">
+                            
+                            <a href="#" class="button is-small is-danger is-fullwidth-mobile">Supprimer du panier ></a>
                         </div>
                     </div>
                 </div>
-                <div class="total-section has-text-right">
-                    <p class="text-green"><strong>Total TTC :</strong> 37,98 €</p>
-                    <button class="button button-custom mt-2">Passer au paiement</button>
-                </div>
             </div>
-        </section>
-    
-
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <h1>GreenRoots</h1>
-            <p>Lutter contre la déforestation en achetant des arbres à planter chez GreenRoots</p>
-            <ul class="footer-links">
-                <li><span class="a_propos">À Propos</span></li>
-                <li><a href="#">Conditions générales de vente (CGV)</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Vos informations personnelles (RGPD)</a></li>
-                <li><a href="#">Foire aux questions</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+            <div class="total-section has-text-right">
+                <p class="text-green"><strong>Total TTC :</strong> 37,98 €</p>
+                <button class="button button-custom mt-2">Passer au paiement</button>
+            </div>
         </div>
-    </footer>
+    </section>
 </body>
 </html>

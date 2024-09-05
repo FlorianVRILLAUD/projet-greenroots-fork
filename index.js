@@ -17,6 +17,9 @@ app.set("view engine", "ejs");
 // Configure assets routes (static folder)
 app.use("/public", express.static("public"));
 
+//Making parsed data available in 'req.body'
+app.use(express.urlencoded({ extended: true })); 
+
 //Attach all defined routes to the Express application
 app.use(router);
 

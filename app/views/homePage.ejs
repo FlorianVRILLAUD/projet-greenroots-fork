@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <!-- Title-->
-    <title>Green Roots</title>
-
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">
-            <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
-        </div>
-        <div class="icons">
-            <ul>
-                <li><a href="/search"><img src="/public/images/icones/Loupe.svg" alt="Recherche"></a></li>
-                <li><a href="/cart"><img src="/public/images/icones/Panier 1.svg" alt="Panier"></a></li>
-                <li><a href=""><img src="/public/images/icones/Burger.svg" alt="Menu Burger"></a></li>
-            </ul>
-        </div>
-    </header>
-
-    <hr class="navbar_end">
+<%- include('partials/header') %>
 
     <div class="picture_homepage">
         <img src="/public/images/photos/photo_bann.webp" alt="photo de forêt">
@@ -49,20 +24,4 @@
         <% }); %>
     </div>
     
-
-    <footer>
-        <div class="footer-content">
-            <h1>GreenRoots</h1>
-            <p>Lutter contre la déforestation en achetant des arbres à planter chez GreenRoots</p>
-            <ul class="footer-links">
-                <li><span class="a_propos">À Propos</span></li>
-                <li><a href="#">Conditions générales de vente (CGV)</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">Vos informations personnelles (RGPD)</a></li>
-                <li><a href="#">Foire aux questions</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html>
+<%- include('partials/footer') %>

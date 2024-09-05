@@ -51,7 +51,7 @@ body {
 .navbar_end { 
     color: #0A290E;
     border: solid 1.5px;
-    width: 90%;
+    margin: 0 1.5rem;
 }
 
 /* PHOTO PAGE D ACCUEIL*/

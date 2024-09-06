@@ -2,7 +2,7 @@
 
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
-import validator from 'email-validator';
+import emailValidator from 'email-validator';
 import jwt from 'jsonwebtoken';
 
 export default {
@@ -22,33 +22,31 @@ export default {
             
             // Est-ce que les champs sont bien présents ? Si non : message d'erreur
             if (!lastname || !firstname || !adress || !email || !password || !role) {
-                return res.render('register', { errorMessage: 'Veuillez remplir tous les champs'});
+                return res.status(400).json('Veuillez remplir tous les champs');
             }
             
             //On vérifie ici la validité de l'email
-            if (!validator.validate(email)) {
-                return res.render('register', {
-                    errorMessage: "Email invalide",
-                });
+            if (!emailValidator.validate(email)) {
+                return res.status(400).json('Email invalide');
             }
 
             //On vérifie si les MP correspondent
             if (password !== confirmationPassword) {
-                return res.render('register', {
-                    errorMessage: 'Les mots de passe ne correspondent pas'
-                });
+                return res.status(400).json('Les mots de passe ne correspondent pas');
             }
 
             //On vérifie que l'adresse email n'existe pas déjà dans la BDD
-            const existingEmail = await User.findOne({
+            const existingEmail = await User.findAll({
                 where: { email },
             });
 
-            if (existingEmail) {
-                return res.render('register', {
-                    errorMessage: "Une erreur s'est produite",
-                });
+            console.log(existingEmail)
+
+            if (existingEmail.length === 1) {
+                return res.status(400).json("Oups email déjà utilisé !!!")
+
             }
+
 
             //On hash le MP
             const hashPassword = Scrypt.hash(password);
@@ -67,7 +65,7 @@ export default {
 
         } catch (error) {
             console.error(error);
-            res.status(500).render('500');
+            res.status(500).json('500');
         }
     },
 
@@ -116,12 +114,3 @@ export default {
     }
 };
 
-/*
-
-const newUsers = await User.findAll({
-    order: [['id', 'DESC']], // Trie par date de création, du plus récent au plus ancien
-    limit: 10 // Limite le nombre de résultats à 10 (ou le nombre que vous souhaitez)
-});
-
-console.log(newUsers);
-*/

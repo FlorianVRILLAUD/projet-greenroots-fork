@@ -8,14 +8,14 @@
         <p>Face aux défis environnementaux actuels, il est essentiel de trouver des solutions et Green Roots se veut être une réponse à cette cause.</p>
     </div>
     <div class="button_container">
-        <a href="/trees" class="button">Voir tous les arbres</a>
+        <a href="/nos-arbres" class="button">Voir tous les arbres</a>
     </div>
     
     <div class="card-container">
         <% trees.forEach(tree => { %>
             <div class="card">
-                <a href="/tree/<%= tree.id %>">
-                    <img src="/public/images/<%= tree.image %>" alt="<%= tree.name %>" class="card-image">
+                <a href="/nos-arbres/<%= tree.slug %>">
+                    <img src="/public/images/photos/<%= tree.image %>" alt="<%= tree.name %>" class="card-image">
                     <div class="card-content">
                         <h2><%= tree.name %></h2>
                     </div>

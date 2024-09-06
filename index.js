@@ -13,7 +13,7 @@ const app = express();
 app.set("views", "./app/views");
 app.set("view engine", "ejs");
 
-
+app.use(express.json());
 // Configure assets routes (static folder)
 app.use("/public", express.static("public"));
 

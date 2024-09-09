@@ -69,45 +69,46 @@ export default {
     async login(req, res) {
         try {
             const { email, password } = req.body;
-
+    
+            console.log("Données reçues:", { email });
+    
+            // Est-ce que les champs sont bien présents ? Si non : message d'erreur
             if (!email || !password) {
-                return res.render('login', { errorMessage: 'Veuillez remplir tous les champs' });
+                return res.status(400).json('Veuillez remplir tous les champs');
             }
-
-            if (!validator.validate(email)) {
-                return res.render('login', {
-                    errorMessage: "Email invalide",
-                });
+    
+            //On vérifie ici la validité de l'email
+            if (!emailValidator.validate(email)) {
+                return res.status(400).json('Email invalide');
             }
-
+    
+            //On vérifie si l'utilisateur existe
             const user = await User.findOne({
                 where: { email },
             });
-
+    
             if (!user || !Scrypt.compare(password, user.password)) {
-                return res.render('login', {
-                    errorMessage: "Email ou mot de passe incorrect",
-                });
+                return res.status(400).json('Email ou mot de passe incorrect');
             }
-
+    
             //On génère le token JWT
             const token = jwt.sign(
                 { userId: user.id },
                 process.env.JWT_SECRET,
                 { expiresIn: '1h' }
             );
-
+    
             res.cookie('token', token, { 
                 httpOnly: true, 
                 secure: process.env.NODE_ENV === 'production' 
             });
-
-            res.redirect('/homePage');
-
+    
+            res.status(200).json({ message: 'Connexion réussie', user: { id: user.id, email: user.email, role: user.role } });
+    
         } catch (error) {
             console.error(error);
-            res.status(500).render('500');
+            res.status(500).json('500');
         }
     }
-};
+}
 

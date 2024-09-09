@@ -14,10 +14,10 @@ const router = express.Router();
 
 router.get('/', homeController.getHomePage);
 
-router.get('/nous-rejoindre', userController.register)
+router.get('/nous-rejoindre', userController.show)
 router.post('/nous-rejoindre', userController.register)
 
-router.get('/connexion', userController.login)
+router.get('/connexion', userController.show)
 router.post('/connexion', userController.login)
 
 export default router;

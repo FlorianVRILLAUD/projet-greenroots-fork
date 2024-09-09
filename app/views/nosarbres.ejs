@@ -6,9 +6,15 @@
         <!-- Premiere carte  -->
         <section class="card-tree is-flex-grow-1">
 
+            <select name="variety" id="variety-tree">
+                <% trees.forEach(tree => { %>
+                    <option value="<%= tree.variety %>"><%= tree.variety %></option>
+                    <% }); %>
+            </select>
+
 
             <% trees.forEach(tree => { %>
-                <article>
+                <article class="<%= tree.variety %>">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">

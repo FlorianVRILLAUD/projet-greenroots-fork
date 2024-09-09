@@ -2,20 +2,29 @@ COMMIT;
 
 BEGIN;
 
-INSERT INTO tree
-("name", "slug", "image", "variety", "size", "price_ht", "price_ttc", "origin")
+INSERT INTO "variety"
+("name")
 VALUES
-('Pommier', 'pommier', 'pommier.jpg', 'Arbre fruitier', 7, 20.75, 24.90, 'France'),
-('Chêne', 'chene', 'chene.jpg', 'Arbre à bois dur', 15, 7.41, 8.90, 'France'),
-('Olivier', 'olivier', 'olivier.jpg', 'Arbre fruitier', 5, 26.58, 31.90, 'Espagne'),
-('Cèdre', 'cedre', 'cedre.jpg', 'Conifère', 30, 15, 18, 'France'),
-('Noisetier', 'noisetier', 'noisetier.jpg', 'Arbre fruitier', 4, 15.60, 18.75, 'Danemark'),
-('Poirier middle', 'poirier-middle', 'poirier-middle.webp', 'Arbre fruitier', 8, 18.99, 24.99, 'France'),
-('Bambou sacré', 'bambou-sacre', 'bambou_sacré.webp', 'Herbe', 2, 20.50, 24.50, 'Chine'),
-('Bonsai de californie', 'bonsai-de-californie', 'bonsai_de_californie.webp', 'Arbre fruitier', 10, 65, 70, 'Japon'),
-('Cerisier', 'cerisier', 'cerisier.webp', 'Arbre fruitier', 4, 10, 14.50, 'France'),
-('Cypres de Lambert', 'cypres-de-lambert', 'cypres_de_lambert.webp', 'Arbre Conifères', 10, 13.50, 19.50, 'Région Mediterranéenne'),
-('Dattier', 'dattier', 'dattier.webp', 'Palmier dattier', 2, 20.50, 24.50, 'Afrique du Nord');
+('Arbre fruitier'),
+('Arbre à bois dur'),
+('Conifère'),
+('Herbe'),
+('Palmier dattier');
+
+INSERT INTO tree
+("name", "slug", "image", "size", "price_ht", "price_ttc", "origin", "variety_id")
+VALUES
+('Pommier', 'pommier', 'pommier.jpg', 7, 20.75, 24.90, 'France', 1),
+('Chêne', 'chene', 'chene.jpg', 15, 7.41, 8.90, 'France', 2),
+('Olivier', 'olivier', 'olivier.jpg', 5, 26.58, 31.90, 'Espagne', 1),
+('Cèdre', 'cedre', 'cedre.jpg', 30, 15, 18, 'France',3),
+('Noisetier', 'noisetier', 'noisetier.jpg', 4, 15.60, 18.75, 'Danemark', 1),
+('Poirier middle', 'poirier-middle', 'poirier-middle.webp', 8, 18.99, 24.99, 'France', 1),
+('Bambou sacré', 'bambou-sacre', 'bambou_sacré.webp', 2, 20.50, 24.50, 'Chine', 4),
+('Bonsai de californie', 'bonsai-de-californie', 'bonsai_de_californie.webp', 10, 65, 70, 'Japon', 1),
+('Cerisier', 'cerisier', 'cerisier.webp', 4, 10, 14.50, 'France', 1),
+('Cypres de Lambert', 'cypres-de-lambert', 'cypres_de_lambert.webp', 10, 13.50, 19.50, 'Région Mediterranéenne', 3),
+('Dattier', 'dattier', 'dattier.webp', 2, 20.50, 24.50, 'Afrique du Nord', 5);
 
 
 

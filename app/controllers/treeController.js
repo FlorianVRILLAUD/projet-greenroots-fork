@@ -5,7 +5,7 @@ import Joi from 'joi';
 
 export default { 
     async getAll(req, res, next) {
-        const trees = await Tree.findAll({
+        const trees = await Tree.indAll({
             order: [['name', 'ASC']], 
         });
 

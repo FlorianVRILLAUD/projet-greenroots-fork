@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+    <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
+        <h1>Nos arbres</h1>
+        
+        <!-- Premiere carte  -->
+        <section class="card-tree is-flex-grow-1">
+
+
+            <% trees.forEach(tree => { %>
+                <article>
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <a href="/nos-arbres/<%= tree.slug %>"><img
+                                src="../public/images/photos/<%= tree.image %>"
+                                alt="Photo d'un <%= tree.name %>"
+                                /></a>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                            </div>
+                            
+                            <div class="content">
+                                <h2  class="title-card has-text-centered is-size-4 has-text-dark m-2"><%= tree.name %></h2>
+                                <p class="has-text-centered is-size-5"><%= tree.variety %></p>
+                                <p class="has-text-centered is-size-5">À partir de <%= tree.price_ttc %> €</p>
+                                
+                                
+                            </div>
+                            <a href="/nos-arbres/<%= tree.slug %>"><button class="button details is-size-4">Plus de détails</button></a>
+                        </div>
+                    </div>
+                </article>
+             
+            <% }) %>
+
+        </section>
+        
+        
+        
+    </main>
+    
+    <%- include('partials/footer') %>
+

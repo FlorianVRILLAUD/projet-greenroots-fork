@@ -1,11 +1,21 @@
 //* Functionnality : contact form
 import Joi from 'joi';
 
+
+
+
 export default { 
+    contactView (req, res) {
+        res.render('contact', 
+        { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
+        )
+    },
+
+
     async createContact(req,res) { 
         try { 
             const schema = Joi.object({ 
-                name: Joi.string().min(1).max(20).required(),
+                name: Joi.string().min(1).max(50).required(),
                 email: Joi.string().email().required(),
                 message: Joi.string().min(5).max(500).required()
             });

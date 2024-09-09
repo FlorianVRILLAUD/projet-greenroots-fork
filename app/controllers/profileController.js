@@ -9,8 +9,9 @@ export default  {
     //},
 
     async show (req, res, next) {
-    const id = req.session.userId;
-    const {lastname, firstname, adress, email, password} = req.body;
+    const user = req.session.userId;
+    const 
+    
      
     res.render('profile',{user});
     
@@ -42,7 +43,7 @@ export default  {
         where: { id:req.body},
     }));
     if (isUserExistAlready) {
-        const error =new Error('Utilisateur non trouvé');
+        const error = new Error('Utilisateur non trouvé');
         error.status = 409;
         next(error);
     }

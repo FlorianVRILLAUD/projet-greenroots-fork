@@ -2,7 +2,6 @@
 import Joi from 'joi';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
-import { text } from 'express';
 
 dotenv.config();
 
@@ -11,17 +10,20 @@ export default {
     contactView (req, res) {
         res.render('contact', 
         { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
+
         )
     },
-
     async createContact(req,res) { 
-        try { 
+
+
+        try    { 
+            const {name,email,message} = req.body
             const schema = Joi.object({ 
                 name: Joi.string().min(1).max(50).required(),
                 email: Joi.string().email().required(),
                 message: Joi.string().min(5).max(500).required()
             });
-
+            console.log(req.body.name)
             const { error } = schema.validate(req.body);
             if (error) { 
                 return res.render('contact',{ 
@@ -31,7 +33,6 @@ export default {
                 });
             }
                 // On configure Nodemailer , pour que le formulaire une fois validé, soit envoyé depuis une adresse vers une autre
-                // Ce qui allège le poids de la Bdd et améliore les temps de réponse puisqu'envoyé par un autre serveur que celui du site 
                 const transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -40,28 +41,49 @@ export default {
                     }
             });
 
-                const sendForm = { 
-                    from: process.env.EMAIL_USER,
-                    to:'greenroots.website@gmail.com',
-                    subject: 'Nouveau message via formaulaire de contact',
-                    text: `Nom ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
-                };
+                // const sendForm = { 
+                //     from: process.env.EMAIL_USER,
+                //     to:'greenroots.website@gmail.com',
+                //     subject: 'Nouveau message via formaulaire de contact',
+                //     text: `Nom ${name}\nEmail: ${email}\nMessage: ${message}`
+                    
+                // };
 
-                await transporter.sendMail(sendForm);
+                async function main() {
+                    // send mail with defined transport object
+                    const info = await transporter.sendMail({
+                      from: process.env.EMAIL_USER, // sender address
+                      to: "greenroots.website@gmail.com", // list of receivers
+                      subject: "Hello ✔", // Subject line
+                      text: "Hello world?", // plain text body
+                      html: "<b>Hello world?</b>", // html body
+                    });
+                    console.log("Message sent: %s", info.messageId);
+  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+                    };
+                    main().catch(console.error);
 
-            res.render('contact',{ 
+                // await transporter.sendMail(sendForm);
+                
+
+            res.redirect('/',{
+
                 success: "Message envoyé, nous vous répondons sous 24h",
-                FormData: req.body
+                FormData: req.body,
+
             });
+
+
+
         } catch (error) { 
-            res.render('contact-error', { 
+            res.render('404', { 
                 message: "Une erreur est survenue, vous allez être redirigé vers la page d'accueil."
             });
-    
+            
             // Redirection vars la page d'accueil
-            setTimeout(() => {
-                res.redirect('/');
-            }, 3000);
+            // setTimeout(() => {
+            //     res.redirect('/');
+            // }, 3000);
         }
     }
 }

@@ -26,4 +26,10 @@ router.patch('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.
 // DELETE TREE
 router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.delete));
 
+
+
+router.get('/profil', catchErrors(profileController.show)); 
+//router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
+//router.delete('/mon-espace/profil/id, catchErrors(profileController.delet));
+
 export default router;

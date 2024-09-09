@@ -1,0 +1,51 @@
+
+
+  
+    <%- include('partials/header') %>
+    <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
+
+    <h1 class="connection ">Bienvenue Bruno</h1>
+
+
+    <div class="form_container">
+        <form class="form_info">
+
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Nom" value="<% user.lastname  %>">
+
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<% user.firstname %>">
+
+            <label for="adress">Adresse</label>
+            <input type="text" name="adress" id="adress" placeholder="Adresse" value="<% user.adress %>">
+
+            <label for="mail">E-Mail</label>
+            <input type="mail" id="Mail" placeholder="mail" value="<% user.email %>">
+
+            <label for="password">Mot de passe</label>
+            <input type="password" id="Password" placeholder="Mot de passe" value="<% user.password %>">
+
+        </form>        
+
+        <button class="button_modify" type="submit">Modifier mes informations</button>
+        <button class="button_delete" type="submit">Supprimer mon compte</button>
+
+    </div>
+
+    <hr class="navbar_end">
+
+    <div class="buttons_profil">
+
+        <button class="button_infos">Mes informations</button>
+        <button class="button_order">Mes commandes</button>
+        <button class="button_fav">Mes favoris</button>
+
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+
+    
+    
+</body>
+</html>

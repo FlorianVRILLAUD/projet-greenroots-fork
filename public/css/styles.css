@@ -34,8 +34,6 @@ button {
     color: #2B743A;
 }
 
-
-
 h2, h3, h4, h5 {
     font-size: 2.4rem;
 }
@@ -57,9 +55,11 @@ h2, h3, h4, h5 {
 }
 
 .logo img {
+    height: 4rem; 
     width: 4rem;
-    height: 4rem;
 }
+
+/* LIGNE DE SÉPARATION */
 
 .nav ul {
     display: flex;
@@ -69,6 +69,7 @@ h2, h3, h4, h5 {
 
 .nav ul li {
     display: inline-block;
+
 }
 
 .nav ul li a img {
@@ -81,7 +82,6 @@ h2, h3, h4, h5 {
 header hr {
     margin: 0.5rem 0.5rem;
 }
-
 
 .nav-desktop {
     display: none;
@@ -116,8 +116,6 @@ header hr {
 .show {
     display: block;
 }
-
-
 
 @media (min-width: 1024px) {
     
@@ -247,6 +245,7 @@ header hr {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .homepage .card-tree h1 {
@@ -340,9 +339,6 @@ header hr {
         
         width: 10%;
         
-        
-        
-        
     }
     
     .homepage .card-tree > a button {
@@ -362,6 +358,7 @@ header hr {
     
 }
 
+
 /* FOOTER */
 
 footer {
@@ -370,6 +367,7 @@ footer {
     text-align: center; /* Centre le texte et les liens */
     border-top: 0.1rem solid #ddd; /* Ligne supérieure pour délimiter le pied de page */
     color: #ffffff;
+
 }
 
 .a_propos { 
@@ -377,6 +375,7 @@ footer {
     font-weight: bold;
     font-size: 1.5rem;
 }
+
 
 .footer-content h4 {
     margin: 0 0 1rem 0; /* Supprime la marge en haut et ajoute un espace en bas */
@@ -389,6 +388,7 @@ footer {
     margin: 0 0 2rem 0; /* Espacement en bas du paragraphe */
     font-size: 1.6rem;
 }
+
 
 footer .a_propos {
     text-decoration: underline;
@@ -407,12 +407,11 @@ footer .a_propos {
 
 .footer-links a {
     text-decoration: none; /* Supprime le soulignement des liens */
+    color: #ffffff; /* Couleur des liens */
     font-size: 1.2rem;
-    color: #ffffff;
+    
 }
 
 .footer-links a:hover {
     text-decoration: underline; /* Souligne les liens au survol */
 }
-
-

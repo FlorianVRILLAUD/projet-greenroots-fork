@@ -45,6 +45,9 @@ h2, h3, h4, h5 {
     background-color: #FFFFFF;
     padding: 1rem 1rem;
     height: 12vh;
+    position: sticky;
+    top: 0;
+    z-index: 6;
 }
 
 .logo-search {
@@ -82,6 +85,36 @@ header hr {
 
 .nav-desktop {
     display: none;
+}
+
+/* MENU BURGER */
+.menu {
+    display: none;
+    position: absolute;
+    top: 12vh;
+    right: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.menu ul li {
+    padding: 1rem;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #053d2b;
+}
+
+.menu ul li a {
+    color: #053d2b;
+    text-decoration: none;
+}
+
+.menu ul li:hover {
+    background-color: #555;
+}
+
+.show {
+    display: block;
 }
 
 

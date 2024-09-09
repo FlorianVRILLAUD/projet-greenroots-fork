@@ -2,55 +2,83 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="../public/images/icones/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panier - GreenRoots</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <style>
-        .text-green {
-            color: #1A361D;
-        }
-        .button-custom {
-            background-color: #2B743A;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../public/css/cart.css">
+    <title>GreenRoots - Mes arbres</title>
 </head>
+<body class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+    <header class="navbar">
+        <div class="logo">
+            <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="#"><img src="/public/images/icones/Loupe.svg" alt="Recherche"></a></li>
+                <li><a href="#"><img src="/public/images/icones/Panier 1.svg" alt="Panier"></a></li>
+                <li><a href="#"><img src="/public/images/icones/Burger.svg" alt="Menu Burger"></a></li>
+            </ul>
+        </div>
+    </header>
+    <hr class="navbar_end">
 <body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title has-text-centered text-green">Panier</h1>
-            <div class="box">
-                <div class="columns is-vcentered is-multiline">
-                    <div class="column is-12-mobile is-3-tablet">
-                        <figure class="image is-4by3">
-                            <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
-                        </figure>
-                    </div>
-                    <div class="column is-12-mobile is-5-tablet">
-                        <ul>
-                            <li class="text-green"><strong>Nom :</strong> Cèdre</li>
-                            
-                            <li class="text-green"><strong>Quantité :</strong><div class="field has-addons">
-                                <p class="control">
-                                    <button class="button is-small">-</button>
-                                </p>
-                                <p class="control">
-                                    <input class="input is-small" type="text" value="2" readonly>
-                                </p>
-                                <p class="control">
-                                    <button class="button is-small">+</button>
-                                </p>
-                            </div></li>
-                        </ul>
+    <main class="is-flex-grow-1 mb-6">
+
+        <hr class="navbar_end navbar-desktop">
+
+        <section class="section mb-6>
+            <div class="container has-text-centered">
+              <div class="columns is-vcentered mb-4">
+                <div class="column">
+                  <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Panier</h1>
+            </div>
+          </section>
+
+        <section class="is-flex is-flex-direction-column is-align-items-center">
+            
+            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
+                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
+                    <p>N°1111</p>
+                    <time datetime="2024-09-03">03/09/24</time>
+                </header>
+                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
+                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier l'image ></a></li>
+                    </ul>
+                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+                        <p><span class="has-text-weight-semibold">Nom : </span>Cèdre</p>
+                        <p><span class="has-text-weight-semibold">Quantité : </span> <div class="field has-addons">
+                            <p class="control">
+                              <button class="button is-primary" onclick="decrement()">
+                                <span class="icon is-small">
+                                  <i class="fas fa-minus"> - </i>
+                                </span>
+                              </button>
+                            </p>
+                            <p class="control">
+                              <input class="input has-text-centered" type="number" value="1" min="0" max="100" id="quantity-input" style="width: 60px;">
+                            </p>
+                            <p class="control">
+                              <button class="button is-primary" onclick="increment()">
+                                <span class="icon is-small">
+                                  <i class="fas fa-plus"> + </i>
+                                </span>
+                              </button>
+                            </p>
+                          </div> </p>
                         
                     </div>
-                    <div class="column is-12-mobile is-4-tablet has-text-right">
-                        <div class="buttons is-flex is-flex-direction-column is-align-items-flex-end">
-                            
-                            <a href="#" class="button is-small is-danger is-fullwidth-mobile">Supprimer du panier ></a>
-                        </div>
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Supprimer du panier ></a></li>
+                    </ul>
+                    <div class="mobile-link">
                     </div>
                 </div>
+                <a href="#" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
             </div>
             <div class="total-section has-text-right">
                 <p class="text-green"><strong>Total TTC :</strong> 37,98 €</p>

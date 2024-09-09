@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <link rel="icon" href="../public/images/icones/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/reset.css">
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="../public/css/tree-management.css">
-    <title>GreenRoots - Mes commandes</title>
+    <title>GreenRoots - Mes arbres</title>
 </head>
-<body>
+<body class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
     <header class="navbar">
         <div class="logo">
             <a href=""><img src="/public/images/Logos/Logo Mobile.svg" alt="Logo"></a>
@@ -25,48 +26,110 @@
     <hr class="navbar_end">
 
 
-    <section class="section">
-        <div class="section-container">
-            <h1 class="title">Gestion des arbres</h1>
-            <div class="is-flex is-justify-content-center mb-4">
-                <button class="button is-primary mb-4">Créer une page</button>
-            </div>
-        </div>
+    <main class="is-flex-grow-1 mb-6">
 
-        
-        <div class="container mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5">
-            <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold mb-4">
-                <h1 class="title">Page 1</h1>
-            </header>
-        
-            <div class="content-card is-flex p-5">
-                <div class="image-container"> 
-                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre" >
-                    <a href="#" class="has-text-weight-semibold has-text-right mt-2 d-block"> Modifier l'image ></a>
+        <hr class="navbar_end navbar-desktop">
+
+        <section class="section mb-6>
+            <div class="container has-text-centered">
+              <div class="columns is-vcentered mb-4">
+                <div class="column">
+                  <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Gestion des arbres</h1>
                 </div>
-                <div class="is-flex is-flex-direction-column is-justify-content-space-between ml-4">
-                    <ul>
-                        <li><span class="has-text-weight-semibold pr-6">Nom : </span>Cèdre</li>
-                        <li><span class="has-text-weight-semibold pr-1">Taille : </span>25cm</li>
-                        <li><span class="has-text-weight-semibold pr-6">Variété : </span> Lorem </li>
-                        <li><span class="has-text-weight-semibold pr-1">Prix : </span>10€</li>
-                    </ul>
+                <div class="column is-narrow has-text-centered-mobile has-text-right-tablet">
+                  <button class="button is-custom-green is-large">
+                    Créer une page
+                  </button>
                 </div>
-                <div class="is-flex is-flex-direction-column is-align-items-flex-end ml-auto">
-                    <a href="#" class="has-text-weight-semibold has-text-right mb-2"> Modifier les informations ></a>
-                    <a href="#" class="has-text-weight-semibold has-text-right"> Supprimer la page ></a>
-                </div>
+              </div>
             </div>
-        </div>
-                
+          </section>
+
+        <section class="is-flex is-flex-direction-column is-align-items-center">
             
-        </div>
+            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
+                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
+                    <p>N°1111</p>
+                    <time datetime="2024-09-03">03/09/24</time>
+                </header>
+                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
+                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier l'image ></a></li>
+                    </ul>
+                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+                        <p><span class="has-text-weight-semibold">Nom : </span>Cèdre</p>
+                        <p><span class="has-text-weight-semibold">Taille : </span>1</p>
+                        <p><span class="has-text-weight-semibold">Variété : </span>Papaye</p>
+                        <p><span class="has-text-weight-semibold">Prix : </span>18,99 €</p>
+                    </div>
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier les informations ></a></li>
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Supprimer la page ></a></li>
+                    </ul>
+                    <div class="mobile-link">
+                    </div>
+                </div>
+                <a href="#" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
+            </div>
 
-        
-                
+            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
+                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
+                    <p>N°1111</p>
+                    <time datetime="2024-09-03">03/09/24</time>
+                </header>
+                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
+                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier l'image ></a></li>
+                    </ul>
+                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+                        <p><span class="has-text-weight-semibold">Nom : </span>Cèdre</p>
+                        <p><span class="has-text-weight-semibold">Taille : </span>1</p>
+                        <p><span class="has-text-weight-semibold">Variété : </span>Papaye</p>
+                        <p><span class="has-text-weight-semibold">Prix : </span>18,99 €</p>
+                    </div>
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier les informations ></a></li>
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Supprimer la page ></a></li>
+                    </ul>
+                    <div class="mobile-link">
+                    </div>
+                </div>
+                <a href="#" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
+            </div>
 
+            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
+                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
+                    <p>N°1111</p>
+                    <time datetime="2024-09-03">03/09/24</time>
+                </header>
+                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
+                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier l'image ></a></li>
+                    </ul>
+                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+                        <p><span class="has-text-weight-semibold">Nom : </span>Cèdre</p>
+                        <p><span class="has-text-weight-semibold">Taille : </span>1</p>
+                        <p><span class="has-text-weight-semibold">Variété : </span>Papaye</p>
+                        <p><span class="has-text-weight-semibold">Prix : </span>18,99 €</p>
+                    </div>
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier les informations ></a></li>
+                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Supprimer la page ></a></li>
+                    </ul>
+                    <div class="mobile-link">
+                    </div>
+                </div>
+                <a href="#" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
+            </div>
 
-    </section>
+            
+        </section>
+
+    </main>
+
 
     <footer>
         <div class="footer-content">

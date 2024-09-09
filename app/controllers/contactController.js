@@ -2,16 +2,9 @@
 import Joi from 'joi';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import { text } from 'express';
 
 dotenv.config();
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
-  });
 
 
 export default { 
@@ -20,7 +13,6 @@ export default {
         { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
         )
     },
-
 
     async createContact(req,res) { 
         try { 
@@ -38,9 +30,28 @@ export default {
                     FormData: req.body
                 });
             }
+                // On configure Nodemailer , pour que le formulaire une fois validé, soit envoyé depuis une adresse vers une autre
+                // Ce qui allège le poids de la Bdd et améliore les temps de réponse puisqu'envoyé par un autre serveur que celui du site 
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: process.env.EMAIL_USER,
+                        pass: process.env.EMAIL_PASS
+                    }
+            });
 
-            res.render('a-decider',{ 
-                /* voir si on décide d'une vue ou non pour le succes de la soumission au formulaire */
+                const sendForm = { 
+                    from: process.env.EMAIL_USER,
+                    to:'greenroots.website@gmail.com',
+                    subject: 'Nouveau message via formaulaire de contact',
+                    text: `Nom ${req.body.name}\nEmail: ${req.body.email}\nMessage: ${req.body.message}`
+                };
+
+                await transporter.sendMail(sendForm);
+
+            res.render('contact',{ 
+                success: "Message envoyé, nous vous répondons sous 24h",
+                FormData: req.body
             });
         } catch (error) { 
             res.render('contact-error', { 

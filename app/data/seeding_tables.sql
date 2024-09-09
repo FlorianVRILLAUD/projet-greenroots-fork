@@ -10,7 +10,7 @@ VALUES
 ('Olivier', 'olivier', 'olivier.jpg', 'Arbre fruitier', 5, 26.58, 31.90, 'Espagne'),
 ('Cèdre', 'cedre', 'cedre.jpg', 'Conifère', 30, 15, 18, 'France'),
 ('Noisetier', 'noisetier', 'noisetier.jpg', 'Arbre fruitier', 4, 15.60, 18.75, 'Danemark'),
-('Poirier middle', 'poirier-middle', 'poirrier_middle.webp', 'Arbre fruitier', 8, 18.99, 24.99, 'France'),
+('Poirier middle', 'poirier-middle', 'poirier-middle.webp', 'Arbre fruitier', 8, 18.99, 24.99, 'France'),
 ('Bambou sacré', 'bambou-sacre', 'bambou_sacré.webp', 'Herbe', 2, 20.50, 24.50, 'Chine'),
 ('Bonsai de californie', 'bonsai-de-californie', 'bonsai_de_californie.webp', 'Arbre fruitier', 10, 65, 70, 'Japon'),
 ('Cerisier', 'cerisier', 'cerisier.webp', 'Arbre fruitier', 4, 10, 14.50, 'France'),

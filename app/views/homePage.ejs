@@ -1,27 +1,59 @@
 <%- include('partials/header') %>
 
-    <div class="picture_homepage">
-        <img src="/public/images/photos/photo_bann.webp" alt="photo de forêt">
-    </div>
-    <div class="text_description">
-        <p>Green Roots est une plateforme dédiée à la vente d'arbres à planter, vous offrant la possibilité de participer activement à la lutte contre la déforestation et de soutenir la reforestation.</p>
-        <p>Face aux défis environnementaux actuels, il est essentiel de trouver des solutions et Green Roots se veut être une réponse à cette cause.</p>
-    </div>
-    <div class="button_container">
-        <a href="/nos-arbres" class="button">Voir tous les arbres</a>
-    </div>
+<main class="homepage has-background-white">
+
+    <section class="intro">
+        <h1>Reforestons ensemble</h1>
+        <p>Green Roots est une plateforme dédiée à la vente d'arbres à planter, vous offrant la possibilité de participer activement à la lutte contre la déforestation et de soutenir la reforestation. Face aux défis environnementaux actuels, il est essentiel de trouver des solutions et Green Roots se veut être une réponse à cette cause.</p>
+        <a href="/nos-arbres" class="link-tree"><button>Voir tous nos arbres</button></a>
+    </section>
     
-    <div class="card-container">
+
+    <section class="card-tree is-flex">
+
+        <h2 class="is-size-3 has-text-weight-semibold">Nos derniers arbres</h2>
+
+
         <% trees.forEach(tree => { %>
-            <div class="card">
-                <a href="/nos-arbres/<%= tree.slug %>">
-                    <img src="/public/images/photos/<%= tree.image %>" alt="<%= tree.name %>" class="card-image">
-                    <div class="card-content">
-                        <h2><%= tree.name %></h2>
+            <article>
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <a href="/nos-arbres/<%= tree.slug %>"><img
+                            src="../public/images/photos/<%= tree.image %>"
+                            alt="Photo d'un <%= tree.name %>"
+                            /></a>
+                        </figure>
                     </div>
-                </a>
-            </div>
-        <% }); %>
-    </div>
+                    <div class="card-content has-background-white-bis">
+                        
+                        <div class="content">
+                            <h3 class="title-card has-text-centered is-size-4"><%= tree.name %></h3>
+                            <p class="has-text-centered is-size-6 mt-5"><%= tree.variety %></p>
+                            <p class="has-text-centered is-size-6">À partir de <%= tree.price_ttc %> €</p>
+                            
+                            
+                        </div>
+                        <a href="/nos-arbres/<%= tree.slug %>"><button class="details is-size-5">Plus de détails</button></a>
+                    </div>
+                </div>
+            </article>
+         
+        <% }) %>
+
+        <a href="/nos-arbres" class="link-tree"><button>Voir tous nos arbres</button></a>
+
+        
+
+    </section>
+    
+    
+    
+</main>
+
+
+
+
+
     
 <%- include('partials/footer') %>

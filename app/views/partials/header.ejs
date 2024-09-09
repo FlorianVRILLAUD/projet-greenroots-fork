@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../public/images/icones/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    
+    <!-- Variables CSS -->
+    <% if (typeof bulma !== 'undefined' && bulma) { %>
+        <link rel="stylesheet" href="<%= bulma %>">
+        <% } %>
+        
+        <% if (typeof cssFile !== 'undefined' && cssFile) { %>
+            <link rel="stylesheet" href="/public/css/<%= cssFile %>">
+            <% } %>
+            
+            <!-- Title-->
+            <title>
+                <%= typeof title !='undefined' ? title : 'GreenRoots' %>
+            </title>
+            
+        </head>
+        <body class="has-background-white">
+            
+            <header class="header has-background-white">
+                <div class="logo-search">
+                    
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/public/images/Logos/logo-mobile-3.svg" alt="GreenRoots Logo" class="responsive-logo">
+                            </a>
+                            <div class="search"></div>
+                        </div>
+                        
+                    
+                    
+                    <nav class="nav">
+                        <ul class="nav-mobile">
+                            <li class="nav-mobile"><a class="nav-mobile" href="#"><img class="nav-mobile" src="/public/images/icones/loupe.svg" alt="Recherche"></a></li>
+                            <li class="nav-mobile"><a class="nav-mobile"href="#"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
+                            <li class="nav-mobile"><a class="nav-mobile burger" href="#"><img class="nav-mobile" src="/public/images/icones/burger.svg" alt="Menu"></a></li>
+                        </ul>
+                        <ul class="nav-desktop">
+                            <li class="nav-desktop search-list"><input class="search is-size-4 nav-desktop" type="text" id="search" name="search" placeholder="Rechercher un arbre"></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/inscription.svg" alt="Panier">Nous rejoindre</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Panier">Connexion</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
+                        </ul>
+                    </nav>
+
+                    <div id="burger-menu" class="menu">
+                        <ul>
+                            <li><a href="/">Accueil</a></li>
+                            <li><a href="/nos-arbres">Nos arbres</a></li>
+                            <li><a href="/nous-rejoindre">Nous rejoindre</a></li>
+                            <li><a href="/connexion">Connexion</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <hr>
+            </header>            
+            

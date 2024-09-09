@@ -8,13 +8,13 @@ class Tree extends Model {}
 Tree.init(
     {
         name: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(255),
             allowNull: false,
             unique: true
         },
         
         slug: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(255),
             allowNull: false,
             unique: true
         },
@@ -25,7 +25,7 @@ Tree.init(
         },
 
         variety: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(255),
             allowNull: false,
         },
         
@@ -45,7 +45,7 @@ Tree.init(
         },
 
         origin: {
-            type: DataTypes.STRING(64),
+            type: DataTypes.STRING(255),
             allowNull: false,
         },
     },

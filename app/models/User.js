@@ -6,17 +6,17 @@ class User extends Model {}
 User.init(
     {
         role: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(64),
             allowNull: false,
         },
 
         lastname: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(64),
             allowNull: false,
         },
 
         firstname: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(64),
             allowNull: false,
         },
 
@@ -28,10 +28,11 @@ User.init(
         email: {
             type: DataTypes.STRING(255),
             allowNull: false,
+            unique: true,
         },
 
         password: {
-            type: DataTypes.STRING(32),
+            type: DataTypes.STRING(255),
             allowNull: false,
         }
     },

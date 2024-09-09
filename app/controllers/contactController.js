@@ -1,7 +1,17 @@
 //* Functionnality : contact form
 import Joi from 'joi';
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
+dotenv.config();
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
 
 
 export default { 
@@ -33,7 +43,14 @@ export default {
                 /* voir si on décide d'une vue ou non pour le succes de la soumission au formulaire */
             });
         } catch (error) { 
-                res.status(500).json({error: "Une erreur est survenue, vous allez être redirigé vers page d'accueil"});
+            res.render('contact-error', { 
+                message: "Une erreur est survenue, vous allez être redirigé vers la page d'accueil."
+            });
+    
+            // Redirection vars la page d'accueil
+            setTimeout(() => {
+                res.redirect('/');
+            }, 3000);
         }
     }
-};
+}

@@ -19,6 +19,9 @@ router.get('/nos-arbres/:slug', catchErrors(treeController.getOne));
 // CONTACT PAGE
 router.get('/contact', catchErrors(contactController.contactView));
 
+// SUBMIT FORM
+router.post('/contact/sub', catchErrors(contactController.createContact));
+
 // CREATE TREE
 router.post('/mon-espace/gestion-des-arbres', catchErrors(treeController.create));
 

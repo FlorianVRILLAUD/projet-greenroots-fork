@@ -10,17 +10,18 @@ export default  {
 
     async show (req, res, next) { 
 
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(req.params.id)
     if(!user) {
         return res.status(404).json({ message: "Utilisateur non trouvé"})
     };
-    res.render('profile',{ user });
+    res.render('profil',{ user });
+   
     
     },
 
    
     async update(req, res, next) {
-        if(!req.session?.id){
+        if(!req.session.id){
             return res.status(401).json({message: 'utilisateur non authentifie'})
         }
         const id = Number(req.session.id)

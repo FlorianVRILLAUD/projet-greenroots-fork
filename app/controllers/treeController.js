@@ -1,19 +1,23 @@
 //* functionality : trees to offer, view tree details, and handle purchases
 import 'dotenv/config';
-import { Tree } from '../models/index.js'
+import { Tree, Variety } from '../models/index.js'
 import Joi from 'joi';
 
 export default { 
     async getAll(req, res, next) {
-        const trees = await Tree.indAll({
-            order: [['name', 'ASC']], 
+        const trees = await Tree.findAll({
+            order: [['name', 'ASC']],
+            include: 'variety',
+             
         });
 
         if (!trees) {
             return next();
         }
 
-        res.render('nosarbres', { trees, title: "GreenRoots - Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
+        const varieties = await Variety.findAll();
+
+        res.render('nosarbres', { trees, varieties, title: "GreenRoots - Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
 
     },
 
@@ -32,13 +36,12 @@ export default {
 
     async update(req, res, next) {
          const treeSlug = req.params.slug;
-         const { name, slug, image, variety, size, price_ht, price_ttc, origin} = req.body;
+         const { name, slug, image, size, price_ht, price_ttc, origin} = req.body;
 
          const schema = Joi.object({
             name: Joi.string().min(1).max(255),
             slug: Joi.string().min(1).max(255),
             image: Joi.string().min(1).max(255),
-            variety: Joi.string().min(1).max(255),
             size: Joi.number().min(0),
             price_ht: Joi.number().min(0),
             price_ttc: Joi.number().min(0),
@@ -69,20 +72,19 @@ export default {
             return next();
          }
          
-         const updateTree = await tree.update({ name: name, slug: slug, image: image, variety: variety, size: size, price_ht: price_ht, price_ttc: price_ttc, origin: origin });
+         const updateTree = await tree.update({ name: name, slug: slug, image: image, size: size, price_ht: price_ht, price_ttc: price_ttc, origin: origin });
          res.json(updateTree);
      },
 
         
 
     async create(req, res, next) {
-        const {name, slug, image, variety, size, price_ht, price_ttc, origin} = req.body;
+        const {name, slug, image, size, price_ht, price_ttc, origin} = req.body;
 
         const schema = Joi.object({
             name: Joi.string().min(1).max(255).required(),
             slug: Joi.string().min(1).max(255).required(),
             image: Joi.string().min(1).max(255).required(),
-            variety: Joi.string().min(1).max(255).required(),
             size: Joi.number().min(0).required(),
             price_ht: Joi.number().min(0).required(),
             price_ttc: Joi.number().min(0).required(),
@@ -105,7 +107,7 @@ export default {
             next(error);
         }
 
-        const newTree = await Tree.create({ name, slug, image, variety, size, price_ht, price_ttc, origin });
+        const newTree = await Tree.create({ name, slug, image, size, price_ht, price_ttc, origin });
 
         if(!newTree) {
             return next();

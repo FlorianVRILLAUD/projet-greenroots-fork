@@ -3,13 +3,13 @@ COMMIT;
 BEGIN;
 
 INSERT INTO "variety"
-("name")
+("name", "slug")
 VALUES
-('Arbre fruitier'),
-('Arbre à bois dur'),
-('Conifère'),
-('Herbe'),
-('Palmier dattier');
+('Arbre fruitier', 'arbre-fruitier'),
+('Arbre à bois dur', 'arbre-a-bois-dur'),
+('Conifère', 'conifere'),
+('Herbe', 'herbe'),
+('Palmier dattier', 'palmier-dattier');
 
 INSERT INTO tree
 ("name", "slug", "image", "size", "price_ht", "price_ttc", "origin", "variety_id")

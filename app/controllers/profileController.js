@@ -8,16 +8,17 @@ export default  {
        // res.render('profile')
     //},
 
-    async show (req, res, next) {
-    const id = req.session.userId;
-    const {lastname, firstname, adress, email, password} = req.body;
-     
-    res.render('profile',{user});
+    async show (req, res, next) { 
+
+    const user = await User.findByPk(id);
+    if(!user) {
+        return res.status(404).json({ message: "Utilisateur non trouvé"})
+    };
+    res.render('profile',{ user });
     
     },
 
-
-    
+   
     async update(req, res, next) {
         if(!req.session?.id){
             return res.status(401).json({message: 'utilisateur non authentifie'})
@@ -38,7 +39,7 @@ export default  {
             return next(error)
           }
 
-    const isUserExistAlready =!!(await User.count({
+    const isUserExistAlready = !!(await User.count({
         where: { id:req.body},
     }));
     if (isUserExistAlready) {
@@ -55,11 +56,6 @@ export default  {
     }
     const updateUser = await user.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
     res.json(updateUser);
-
-//    // async delete(req, res, next) {
-//         const id =;
-
-//     }
     
     }
-}
+};

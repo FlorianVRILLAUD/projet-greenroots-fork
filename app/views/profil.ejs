@@ -1,10 +1,8 @@
-
-
-  
-    <%- include('partials/header') %>
+ <%- include('partials/header') %>
+ 
     <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
 
-    <h1 class="connection ">Bienvenue Bruno</h1>
+    <h1 class="connection ">Bienvenue <% user.firstname %></h1>
 
 
     <div class="form_container">
@@ -36,9 +34,9 @@
 
     <div class="buttons_profil">
 
-        <button class="button_infos">Mes informations</button>
-        <button class="button_order">Mes commandes</button>
-        <button class="button_fav">Mes favoris</button>
+        <a href="/mon-espace/profil"><button class="button_infos">Mes informations</a>
+        <a href="/mon-espace/profil/mes-commandes"><button class="button_order">Mes commandes</button></a>
+        <a href="/mon-espace/favoris"><button class="button_fav">Mes favoris</button></a>
 
     </div>
 </main>

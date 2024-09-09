@@ -6,6 +6,11 @@ import emailValidator from 'email-validator';
 import jwt from 'jsonwebtoken';
 
 export default {
+
+    async showRegister(req, res) {
+        res.render('register');
+    },
+
     async register (req, res) {
         try { 
             const {
@@ -49,7 +54,7 @@ export default {
             const hashPassword = Scrypt.hash(password);
 
             //On stock l'utilisateur en BDD
-            const newUser = await User.create({
+            await User.create({
                 role,
                 lastname, 
                 firstname, 
@@ -58,12 +63,16 @@ export default {
                 password: hashPassword,
             });
 
-            res.status(201).json(newUser);
+            res.redirect('/nous-rejoindre');
 
         } catch (error) {
             console.error(error);
-            res.status(500).json('500');
+            res.status(500).json('Erreur création utlisateur');
         }
+    },
+
+    async showLogin(req,res) {
+        res.render('login');
     },
 
     async login(req, res) {
@@ -104,10 +113,11 @@ export default {
             });
     
             res.status(200).json({ message: 'Connexion réussie', user: { id: user.id, email: user.email, role: user.role } });
+            res.redirect('/');
     
         } catch (error) {
             console.error(error);
-            res.status(500).json('500');
+            res.status(500).json('Erreur de connexion');
         }
     }
 }

@@ -40,19 +40,16 @@ export default {
                 where: { email },
             });
 
-            console.log(existingEmail)
-
-            if (existingEmail.length === 1) {
-                return res.status(400).json("Oups email déjà utilisé !!!")
+            if (existingEmail.length >= 1) {
+                return res.status(400).json("Cet email est déjà utilisé")
 
             }
-
 
             //On hash le MP
             const hashPassword = Scrypt.hash(password);
 
             //On stock l'utilisateur en BDD
-            await User.create({
+            const newUser = await User.create({
                 role,
                 lastname, 
                 firstname, 
@@ -61,7 +58,7 @@ export default {
                 password: hashPassword,
             });
 
-            res.redirect('connection');
+            res.status(201).json(newUser);
 
         } catch (error) {
             console.error(error);

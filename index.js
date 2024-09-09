@@ -3,6 +3,7 @@ import 'dotenv/config';
 
 // Import NPM modules
 import express from 'express';
+import session from 'express-session';
 
 import router from './app/routers/router.js';
 
@@ -19,6 +20,14 @@ app.use("/public", express.static("public"));
 
 //Making parsed data available in 'req.body'
 app.use(express.urlencoded({ extended: true })); 
+
+app.use(session({
+  secret: 'process.env.SESSION_SECRET', 
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === "production" }
+}));
+
 
 //Attach all defined routes to the Express application
 app.use(router);

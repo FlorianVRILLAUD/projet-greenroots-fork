@@ -4,17 +4,13 @@ import { User } from'../models/index.js'
 import Joi from 'joi';
 
 export default  { 
-   // async show(req, res) {
-       // res.render('profile')
-    //},
-
     async show (req, res, next) { 
 
     const user = await User.findByPk(req.params.id)
     if(!user) {
         return res.status(404).json({ message: "Utilisateur non trouvé"})
     };
-    res.render('profil',{ user });
+    res.render('profil',{ user, title: "GreenRoots - Mon profil", cssFile: "profil.css", bulma: process.env.BULMA_URL });
    
     
     },
@@ -58,5 +54,13 @@ export default  {
     const updateUser = await user.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
     res.json(updateUser);
     
+    },
+
+    async delete(req, res) {
+        const id = Number(req.session.id);
+        const result = await User.destroy({where: {id: id}});
+        if(!result) {
+            return next()
+        }
     }
 };

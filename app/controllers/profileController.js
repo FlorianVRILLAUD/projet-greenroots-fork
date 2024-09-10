@@ -118,10 +118,10 @@ export default  {
             return next(error)
           }
 
-    const isMailExistAlready = !!(await User.count({
-        where: {email: req.body.email},
+    const isIdExistAlready = !!(await User.count({
+        where: {id: id},
 
-        if (isMailExistAlready) {
+        if (isIdExistAlready) {
             const error = new Error('Mail non trouvé');
             error.status = 409;
             next(error);
@@ -137,7 +137,7 @@ export default  {
         return next();
     }
 
-    const updateUser = await User.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
+    const updateUser = await user.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
     res.json(updateUser);
 
 
@@ -146,10 +146,13 @@ export default  {
     },
 
     async delete(req, res) {
-        const id = Number(req.session.id);
+        const id = Number(req.params.id);
         const result = await User.destroy({where: {id: id}});
-        if(!result) {
-            return next()
+
+        if(result === 0) {
+            return res.status(404).json({ message: "Utilisateur non trouvé" });
+       
+            res.status(200).json({ message: "Utilisateur supprimé avec succès" });
         }
     }
 };

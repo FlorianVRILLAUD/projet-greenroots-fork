@@ -1,55 +1,55 @@
+<%- include('partials/header') %>
 
+<main class="is-flex-grow-1 mb-6">
     
-    <%- include('partials/header') %>
+    <div class="notification-container">
+        <% if (message) { %>
+            
+            <div class="notification <%= message.type %> mb-6" id="notification">
+                <p class="has-text-centered"><%= message.text %></p>
+            </div>
+            <% delete message; %>
+        <% } %>
+    </div>
     
-    
-    
-    
-    
-    
-    
-    
-    <main class="is-flex-grow-1 mb-6">
-        
-        
-        <section>
-            <article class="article-tree p-5 mb-6">
-                <div class="title-tree">
-                    <h2 class="has-text-centered mb-3 is-underlined has-text-weight-semibold"><%= tree.name %></h2>
+    <section>
+        <article class="article-tree p-5 mb-6">
+            <div class="title-tree">
+                <h2 class="has-text-centered mb-3 is-underlined has-text-weight-semibold"><%= tree.name %></h2>
+            </div>
+            
+            <div class="image-tree">
+                <a href="#"> <img class="mb-5" src="../public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a>
+            </div>                
+            
+            <div class="infos-tree has-text-centered  has-text-dark">
+                <div class="text-tree">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugit saepe iusto ut, laudantium similique nemo ratione odit distinctio velit, quibusdam voluptates magnam incidunt! Et molestias unde minus maiores corrupti.</p>
                 </div>
-                
-                <div class="image-tree">
-                    <a href="#"> <img class="mb-5" src="../public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a><!--Mettre la photo de pommier rose-->
-                </div>                
-                
-                <div class="infos-tree has-text-centered  has-text-dark">
-                    <div class="text-tree">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugit saepe iusto ut, laudantium similique nemo ratione odit distinctio velit, quibusdam voluptates magnam incidunt! Et molestias unde minus maiores corrupti.</p>
-                    </div>
-                    <div>
-                        <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety %></p>
-                        <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %> m</p>
-                        <p><span class="has-text-weight-semibold">Origine: </span><%= tree.origin %></p>
-                        <p><span class="has-text-weight-semibold">Quantité: </span>3</p>
-                        <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
-                        <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
-                    </div>
-                    
+                <div>
+                    <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
+                    <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %> m</p>
+                    <p><span class="has-text-weight-semibold">Origine: </span><%= tree.origin %></p>
+                    <p><span class="has-text-weight-semibold">Quantité: </span>3</p>
+                    <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
+                    <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
                 </div>
-                
-                
-                
-            </article>
-        </section>
-        <div class="button-action">
-            <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
-            <a href="/nos-arbres"><button class="button-back mt-6" type="submit">Retour a nos arbres</button></a>
-        </div>
-        
-    </main>
+            </div>
+        </article>
+    </section>
     
-    
+    <div class="button-action">
+        <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
+        <form action="/add-favorite" method="POST" class="formFav" id="fav">
+            <input type="hidden" name="treeId" value="<%= tree.id %>">
+            <button class="button-back mt-6 favorite" type="submit">Ajouter aux favoris</button>
+        </form>
+        <a href="/nos-arbres"><button class="button-back mt-6" type="">Retour a nos arbres</button></a>
+    </div>
+</main>
 
-    <%- include('partials/footer') %>
-</body>
-</html>
+<%- include('partials/footer') %>
+
+<script src="/public/js/addFavorite.js" async></script>
+
+

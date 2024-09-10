@@ -50,4 +50,15 @@ VALUES
 (5, 3, 1),
 (4, 2, 3);
 
+INSERT INTO user_has_tree
+("user_id", "tree_id")
+VALUES
+(2, 1),
+(2, 4),
+(2, 8),
+(3, 2),
+(3, 9);
+
+
+
 COMMIT;

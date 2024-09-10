@@ -29,10 +29,14 @@ router.patch('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.
 router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.delete));
 
 
+// PROFIL USER
+router.get('/profil/:id(\\d+)', catchErrors(profileController.show)); 
 
-router.get('/profil', catchErrors(profileController.show)); 
-router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
-router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+// UPDATE USER
+router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
+
+//DELET USER
+router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
 
 router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)

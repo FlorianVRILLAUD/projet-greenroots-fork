@@ -45,10 +45,6 @@ router.post('/nous-rejoindre', registerController.register)
 router.get('/connexion', sessionController.showLogin)
 router.post('/connexion', sessionController.login)
 
-router.use((req, res) => {
-    res.status(404).render('404');
-});
-
 // ABOUT PAGE
 router.get('/a-propos', aboutController.getAboutPage);
 

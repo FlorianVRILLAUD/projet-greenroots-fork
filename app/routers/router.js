@@ -37,7 +37,7 @@ router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController
 
 router.get('/profil', catchErrors(profileController.show)); 
 router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
-router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+router.delete('/mon-espace/profil/id', catchErrors(profileController.delete));
 
 router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)
@@ -49,5 +49,7 @@ router.use((req, res) => {
     res.status(404).render('404');
 });
 
+// ABOUT PAGE
+router.get('/a-propos', aboutController.getAboutPage);
 
 export default router;

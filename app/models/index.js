@@ -2,6 +2,7 @@ import { Command } from './Command.js'
 import { CommandHasTree } from './CommandHasTree.js'
 import { Tree } from './Tree.js'
 import { User } from './User.js'
+import { Variety } from './Variety.js'
 
 //* User & Command
 
@@ -14,6 +15,18 @@ Command.belongsTo(User, {
     as: 'user',
     foreignKey: 'user_id',
 });
+
+//* Variety & Tree
+
+Variety.hasMany(Tree, {
+    as: 'trees',
+    foreignKey: 'variety_id',
+  });
+
+  Tree.belongsTo(Variety, {
+      as: 'variety',
+      foreignKey: 'variety_id',
+  });
 
 //* Command & Tree
 
@@ -32,4 +45,4 @@ Tree.belongsToMany(Command, {
 });
 
 
-export { Command, CommandHasTree, Tree, User};
+export { Command, CommandHasTree, Tree, User, Variety};

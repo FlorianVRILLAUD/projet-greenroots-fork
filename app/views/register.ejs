@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+
+
+    <hr class="navbar_end">
+
+    <main class="is-flex-grow-1">
+        <div class="bg-image mx-5">
+            <h1 class="title-page my-2 has-text-centered has-text-weight-semibold mb-4">Nous rejoindre</h1>
+        </div>
+
+        <section class="mt-6">
+
+            <p class="has-text-centered">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda necessitatibus autem eum ullam ipsa tempore fugit, repellat voluptatem voluptate minima et impedit explicabo praesentium odio vel quis velit eaque corporis?</p>
+
+            <div class="button-choice mt-6">
+                <a href="#"><button class="button-register">Citoyen</button></a>
+                <a href="#"><button class="button-register">Entreprise</button></a>
+            </div>
+
+            <div class="register-form mt-6">
+                <form action="" method="post">
+                    <aside class="has-text-centered mb-6 is-italic has-text-weight-light"><span class="required">*</span> Champs obligatoire</aside>
+
+                    <div>
+                        <label for="firstname" class="label has-text-current has-text-left-desktop is-size-3">Prénom<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="text" id="firstname" name="firstname" placeholder="Votre prénom" required>
+                    </div>
+
+                    <div>
+                        <label for="lastname" class="label has-text-current has-text-left-desktop is-size-3">Nom<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="text" id="lastname" name="lastname" placeholder="Votre nom" required>
+                    </div>
+
+                    <div>
+                        <label for="address" class="label has-text-current has-text-left-desktop is-size-3">Adresse<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="text" id="address" name="adress" placeholder="Votre adresse postale" required>
+                    </div>
+
+                    <div>
+                        <label for="email" class="label has-text-current has-text-left-desktop is-size-3">Email<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="email" id="email" name="email" placeholder="Votre adresse email" required>
+                    </div>
+
+                    <div>
+                        <label for="password" class="label has-text-current has-text-left-desktop is-size-3">Mot de passe<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="password" id="password" placeholder="Votre mot de passe" required>
+                    </div>
+
+                    <div>
+                        <label for="confirm-password" class="label has-text-current has-text-left-desktop is-size-3">Confirmation de mot passe<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="password" id="confirm-password" name="confirm-password" placeholder="Veuillez confirmer votre mot de passe" required>
+                    </div>
+
+                    <button class="button-validate my-6" type="submit">S'inscrire</button>
+                </form>
+            </div>
+
+
+        </section>
+
+        
+    </main>
+
+    <%- include('partials/footer') %>

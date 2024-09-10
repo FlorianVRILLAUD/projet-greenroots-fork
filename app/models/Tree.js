@@ -24,28 +24,29 @@ Tree.init(
             allowNull: false,
         },
 
-        variety: {
-            type: DataTypes.STRING(255),
-            allowNull: false,
-        },
         
         size: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-
+        
         price_ht: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-
+        
         price_ttc : {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
-
+        
         origin: {
             type: DataTypes.STRING(255),
+            allowNull: false,
+        },
+
+        variety_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },

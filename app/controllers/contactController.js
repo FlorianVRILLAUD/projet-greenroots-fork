@@ -1,89 +1,52 @@
 //* Functionnality : contact form
 import Joi from 'joi';
-import dotenv from 'dotenv';
-import nodemailer from 'nodemailer';
-
-dotenv.config();
+import 'dotenv/config';
+import { sendEmailWithTemplate } from '../modules/sendEmail.js';
 
 
 export default { 
     contactView (req, res) {
         res.render('contact', 
-        { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
-
+            { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
+            
         )
     },
-    async createContact(req,res) { 
+    
+    async createContact(req, res, next) { 
+        const { name, email, message } = req.body;
+        
 
-
-        try    { 
-            const {name,email,message} = req.body
-            const schema = Joi.object({ 
-                name: Joi.string().min(1).max(50).required(),
-                email: Joi.string().email().required(),
-                message: Joi.string().min(5).max(500).required()
-            });
-            console.log(req.body.name)
-            const { error } = schema.validate(req.body);
-            if (error) { 
-                return res.render('contact',{ 
-                    // Renvoie le formulaire avec les erreurs affichées 
-                    error: error.details[0].message,
-                    FormData: req.body
-                });
-            }
-                // On configure Nodemailer , pour que le formulaire une fois validé, soit envoyé depuis une adresse vers une autre
-                const transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        user: process.env.EMAIL_USER,
-                        pass: process.env.EMAIL_PASS
-                    }
-            });
-
-                // const sendForm = { 
-                //     from: process.env.EMAIL_USER,
-                //     to:'greenroots.website@gmail.com',
-                //     subject: 'Nouveau message via formaulaire de contact',
-                //     text: `Nom ${name}\nEmail: ${email}\nMessage: ${message}`
-                    
-                // };
-
-                async function main() {
-                    // send mail with defined transport object
-                    const info = await transporter.sendMail({
-                      from: process.env.EMAIL_USER, // sender address
-                      to: "greenroots.website@gmail.com", // list of receivers
-                      subject: "Hello ✔", // Subject line
-                      text: "Hello world?", // plain text body
-                      html: "<b>Hello world?</b>", // html body
-                    });
-                    console.log("Message sent: %s", info.messageId);
-  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
-                    };
-                    main().catch(console.error);
-
-                // await transporter.sendMail(sendForm);
-                
-
-            res.redirect('/',{
-
-                success: "Message envoyé, nous vous répondons sous 24h",
-                FormData: req.body,
-
-            });
-
-
-
-        } catch (error) { 
-            res.render('404', { 
-                message: "Une erreur est survenue, vous allez être redirigé vers la page d'accueil."
-            });
+        const schema = Joi.object({
+            name: Joi.string().min(1).max(128),
+            email: Joi.string().min(1).max(128),
+            message: Joi.string().min(1).max(500),
             
-            // Redirection vars la page d'accueil
-            // setTimeout(() => {
-            //     res.redirect('/');
-            // }, 3000);
-        }
+         });
+
+         const { error } = schema.validate(req.body);
+         if (error) {
+            return next(error)
+         }
+
+        const run = async () => {
+            const templateId = 'd-2f59ac17aebf41be90336b0a4f9a0363';
+        
+            const dynamicData = {
+                name,
+                email,
+                message
+            };
+        
+            await sendEmailWithTemplate(
+                process.env.EMAIL_GREENROOTS, // Adresse e-mail du destinataire
+                process.env.EMAIL_GREENROOTS, // Adresse e-mail de l'expéditeur (doit être vérifiée dans SendGrid)   
+                templateId,
+                dynamicData
+            );
+        };
+        
+        run();
+
+        res.redirect('/');
     }
 }

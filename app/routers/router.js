@@ -18,6 +18,11 @@ const router = express.Router();
 router.get('/', catchErrors(homeController.getHomePage));
 router.get('/nos-arbres', catchErrors(treeController.getAll));
 router.get('/nos-arbres/:slug', catchErrors(treeController.getOne));
+// CONTACT PAGE
+router.get('/contact', catchErrors(contactController.contactView));
+
+// SUBMIT FORM
+router.post('/contact', catchErrors(contactController.createContact));
 
 // CREATE TREE
 router.post('/mon-espace/gestion-des-arbres', catchErrors(treeController.create));

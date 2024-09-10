@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 export default {
 
 async showLogin(req,res) {
-    res.render('login');
+    res.render('login', {title: "GreenRoots - Se connecter", cssFile: "register.css", bulma: process.env.BULMA_URL });
 },
 
 async login(req, res) {

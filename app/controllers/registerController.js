@@ -8,7 +8,7 @@ import emailValidator from 'email-validator';
 export default {
 
     async showRegister(req, res) {
-        res.render('register');
+        res.render('register', {title: "GreenRoots - Nous rejoindre", cssFile: "register.css", bulma: process.env.BULMA_URL });
     },
 
     async register (req, res) {

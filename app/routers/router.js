@@ -9,8 +9,10 @@ import cartController from '../controllers/cartController.js';
 import contactController from '../controllers/contactController.js';
 import supportController from '../controllers/supportController.js';
 import sessionController from '../controllers/sessionController.js';
+import adminController from '../controllers/adminController.js';
 
 import { isLoggedIn } from '../middlewares/isLoggedInMiddleware.js'
+import  isAdmin  from '../middlewares/isAdmin.js'
 
 // Create a new router instance
 const router = express.Router();
@@ -35,15 +37,17 @@ router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController
 
 
 
-router.get('/profil', catchErrors(profileController.show)); 
-router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
-router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+router.get('/profil/:id', isLoggedIn, catchErrors(profileController.show)); 
+router.patch('/profil/:id', catchErrors(profileController.update));
+router.delete('/profil/id', catchErrors(profileController.delete));
 
 router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)
 
 router.get('/connexion', sessionController.showLogin)
 router.post('/connexion', sessionController.login)
+
+router.get('/gestion-des-arbres', isAdmin, adminController.show);
 
 router.use((req, res) => {
     res.status(404).render('404');

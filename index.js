@@ -41,7 +41,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Start server
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`GreenRoots app started at http://localhost:${port}`);
 });

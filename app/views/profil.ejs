@@ -1,39 +1,49 @@
-<%- include('partials/header') %>
+ <%- include('partials/header') %>
  
-<main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
+    <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
 
-    <h1 class="connection">Bienvenue <%= user.firstname %></h1>
+    <h1 class="connection ">Bienvenue <% user.firstname %></h1>
+
 
     <div class="form_container">
         <form class="form_info">
+
             <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" placeholder="Nom" value="<%= user.lastname %>">
+            <input type="text" name="lastname" id="lastname" placeholder="Nom" value="<% user.lastname  %>">
 
             <label for="firstname">Prénom</label>
-            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<%= user.firstname %>">
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom" value="<% user.firstname %>">
 
             <label for="adress">Adresse</label>
-            <input type="text" name="adress" id="adress" placeholder="Adresse" value="<%= user.adress %>">
+            <input type="text" name="adress" id="adress" placeholder="Adresse" value="<% user.adress %>">
 
             <label for="mail">E-Mail</label>
-            <input type="email" id="mail" name="mail" placeholder="mail" value="<%= user.email %>">
+            <input type="mail" id="Mail" placeholder="mail" value="<% user.email %>">
 
             <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" placeholder="Mot de passe" value="<%= user.password %>">
+            <input type="password" id="Password" placeholder="Mot de passe" value="<% user.password %>">
 
-            <button class="button_modify" type="submit">Modifier mes informations</button>
         </form>        
 
-        <button class="button_delete" type="button">Supprimer mon compte</button>
+        <button class="button_modify" type="submit">Modifier mes informations</button>
+        <button class="button_delete" type="submit">Supprimer mon compte</button>
+
     </div>
 
     <hr class="navbar_end">
 
     <div class="buttons_profil">
-        <a href="/mon-espace/profil" class="button_infos">Mes informations</a>
-        <a href="/mon-espace/profil/mes-commandes" class="button_order">Mes commandes</a>
-        <a href="/mon-espace/favoris" class="button_fav">Mes favoris</a>
+
+        <a href="/profil/:id"><button class="button_infos">Mes informations</button></a>
+        <a href="/mon-espace/profil/mes-commandes"><button class="button_order">Mes commandes</button></a>
+        <a href="/mon-espace/favoris"><button class="button_fav">Mes favoris</button></a>
+
     </div>
 </main>
 
 <%- include('partials/footer') %>
+
+    
+    
+</body>
+</html>

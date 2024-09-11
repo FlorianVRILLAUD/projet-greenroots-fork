@@ -16,10 +16,11 @@
                 <a href="#"><button class="button-register">Citoyen</button></a>
                 <a href="#"><button class="button-register">Entreprise</button></a>
             </div>
-
+    
             <div class="register-form mt-6">
-                <form action="" method="post">
+                <form action="/nous-rejoindre" method="POST">
                     <aside class="has-text-centered mb-6 is-italic has-text-weight-light"><span class="required">*</span> Champs obligatoire</aside>
+    
 
                     <div>
                         <label for="firstname" class="label has-text-current has-text-left-desktop is-size-3">Prénom<span class="required"> *</span></label>
@@ -32,8 +33,8 @@
                     </div>
 
                     <div>
-                        <label for="address" class="label has-text-current has-text-left-desktop is-size-3">Adresse<span class="required"> *</span></label>
-                        <input class="mb-6 is-size-4" type="text" id="address" name="adress" placeholder="Votre adresse postale" required>
+                        <label for="adress" class="label has-text-current has-text-left-desktop is-size-3">Adresse<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="text" id="adress" name="adress" placeholder="Votre adresse postale" required>
                     </div>
 
                     <div>
@@ -43,12 +44,12 @@
 
                     <div>
                         <label for="password" class="label has-text-current has-text-left-desktop is-size-3">Mot de passe<span class="required"> *</span></label>
-                        <input class="mb-6 is-size-4" type="password" id="password" placeholder="Votre mot de passe" required>
+                        <input class="mb-6 is-size-4" type="password" id="password" placeholder="Votre mot de passe" name="password" required>
                     </div>
 
                     <div>
-                        <label for="confirm-password" class="label has-text-current has-text-left-desktop is-size-3">Confirmation de mot passe<span class="required"> *</span></label>
-                        <input class="mb-6 is-size-4" type="password" id="confirm-password" name="confirm-password" placeholder="Veuillez confirmer votre mot de passe" required>
+                        <label for="confirmation" class="label has-text-current has-text-left-desktop is-size-3">Confirmation de mot passe<span class="required"> *</span></label>
+                        <input class="mb-6 is-size-4" type="password" id="confirmation" name="confirmation" placeholder="Veuillez confirmer votre mot de passe" required>
                     </div>
 
                     <button class="button-validate my-6" type="submit">S'inscrire</button>

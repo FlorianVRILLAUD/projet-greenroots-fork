@@ -30,10 +30,22 @@ async login(req, res) {
             where: { email },
         });
 
-        if (!user || !Scrypt.compare(password, user.password)) {
-            return res.status(400).json("Une erreur s'est produite veuillez recommencer");
+        if (!user) {
+            console.log("Utilisateur non trouvé pour l'email:", email);
+            return res.status(400).json("Email ou mot de passe incorrect");
         }
-
+        
+        if (!Scrypt.compare(password, user.password)) {
+            console.log("Échec de la comparaison du mot de passe pour l'utilisateur:", user.id);
+            return res.status(400).json("Email ou mot de passe incorrect");
+        }
+        //Ajoute user à la session
+        req.session.user = { 
+            id: user.id,
+            email: user.email,
+            role: user.role
+        } 
+        
         //On génère le token JWT
         const token = jwt.sign(
             { userId: user.id },
@@ -46,13 +58,8 @@ async login(req, res) {
             secure: process.env.NODE_ENV === 'production' 
         });
 
-        req.session.user = { //Ajoute user à la session
-            id: user.id,
-            role: user.role
-        } 
-        console.log(user.role)
-
-        res.status(200).json({ message: 'Connexion réussie', user: { id: user.id, email: user.email, role: user.role } });
+        console.log(`Connexion réussie pour l'utilisateur: ${user.email}`);
+        res.redirect(`/profil/${user.id}`);
 
         delete user.dataValues.password; // On efface le MP pour éviter un risque de fuite de données
         delete user._previousDataValues.password;
@@ -64,7 +71,7 @@ async login(req, res) {
     }
 },
 
-async login(req, res) {
+async logout(req, res) {
     req.session.user = false; //Efface les infos de session
     req.session.destroy(() => {
         res.clearCookie('token'); //Supprime le cookie de session

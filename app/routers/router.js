@@ -13,6 +13,7 @@ import adminController from '../controllers/adminController.js';
 
 import { isLoggedIn } from '../middlewares/isLoggedInMiddleware.js'
 import  isAdmin  from '../middlewares/isAdmin.js'
+import authMiddleware from '../middlewares/authMiddleware.js';
 
 // Create a new router instance
 const router = express.Router();
@@ -37,7 +38,7 @@ router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController
 
 
 
-router.get('/profil/:id', isLoggedIn, catchErrors(profileController.show)); 
+router.get('/profil/:id', catchErrors(profileController.show)); 
 router.patch('/profil/:id', catchErrors(profileController.update));
 router.delete('/profil/id', catchErrors(profileController.delete));
 
@@ -45,13 +46,10 @@ router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)
 
 router.get('/connexion', sessionController.showLogin)
-router.post('/connexion', sessionController.login)
+router.post('/connexion', sessionController.login);
 
-router.get('/gestion-des-arbres', isAdmin, adminController.show);
-
-router.use((req, res) => {
-    res.status(404).render('404');
-});
+router.get('/gestion-des-arbres', authMiddleware, isAdmin, adminController.show);
 
 
 export default router;
+

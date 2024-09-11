@@ -3,7 +3,6 @@ const searchForm = document.querySelector('.searchform');
 
 
 searchBar.addEventListener('submit', async function(event) {
-    let value = event.target.value.toLowerCase();
     
     const searchFormData = Object.fromEntries(new FormData(searchForm));
 

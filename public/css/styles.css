@@ -63,6 +63,10 @@ h2, h3, h4, h5 {
     color: #053d2b !important;
 }
 
+#button-search {
+    background-color: #053d2b !important;
+}
+
 /* LIGNE DE SÉPARATION */
 
 .nav ul {

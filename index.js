@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 app.use(session({
-  secret: 'process.env.SESSION_SECRET', 
+  secret: process.env.SESSION_SECRET, 
   resave: false,
   saveUninitialized: true,
   cookie: { secure: process.env.NODE_ENV === "production", 
@@ -45,7 +45,9 @@ app.use(errorHandler);
 
 
 // Start server
-const port = process.env.PORT || 8800;
+
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`GreenRoots app started at http://localhost:${port}`);
 });

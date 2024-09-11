@@ -14,19 +14,18 @@ export default {
     async register (req, res) {
         try { 
             const {
-                role,
                 lastname, 
                 firstname, 
                 adress, 
                 email,
                 password,
-                confirmation: confirmationPassword
+                confirmation
             } = req.body;
 
-            console.log("Données reçues:", { lastname, firstname, adress, email, role, password });
+            console.log("Données reçues:", req.body);
             
             // Est-ce que les champs sont bien présents ? Si non : message d'erreur
-            if (!lastname || !firstname || !adress || !email || !password || !role) {
+            if (!lastname || !firstname || !adress || !email || !password || !confirmation) {
                 return res.status(400).json('Veuillez remplir tous les champs');
             }
             
@@ -36,7 +35,7 @@ export default {
             }
 
             //On vérifie si les MP correspondent
-            if (password !== confirmationPassword) {
+            if (password !== confirmation) {
                 return res.status(400).json('Les mots de passe ne correspondent pas');
             }
 
@@ -52,15 +51,15 @@ export default {
 
             //On hash le MP
             const hashPassword = Scrypt.hash(password);
-
+            const role = "utilisateur";
             //On stock l'utilisateur en BDD
             await User.create({
-                role,
                 lastname, 
                 firstname, 
                 adress, 
                 email,
                 password: hashPassword,
+                role
             });
 
             

@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 export default {
 
 async showLogin(req,res) {
-    res.render('login', {title: "GreenRoots - Se connecter", cssFile: "register.css", bulma: process.env.BULMA_URL });
+    res.render('login');
 },
 
 async login(req, res) {
@@ -14,7 +14,6 @@ async login(req, res) {
         const { email, password } = req.body;
 
         console.log("Données reçues:", { email });
-        
 
         // Est-ce que les champs sont bien présents ? Si non : message d'erreur
         if (!email || !password) {
@@ -31,10 +30,30 @@ async login(req, res) {
             where: { email },
         });
 
-        if (!user || !Scrypt.compare(password, user.password)) {
-            return res.status(400).json("Une erreur s'est produite veuillez recommencer");
+        if (!user) {
+            console.log("Utilisateur non trouvé pour l'email:", email);
+            return res.status(400).json("Email ou mot de passe incorrect");
+        }
+        
+        if (!Scrypt.compare(password, user.password)) {
+            console.log("Échec de la comparaison du mot de passe pour l'utilisateur:", user.id);
+            return res.status(400).json("Email ou mot de passe incorrect");
+        }
+        //Ajoute user à la session
+        req.session.user = { 
+            id: user.id,
+            email: user.email,
+            role: user.role
+        } 
+
+        if (user.role === 'admin') {
+            res.redirect('/gestion-des-arbres');
+        } else {
+            res.redirect(`/profil/${user.id}`);
         }
 
+        console.log(`Connexion réussie pour l'utilisateur: ${user.email}`);
+        
         //On génère le token JWT
         const token = jwt.sign(
             { userId: user.id },
@@ -47,23 +66,12 @@ async login(req, res) {
             secure: process.env.NODE_ENV === 'production' 
         });
 
-        req.session.userId = user.id;
-        req.session.username = user.lastname;
-        req.session.lastname = user.firstname
-        console.log(req.session);
-
-        //res.status(200).json({ message: 'Connexion réussie', user: { id: user.id, email: user.email, role: user.role } });
-
         delete user.dataValues.password; // On efface le MP pour éviter un risque de fuite de données
         delete user._previousDataValues.password;
 
-        req.session.user = user; //Ajoute user à la session
-        
-        
 
     } catch (error) {
         console.error(error);
-        
     }
 },
 

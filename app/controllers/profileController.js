@@ -91,7 +91,6 @@ export default  {
     };
     res.render('profil',{ user, title: "GreenRoots - Mon profil", cssFile: "profil.css", bulma: process.env.BULMA_URL });
 
-
     },
 
 
@@ -122,6 +121,9 @@ export default  {
         where: {id: id},
 
         if (isIdExistAlready) {
+
+         
+
             const error = new Error('Mail non trouvé');
             error.status = 409;
             next(error);
@@ -137,7 +139,9 @@ export default  {
         return next();
     }
 
-    const updateUser = await user.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
+
+    const updateUser = await User.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
+
     res.json(updateUser);
 
 
@@ -146,6 +150,7 @@ export default  {
     },
 
     async delete(req, res) {
+
         const id = Number(req.params.id);
         console.log(`Tentative de suppression de l'utilisateur avec l'ID: ${id}`);
         
@@ -157,5 +162,6 @@ export default  {
             
         }
        return res.status(200).json({ message: "Utilisateur supprimé avec succès" });
+        
     }
 };

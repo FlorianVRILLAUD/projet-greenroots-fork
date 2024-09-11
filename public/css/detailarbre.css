@@ -44,6 +44,7 @@ section {
 }
 
 
+
 article {
     background-color: #d9d9d9;
     width: 90%;
@@ -94,6 +95,12 @@ main img {
 }
 
 @media (min-width: 1024px) {
+
+    .notification-container {
+        width: 89%;
+        margin: 0 5.5%;
+    }
+
     .article-tree {
         display: flex;
         flex-direction: row;

@@ -59,8 +59,8 @@ router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
 router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
 
 
-router.get('/nous_rejoindre', registerController.showRegister)
-router.post('/nous_rejoindre', registerController.register)
+router.get('/nous-rejoindre', registerController.showRegister)
+router.post('/nous-rejoindre', registerController.register)
 
 router.get('/connexion', sessionController.showLogin)
 

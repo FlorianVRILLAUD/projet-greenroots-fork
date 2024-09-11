@@ -45,6 +45,14 @@ async login(req, res) {
             email: user.email,
             role: user.role
         } 
+
+        if (user.role === 'admin') {
+            res.redirect('/gestion-des-arbres');
+        } else {
+            res.redirect(`/profil/${user.id}`);
+        }
+
+        console.log(`Connexion réussie pour l'utilisateur: ${user.email}`);
         
         //On génère le token JWT
         const token = jwt.sign(
@@ -58,16 +66,12 @@ async login(req, res) {
             secure: process.env.NODE_ENV === 'production' 
         });
 
-        console.log(`Connexion réussie pour l'utilisateur: ${user.email}`);
-        res.redirect(`/profil/${user.id}`);
-
         delete user.dataValues.password; // On efface le MP pour éviter un risque de fuite de données
         delete user._previousDataValues.password;
 
 
     } catch (error) {
         console.error(error);
-        res.status(500).json('Erreur de connexion');
     }
 },
 

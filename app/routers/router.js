@@ -48,7 +48,7 @@ router.post('/nous-rejoindre', registerController.register)
 router.get('/connexion', sessionController.showLogin)
 router.post('/connexion', sessionController.login);
 
-router.get('/gestion-des-arbres', authMiddleware, isAdmin, adminController.show);
+router.get('/gestion-des-arbres', isAdmin, adminController.show);
 
 
 export default router;

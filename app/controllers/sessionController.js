@@ -97,6 +97,7 @@ export default {
     },
 
     async logout(req, res) {
+
         req.session.user = false; //Efface les infos de session
         req.session.destroy(() => {
             res.clearCookie('token'); //Supprime le cookie de session

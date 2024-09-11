@@ -65,7 +65,7 @@ router.post('/nous-rejoindre', registerController.register)
 router.get('/connexion', sessionController.showLogin)
 
 router.post('/connexion', sessionController.login)
-router.post('/connexion', sessionController.logout)
+router.post('/deconnexion', sessionController.logout)
 
 router.get('/panier', cartController.show);
 

@@ -3,6 +3,16 @@
 
     <hr class="navbar_end">
 
+    <div class="notification-container mx-6">
+        <% if (message) { %>
+            
+            <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
+                <p class="has-text-centered"><%= message.text %></p>
+            </div>
+            <% delete message; %>
+        <% } %>
+    </div>
+
     <main class="is-flex-grow-1">
         <div class="bg-image mx-5">
             <h1 class="title-page my-2 has-text-centered has-text-weight-semibold mb-4">Nous rejoindre</h1>

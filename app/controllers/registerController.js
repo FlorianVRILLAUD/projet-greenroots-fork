@@ -4,14 +4,15 @@ import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
 import emailValidator from 'email-validator';
 
-
 export default {
-
     async showRegister(req, res) {
-        res.render('register', {title: "GreenRoots - Nous rejoindre", cssFile: "register.css", bulma: process.env.BULMA_URL });
+        const message = req.session.message || null;
+        req.session.message = null;
+        
+        res.render('register', {message, title: "GreenRoots - Nous rejoindre", cssFile: "register.css", bulma: process.env.BULMA_URL });
     },
 
-    async register (req, res) {
+    async register(req, res) {
         try { 
             const {
                 lastname, 
@@ -26,17 +27,29 @@ export default {
             
             // Est-ce que les champs sont bien présents ? Si non : message d'erreur
             if (!lastname || !firstname || !adress || !email || !password || !confirmation) {
-                return res.status(400).json('Veuillez remplir tous les champs');
+                req.session.message = {
+                    text: 'Veuillez remplir tous les champs',
+                    type: 'is-danger' 
+                };
+                return res.redirect('back');
             }
             
             //On vérifie ici la validité de l'email
             if (!emailValidator.validate(email)) {
-                return res.status(400).json('Email invalide');
+                req.session.message = {
+                    text: 'Email invalide',
+                    type: 'is-danger' 
+                };
+                return res.redirect('back');
             }
 
             //On vérifie si les MP correspondent
             if (password !== confirmation) {
-                return res.status(400).json('Les mots de passe ne correspondent pas');
+                req.session.message = {
+                    text: 'Les mots de passe ne correspondent pas',
+                    type: 'is-danger' 
+                };
+                return res.redirect('back');
             }
 
             //On vérifie que l'adresse email n'existe pas déjà dans la BDD
@@ -45,8 +58,11 @@ export default {
             });
 
             if (existingEmail.length >= 1) {
-                return res.status(400).json("Cet email est déjà utilisé")
-
+                req.session.message = {
+                    text: 'Cet email déjà utilisé',
+                    type: 'is-danger' 
+                };
+                return res.redirect('back');
             }
 
             //On hash le MP
@@ -62,15 +78,15 @@ export default {
                 role
             });
 
-            
-            res.redirect('/nous-rejoindre');
+            req.session.message = {
+                text: "Félicitation vous êtes désormais inscris sur GreenRoots",
+                type: "is-success"
+            };
+            return res.redirect('back');
 
         } catch (error) {
             console.error(error);
             res.status(500).json('Erreur création utlisateur');
         }
-    },
-
-    
+    }
 };
-

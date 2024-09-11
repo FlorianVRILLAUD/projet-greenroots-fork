@@ -11,7 +11,7 @@ export default {
             order: [['name', 'ASC']]
         })
 
-        res.render('tree-management', message, { trees : trees, title: "GreenRoots - Gestion des arbres", cssFile: "tree-management.css", bulma: process.env.BULMA_URL })
+        res.render('admin', message, { trees : trees, title: "GreenRoots - Gestion des arbres", cssFile: "tree-management.css", bulma: process.env.BULMA_URL })
     },
 
 }

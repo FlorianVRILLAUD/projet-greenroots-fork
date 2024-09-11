@@ -59,12 +59,7 @@ export default {
                 email: user.email,
                 role: user.role
             };
-
-            console.log(`Connexion réussie pour l'utilisateur: ${user.email}`);
-            req.session.message = {
-                text: `Connexion réussie ${user.firstname}, heureux de vous revoir !`,
-                type: 'is-success' 
-            };
+            
 
             const token = jwt.sign(
                 { userId: user.id },
@@ -97,6 +92,7 @@ export default {
     },
 
     async logout(req, res) {
+
 
         req.session.user = false; //Efface les infos de session
         req.session.destroy(() => {

@@ -48,7 +48,7 @@ router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite))
 router.get('/profil', catchErrors(profileController.show)); 
 router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
 
-router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+router.delete('/mon-espace/profil/id', catchErrors(profileController.delete));
 
 // router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
 

@@ -143,11 +143,17 @@ header hr {
     .nav-desktop {
         display: flex;
         gap: 2rem;
-        margin: 0 0.2rem 0 0;
+        /* margin: 0 0.2rem 0 0; */
+        /* width: 100%; */
     }
     
     .search-list {
         margin-top: auto;
+        width: 50rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0;
     }
     
     nav input {
@@ -158,13 +164,13 @@ header hr {
         color: #0a290e;
         padding: 0.2rem 0.6rem;
         font-family: "Roboto";
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-        
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);      
     }
-    
-    .search {
-        width: 30rem;        
+
+    form {
+        width: 50%;
     }
+
     
     .nav-desktop li a {
         text-decoration: none;

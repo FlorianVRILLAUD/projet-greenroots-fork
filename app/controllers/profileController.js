@@ -147,6 +147,8 @@ export default  {
 
     async delete(req, res) {
         const id = Number(req.params.id);
+        console.log(`Tentative de suppression de l'utilisateur avec l'ID: ${id}`);
+        
         const result = await User.destroy({where: {id: id}});
 
         if(result === 0) {
@@ -154,6 +156,6 @@ export default  {
        
             
         }
-        res.status(200).json({ message: "Utilisateur supprimé avec succès" });
+       return res.status(200).json({ message: "Utilisateur supprimé avec succès" });
     }
 };

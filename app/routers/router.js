@@ -47,13 +47,22 @@ router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite))
 
 router.get('/profil', catchErrors(profileController.show)); 
 router.patch('/mon-espace/profil/:id', catchErrors(profileController.update));
+
+router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+
 // router.delete('/mon-espace/profil/id, catchErrors(profileController.delete));
+
 
 router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)
 
 router.get('/connexion', sessionController.showLogin)
 router.post('/connexion', sessionController.login)
+
+
+// ABOUT PAGE
+router.get('/a-propos', aboutController.getAboutPage);
+
 
 
 

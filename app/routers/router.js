@@ -51,15 +51,25 @@ router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite))
 
 
 
-router.get('/profil/:id', catchErrors(profileController.show)); 
-router.patch('/profil/:id', catchErrors(profileController.update));
-router.delete('/profil/:id', catchErrors(profileController.delete));
+
+
+// Profil id
+router.get('/profil/:id(\\d+)', catchErrors(profileController.show)); 
+router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
+router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
+
 
 router.get('/nous-rejoindre', registerController.showRegister)
 router.post('/nous-rejoindre', registerController.register)
 
 router.get('/connexion', sessionController.showLogin)
-router.post('/connexion', sessionController.login);
+
+router.post('/connexion', sessionController.login)
+router.post('/connexion', sessionController.logout)
+
+router.get('/panier', cartController.show);
+
+
 
 
 router.get('/gestion-des-arbres', isAdmin, adminController.show);
@@ -67,7 +77,6 @@ router.get('/gestion-des-arbres', isAdmin, adminController.show);
 
 // ABOUT PAGE
 router.get('/a-propos', aboutController.getAboutPage);
-
 
 
 

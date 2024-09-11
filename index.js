@@ -27,7 +27,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET, 
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: process.env.NODE_ENV === "production" }
+  cookie: { secure: process.env.NODE_ENV === "production", 
+    httpOnly: true,
+    maxAge: 86400000
+    },
 }));
 
 
@@ -40,8 +43,11 @@ app.use(notFound);
 // Error handler
 app.use(errorHandler);
 
+
 // Start server
-const port = process.env.PORT;
+
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`GreenRoots app started at http://localhost:${port}`);
 });

@@ -152,7 +152,8 @@ export default  {
         if(result === 0) {
             return res.status(404).json({ message: "Utilisateur non trouvé" });
        
-            res.status(200).json({ message: "Utilisateur supprimé avec succès" });
+            
         }
+        res.status(200).json({ message: "Utilisateur supprimé avec succès" });
     }
 };

@@ -45,7 +45,7 @@ router.post('/add-favorite', catchErrors(favoritesController.addFavorite));
 router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite));
 
 // SEARCH BAR
-
+router.post('/recherche', catchErrors(treeController.search));
 
 
 router.get('/profil', catchErrors(profileController.show)); 

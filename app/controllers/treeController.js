@@ -22,16 +22,26 @@ export default {
     },
 
     async getOne(req, res, next) {
-        const treeSlug = req.params.slug;
-        const tree = await Tree.findOne({
-            where: { slug: treeSlug}
-        });
-
-        if (!tree) {
-            return next();
+        try {
+            const message = req.session.message || null;
+            req.session.message = null;
+    
+            const treeSlug = req.params.slug;
+            const tree = await Tree.findOne({
+                where: { slug: treeSlug},
+                include: 'variety'
+            });
+    
+            if (!tree) {
+                return next();
+            }        
+    
+            res.render("detailTree", { tree, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            
+        } catch (error) {
+            console.error('Erreur lors de la récupération de l\'arbre:', error);
+            next(error); // Passer l'erreur au middleware d'erreur
         }
-
-        res.render("detailTree", { tree,  title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
     },
 
     async update(req, res, next) {

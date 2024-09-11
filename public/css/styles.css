@@ -155,7 +155,7 @@ header hr {
         border: solid 1px;
         border-radius: 5px;
         font-size: 1rem;
-        color: #0A290E;
+        color: #0a290e;
         padding: 0.2rem 0.6rem;
         font-family: "Roboto";
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
@@ -214,7 +214,7 @@ header hr {
 .intro button {
     padding: 1rem 1rem; 
     background-color: #d9d9d9; 
-    color: #3c3c3b; 
+    color: #3b3b3a; 
     text-decoration: none; 
     border-radius: 25px; 
     border: none;

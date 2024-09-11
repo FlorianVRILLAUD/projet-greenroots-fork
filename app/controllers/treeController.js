@@ -21,6 +21,12 @@ export default {
 
     },
 
+    async search () {
+      const { output } = req.body;
+
+      
+    },
+
     async getOne(req, res, next) {
         try {
             const message = req.session.message || null;

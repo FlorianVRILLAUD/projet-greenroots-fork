@@ -72,7 +72,7 @@ export default {
                 return next();
             }        
     
-            res.render("detailTree", { tree, admin, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            res.render("detailTree", { tree, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
             
         } catch (error) {
             console.error('Erreur lors de la récupération de l\'arbre:', error);

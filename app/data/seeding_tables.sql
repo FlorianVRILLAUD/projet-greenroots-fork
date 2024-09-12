@@ -1,5 +1,3 @@
-COMMIT;
-
 BEGIN;
 
 INSERT INTO "variety"
@@ -28,7 +26,7 @@ VALUES
 
 
 
-INSERT INTO "user"
+INSERT INTO "users"
 ("role", "lastname", "firstname", "adress", "email", "password")
 VALUES
 ('admin', 'Green', 'Roots', '4 Rue Saint-Florentin, 75001 Paris', 'greenroots@gmail.com', 'uneracineverte'),

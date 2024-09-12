@@ -13,6 +13,8 @@ import sessionController from '../controllers/sessionController.js';
 import adminController from '../controllers/adminController.js';
 import favoritesController from '../controllers/favoritesController.js';
 
+import stripeController from '../controllers/stripeController.js';
+
 
 import { isLoggedIn } from '../middlewares/isLoggedInMiddleware.js'
 import  isAdmin  from '../middlewares/isAdmin.js'
@@ -77,6 +79,9 @@ router.get('/gestion-des-arbres', isAdmin, adminController.show);
 
 // ABOUT PAGE
 router.get('/a-propos', aboutController.getAboutPage);
+
+//Stripe
+router.post('/', stripeController.createCheckoutSession);
 
 
 

@@ -5,11 +5,18 @@ import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 
+//Import Stripe
+import Stripe from 'stripe';
+
 import router from './app/routers/router.js';
 import { errorHandler, notFound } from './app/middlewares/errorHandlers.js';
 
 // Create Express app
 const app = express();
+
+// Create Stripe app
+const stripe = new Stripe (process.env.STRIPE_SECRET_KEY);
+const MON_DOMAIN ='http://localhost:3000'
 
 // Configure view engine
 app.set("views", "./app/views");

@@ -11,7 +11,7 @@ VALUES
 ('Herbe', 'herbe'),
 ('Palmier dattier', 'palmier-dattier');
 
-INSERT INTO tree
+INSERT INTO "tree"
 ("name", "slug", "image", "size", "price_ht", "price_ttc", "origin", "variety_id")
 VALUES
 ('Pommier', 'pommier', 'pommier.jpg', 7, 20.75, 24.90, 'France', 1),
@@ -35,14 +35,14 @@ VALUES
 ('user', 'Thomas', 'Desquet', '18 rue de Mars, 75003 Paris', 'thomdesquet@gmail.com', 'surlalune'),
 ('user', 'Kylian', 'Paquet', '7 avenue de Paris, 17000 La Rochelle', 'kikipaquet@gmail.com', 'untriple');
 
-INSERT INTO command
+INSERT INTO "command"
 ("date", "status", "total_price", "user_id")
 VALUES
 ('2024-09-02 10:23:45+02', 'Planté', 54.90, 2),
 ('2024-08-27 11:21:11+02', 'Livraison vers le lieu de plantation', 88.45, 2),
 ('2024-08-16 18:45:38+02', 'En cours de validation', 18.75, 3);
 
-INSERT INTO command_has_tree
+INSERT INTO "command_has_tree"
 ("tree_id", "command_id", "quantity")
 VALUES
 (1, 1, 2),
@@ -50,7 +50,7 @@ VALUES
 (5, 3, 1),
 (4, 2, 3);
 
-INSERT INTO user_has_tree
+INSERT INTO "user_has_tree"
 ("user_id", "tree_id")
 VALUES
 (2, 1),

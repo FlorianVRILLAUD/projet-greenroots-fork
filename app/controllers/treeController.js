@@ -6,6 +6,10 @@ import Joi from 'joi';
 
 export default { 
     async getAll(req, res, next) {
+
+        const message = req.session.message || null;
+        req.session.message = null;
+
         const trees = await Tree.findAll({
             order: [['name', 'ASC']],
             include: 'variety',
@@ -18,8 +22,8 @@ export default {
 
         const varieties = await Variety.findAll();
 
-        res.render('nosarbres', { trees, varieties, title: "GreenRoots - Nos arbres", subtitle: "Nos arbres" ,cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
 
+        res.render('nosarbres', 'admin', message, { trees, varieties, title: "GreenRoots - Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
     },
 
     async search (req, res, next) {
@@ -68,7 +72,7 @@ export default {
                 return next();
             }        
     
-            res.render("detailTree", { tree, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            res.render("detailTree", { tree, admin, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
             
         } catch (error) {
             console.error('Erreur lors de la récupération de l\'arbre:', error);
@@ -115,7 +119,12 @@ export default {
          }
          
          const updateTree = await tree.update({ name: name, slug: slug, image: image, size: size, price_ht: price_ht, price_ttc: price_ttc, origin: origin });
-         res.json(updateTree);
+         req.session.message = {
+            text: 'L\'arbre a été mis à jour avec succès',
+            type: 'is-success'
+        };
+        
+        return res.redirect('back');
      },
 
         
@@ -164,11 +173,15 @@ export default {
             where: { slug: treeSlug}
         });
 
+        req.session.message = {
+            text: 'L\'arbre a été supprimé avec succès',
+            type: 'is-success'
+        };
+
         if(!tree) {
             return next();
          }
 
-        // res.redirect('/mon-espace/gestion-des-arbres/')
-
     }
 };
+

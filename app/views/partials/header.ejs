@@ -55,6 +55,14 @@
                             <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/inscription.svg" alt="Panier">Nous rejoindre</a></li>
                             <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Panier">Connexion</a></li>
                             <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
+                            <% if (locals.user) { %>
+                                <a href="/connexion" class="button is-light">
+                                  <span class="icon">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                  </span>
+                                  <span>Déconnexion</span>
+                                </a>
+                              <% } %>
                         </ul>
                     </nav>
                     
@@ -71,6 +79,23 @@
                 </div>
                 <hr>
             </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

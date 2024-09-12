@@ -1,4 +1,15 @@
 <%- include('partials/header') %>
+
+<div class="notification-container mx-6">
+    <% if (message) { %>
+        
+        <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
+            <p class="has-text-centered"><%= message.text %></p>
+        </div>
+        <% delete message; %>
+    <% } %>
+    
+</div>
  
 <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
 

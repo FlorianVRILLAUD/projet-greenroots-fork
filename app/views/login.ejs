@@ -2,6 +2,16 @@
 
 <hr class="navbar_end mx-5">
 
+<div class="notification-container mx-6">
+    <% if (message) { %>
+        
+        <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
+            <p class="has-text-centered"><%= message.text %></p>
+        </div>
+        <% delete message; %>
+    <% } %>
+</div>
+
 <h2 class="connection">Connexion</h2>
 
 <div class="form_container">

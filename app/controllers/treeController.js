@@ -23,7 +23,7 @@ export default {
         const varieties = await Variety.findAll();
 
 
-        res.render('nosarbres', 'admin', message, { trees, varieties, title: "GreenRoots - Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
+        res.render('nosarbres', { trees, message, varieties, title: "GreenRoots - Nos arbres", subtitle: "Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
     },
 
     async search (req, res, next) {

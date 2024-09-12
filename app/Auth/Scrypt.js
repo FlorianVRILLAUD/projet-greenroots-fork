@@ -3,31 +3,28 @@ import { scryptSync, timingSafeEqual, randomBytes } from 'node:crypto';
 class Scrypt {
     static hash(password) {
         const salt = randomBytes(16).toString('hex');
-        console.log('SALT', salt);
         const buf = scryptSync(password, salt, 64, {
-            N: 131072,
-            maxmem: 134220800,
+          N: 131072,
+          maxmem: 134220800,
         });
-        
+        return `${salt}.${buf.toString('hex')}`;
+      }
 
-        console.log('BUFFER', buf.toString('hex'));
-        return `${buf.toString('hex')}.${salt}`;
+      static compare(plainTextPassword, storedHash) {
+        console.log("Comparaison de mot de passe - Hash stocké:", storedHash);
+        const [salt, hash] = storedHash.split('.');
+        if (!salt || !hash) {
+          console.error('Format de mot de passe hashé invalide:', storedHash);
+          return false;
+        }
+      
+        const newHash = scryptSync(plainTextPassword, salt, 64, {
+          N: 131072,
+          maxmem: 134220800,
+        }).toString('hex');
+      
+        return timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(newHash, 'hex'));
+      }
     }
-
-    static compare(plainTextpassword, hash) {
-       
-        const [hashedPassword, salt] = hash.split('.');
-        const hashedPasswordBuf = Buffer.from(hashedPassword, 'hex');
-        
-
-        const clearPasswordBuffer = scryptSync(plainTextpassword, salt, 64, {
-            N: 131072,
-            maxmem: 134220800,
-        });
-        
-        return timingSafeEqual(hashedPasswordBuf, clearPasswordBuffer);
-    }
-}
 
 export { Scrypt };
-

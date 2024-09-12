@@ -23,7 +23,7 @@ export default {
         const varieties = await Variety.findAll();
 
 
-        res.render('nosarbres', 'admin', message, { trees, varieties, title: "GreenRoots - Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
+        res.render('nosarbres', { trees, message, varieties, title: "GreenRoots - Nos arbres", subtitle: "Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
     },
 
     async search (req, res, next) {
@@ -72,7 +72,7 @@ export default {
                 return next();
             }        
     
-            res.render("detailTree", { tree, admin, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            res.render("detailTree", { tree, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
             
         } catch (error) {
             console.error('Erreur lors de la récupération de l\'arbre:', error);

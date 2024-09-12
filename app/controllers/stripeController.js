@@ -1,22 +1,37 @@
 import Stripe from "stripe";
+import { Tree } from "../models/Tree";
+import db from "../database";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const MON_DOMAIN = 'http://localhost:3001';
+const YOUR_DOMAIN = 'http://localhost:3001';
 
-// Remplacement de la fonction fléchée par une fonction classique
+async function sessionBdd(req, res) {
+  try {
+    const { slug } = req.body; // Récupère l'ID du produit depuis la requête
+    const tree = await Tree.findOne({ where: { slug: treeSlug } }); // Récupère le produit de la BDD
+  }
+  //   if (!tree) {
+  //     return res.status(404).send('Produit non trouvé');
+  //   }
+   
+  // }  catch()
+   }  
+
+
+
 function createCheckoutSession(req, res) {
   try {
     stripe.checkout.sessions.create({
       line_items: [
         {
-          price: '{{PRICE_ID}}', // Remplacez par le vrai Price ID
+          price: '{{PRICE_ID}}', // Remplacer?
           quantity: 1,
         },
       ],
-      mode: 'payment',
-      success_url: `${MON_DOMAIN}?success=true`,
-      cancel_url: `${MON_DOMAIN}?canceled=true`,
+      mode: 'payment',// session de paiement pour achat unique 
+      success_url: `${MON_DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,//contient id de la session pour verifier plus tard l'information de paiement sur Stripe
+      cancel_url: `${MON_DOMAIN}/cancel`,
     })
     .then((session) => {
       res.redirect(303, session.url);
@@ -31,7 +46,19 @@ function createCheckoutSession(req, res) {
   }
 }
 
-// Exportation par défaut
+function successPage(req, res) {
+  res.render('success')
+  
+}
+
+function cancelPage(req, res) {
+  res.render('cancel');
+}
+
+// Export
 export default {
+  sessionBdd,
   createCheckoutSession,
+  successPage,
+  cancelPage,
 };

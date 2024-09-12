@@ -82,6 +82,9 @@ router.get('/a-propos', aboutController.getAboutPage);
 
 //Stripe
 router.post('/', stripeController.createCheckoutSession);
+router.get('/succes',stripeController.successPage);
+router.get('/cancel',stripeController.cancelPage);
+
 
 
 

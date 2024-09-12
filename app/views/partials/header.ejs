@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link rel="icon" href="../public/images/icones/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../public/css/reset.css">
     <link rel="stylesheet" href="../public/css/styles.css">
     <script src="https://kit.fontawesome.com/3eed0a192a.js" crossorigin="anonymous"></script>
@@ -38,22 +37,24 @@
                         
                     </div>
                     
+                    <form action="/recherche" method="post" class="is-hidden-touch searchform">
+                        <div class="field is-grouped">
+                        <input class="searchbar input has-background-grey-lighter has-text-success-dark" name="output" type="search" placeholder="Recherche">
+                        <button class="button has-background-inherit" id="button-search" type="submit">Recherche</button>
+                    </div>
+                    </form>
+                    
+                    
                     <nav class="nav">
                         <ul class="nav-mobile">
                             <li class="nav-mobile"><a class="nav-mobile" href="#"><img class="nav-mobile" src="/public/images/icones/loupe.svg" alt="Recherche"></a></li>
-                            <li class="nav-mobile"><a class="nav-mobile"href="/cart"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
+                            <li class="nav-mobile"><a class="nav-mobile"href="#"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
                             <li class="nav-mobile"><a class="nav-mobile burger" href="#"><img class="nav-mobile" src="/public/images/icones/burger.svg" alt="Menu"></a></li>
                         </ul>
                         <ul class="nav-desktop">
-                            <!-- <li class="nav-desktop search-list">
-                                
-                                
-                            </li> -->
-                            
-                            
-                            <li class="nav-desktop"><a class="nav-desktop" href="/nous-rejoindre"><img class="nav-desktop" src="/public/images/icones/inscription.svg" alt="inscription">Nous rejoindre</a></li>
-                            <li class="nav-desktop"><a class="nav-desktop" href="/connexion"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Panier">Connexion</a></li>
-                            <li class="nav-desktop"><a class="nav-desktop" href="/cart"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/inscription.svg" alt="Panier">Nous rejoindre</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Panier">Connexion</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="#"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
                             <% if (locals.user) { %>
                                 <a href="/connexion" class="button is-light">
                                   <span class="icon">
@@ -78,6 +79,11 @@
                 </div>
                 <hr>
             </header>
+
+
+
+
+
 
 
 

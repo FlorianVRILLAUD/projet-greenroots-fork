@@ -6,3 +6,13 @@ icone.addEventListener("click", function (event) {
     menu.classList.toggle("show");
     
 })
+
+const notification = document.getElementById('notification');
+    
+    if (notification) {
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 5000);
+    }

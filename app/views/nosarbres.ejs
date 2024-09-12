@@ -1,7 +1,14 @@
 <%- include('partials/header') %>
 
 <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
-    <h1>Nos arbres</h1>
+    <h1><%= subtitle %></h1>
+    
+    <% if (trees.length === 0) { %>
+        <p>Nous n'avons pas d'arbres qui correspondent à la recherche "<%= output %>"</p>
+        <a href="/nos-arbres">Voir tous nos arbres</a>
+      <% } %>
+        
+
     
     <!-- Premiere carte  -->
     <section class="card-tree is-flex-grow-1">

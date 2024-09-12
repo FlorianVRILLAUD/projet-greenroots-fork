@@ -49,14 +49,14 @@ router.post('/add-favorite', catchErrors(favoritesController.addFavorite));
 // DELETE TREE IN FAVORITE
 router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite));
 
-
-
-
+// SEARCH BAR
+router.post('/recherche', catchErrors(treeController.search));
 
 // Profil id
 router.get('/profil/:id(\\d+)', catchErrors(profileController.show)); 
 router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
 router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
+
 
 
 router.get('/nous-rejoindre', registerController.showRegister)

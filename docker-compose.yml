@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: greenroots-app
+    ports:
+      - '${PORT}:3000'
+    environment:
+      - PORT=${PORT}
+      - DB_NAME=${DB_NAME_DOCKER}
+      - DB_USER=${DB_USER_DOCKER}
+      - DB_PASSWORD=${DB_PASSWORD_DOCKER}
+      - DB_HOST=${DB_HOST_DOCKER}
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: greenroots-database
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - pg-greenroots:/var/lib/postgresql/data
+      - ./app/data:/docker-entrypoint-initdb.d/
+
+volumes:
+  pg-greenroots:

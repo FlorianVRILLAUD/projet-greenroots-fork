@@ -67,7 +67,13 @@ router.get('/connexion', sessionController.showLogin)
 router.post('/connexion', sessionController.login)
 router.post('/connexion', sessionController.logout)
 
-router.get('/panier', cartController.show);
+
+// CART PAGES
+router.get('/panier', catchErrors(cartController.show));
+router.post('/panier/ajouter', catchErrors(cartController.add));
+router.post('/panier/mettre-a-jour', catchErrors(cartController.update));
+router.post('/panier/supprimer', catchErrors(cartController.remove));
+router.post('/panier/vider', catchErrors(cartController.clearCart));
 
 
 

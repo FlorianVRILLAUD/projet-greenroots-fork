@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     let formFav = document.querySelector('.formFav');
 
     if (formFav) {
@@ -33,4 +33,4 @@ const notification = document.getElementById('notification');
         setTimeout(() => {
             notification.style.display = 'none';
         }, 5000);
-    }
+    }*/

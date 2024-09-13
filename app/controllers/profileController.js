@@ -98,13 +98,13 @@ export default {
                 text: 'Utilisateur non trouvé',
                 type: 'is-danger'
             };
+            return res.redirect('back');
         } else {
             req.session.message = {
                 text: 'Suppression effectuée avec succès',
                 type: 'is-success'
             };
-        }
-    
-        return res.redirect('/'); 
+            return res.redirect('/'); 
+        } 
     }
 };

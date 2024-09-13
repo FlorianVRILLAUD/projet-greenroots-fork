@@ -1,11 +1,111 @@
-function increment(id) {
-  const input = document.getElementById(id);
-  input.value = parseInt(input.value) + 1;
-}
+//S'exécute quand la page est complètement chargée
+document.addEventListener('DOMContentLoaded', function() {
+    const incrementBtns = document.querySelectorAll('.increment-btn');
+    const decrementBtns = document.querySelectorAll('.decrement-btn');
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+//Ecouteurs d'évènements - + et quantité
+    incrementBtns.forEach(btn => {
+        btn.addEventListener('click', () => updateQuantity(btn.dataset.treeId, 1));//Accède à la valeur de l'attribut 'data-tree-id'
+    });
 
-function decrement(id) {
-  const input = document.getElementById(id);
-  if (parseInt(input.value) > 0) {
-    input.value = parseInt(input.value) - 1;
-  }
-}
+    decrementBtns.forEach(btn => {
+        btn.addEventListener('click', () => updateQuantity(btn.dataset.treeId, -1));
+    });
+
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            const newValue = parseInt(input.value);
+            if (newValue <= 0) {
+                // Si newValue est 0 ou - on supprime l'arbre
+                removeTreeFromCart(input.dataset.treeId);
+            } else {
+                // Sinon, on met à jour la quantité 
+                updateQuantity(input.dataset.treeId, 0, newValue);
+            }
+        });
+    });
+
+    //Mise à jour quantité d'un article
+    function updateQuantity(treeId, change, newValue = null) { 
+        const input = document.querySelector(`.quantity-input[data-tree-id="${treeId}"]`);
+        let quantity = parseInt(input.value);
+        //Si newValue null = modifier la quantité existante sinon définir la nouvelle quantité
+        if (newValue !== null) {
+            quantity = newValue;
+        } else {
+            quantity += change;
+        }
+
+        if (quantity <= 0) {
+            removeTreeFromCart(treeId);
+            return;
+        } 
+        if (quantity > 1000) quantity = 1000;
+
+        input.value = quantity;
+
+        // Envoyer la mise à jour au serveur
+        fetch('/panier/mettre-a-jour', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ treeId, quantity }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Mettre à jour le sous-total et le total immédiatement
+                updateItemTotal(treeId);
+                updateCartTotal();
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+//Met à jour le sous-total
+    function updateItemTotal(treeId) {
+        const card = document.querySelector(`.content-card[data-tree-id="${treeId}"]`);
+        const quantity = parseInt(card.querySelector('.quantity-input').value);
+        const price = parseFloat(card.querySelector('.item-price').textContent);
+        const subtotal = quantity * price;
+        card.querySelector('.item-subtotal').textContent = `${subtotal.toFixed(2)}`;
+    }
+
+//Met à jour le total de tous les articles
+    function updateCartTotal() {
+        let total = 0;
+        document.querySelectorAll('.item-subtotal').forEach(subtotalElement => {
+            total += parseFloat(subtotalElement.textContent);
+        });
+        document.getElementById('cart-total').textContent = `${total.toFixed(2)} €`;
+    }
+
+//Selectionne element du DOM de l'arbre à supprimer
+    function removeTreeFromCart(treeId) {
+        const card = document.querySelector(`.content-card[data-tree-id="${treeId}"]`);
+        if (card) {
+            // Supprimer l'élément du DOM
+            card.remove();
+            
+            // Mettre à jour le total du panier
+            updateCartTotal();
+            
+            //On envoi une requête au serveur pour supprimer l'arbre du panier
+            fetch('/panier/supprimer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ treeId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Arbre supprimé du panier avec succès');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+});

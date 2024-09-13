@@ -30,7 +30,6 @@
                     <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
                     <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %> m</p>
                     <p><span class="has-text-weight-semibold">Origine: </span><%= tree.origin %></p>
-                    <p><span class="has-text-weight-semibold">Quantité: </span>3</p>
                     <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
                     <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
                 </div>
@@ -39,7 +38,11 @@
     </section>
     
     <div class="button-action">
-        <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
+        <form action="/panier/ajouter" method="POST" class="formAddToCart">
+            <input type="hidden" name="treeId" value="<%= tree.id %>">
+            <input type="number" name="quantity" value="1" min="1" max="100" class="quantity-input">
+            <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
+        </form>
         <form action="/add-favorite" method="POST" class="formFav" id="fav">
             <input type="hidden" name="treeId" value="<%= tree.id %>">
             <button class="button-back mt-6 favorite" type="submit">Ajouter aux favoris</button>

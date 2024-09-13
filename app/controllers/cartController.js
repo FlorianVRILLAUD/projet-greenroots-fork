@@ -14,8 +14,10 @@ const cartController = {
             return { ...tree.toJSON(), quantity: item.quantity, subtotal };
         }));
 
+
         res.render('cart', { cartItems, total, title: "Panier", cssFile: "cart.css", bulma: process.env.BULMA_URL  });
     },
+
 
     // Ajouter un arbre au panier
     async add(req, res) {
@@ -61,7 +63,27 @@ const cartController = {
 
         req.session.cart = cart;
         res.redirect('/panier');
-    }
+    },
+
+    async clearCart(req, res) {
+        try {
+            // Vider le panier dans la session
+            req.session.cart = [];
+            
+            // Sauvegarder les changements de session
+            await new Promise((resolve, reject) => {
+                req.session.save((err) => {
+                    if (err) reject(err);
+                    else resolve();
+                });
+            });
+
+            res.json({ success: true, message: 'Panier vidé avec succès' });
+        } catch (error) {
+            console.error('Erreur lors du vidage du panier:', error);
+            res.status(500).json({ success: false, message: 'Erreur lors du vidage du panier' });
+        }
+    },
 };
 
 export default cartController;

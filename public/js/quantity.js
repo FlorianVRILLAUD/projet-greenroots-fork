@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    const clearCartBtn = document.getElementById('clear-cart');
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', clearCart);
+    }
+
     //Mise à jour quantité d'un article
     function updateQuantity(treeId, change, newValue = null) { 
         const input = document.querySelector(`.quantity-input[data-tree-id="${treeId}"]`);
@@ -85,10 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function removeTreeFromCart(treeId) {
         const card = document.querySelector(`.content-card[data-tree-id="${treeId}"]`);
         if (card) {
-            // Supprimer l'élément du DOM
+            // Supprime l'élément du DOM
             card.remove();
             
-            // Mettre à jour le total du panier
+            // MAJ total du panier
             updateCartTotal();
             
             //On envoi une requête au serveur pour supprimer l'arbre du panier
@@ -107,5 +112,28 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error:', error));
         }
+    }
+
+    function clearCart() {
+        fetch('/panier/vider', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Supprimer tous les éléments du panier du DOM
+                const cartItems = document.querySelectorAll('.content-card');
+                cartItems.forEach(item => item.remove());
+
+                // Mettre à jour le total
+                updateCartTotal();
+
+                console.log('Panier vidé avec succès');
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 });

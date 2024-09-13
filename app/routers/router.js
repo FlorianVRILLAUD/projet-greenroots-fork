@@ -13,12 +13,10 @@ import sessionController from '../controllers/sessionController.js';
 import adminController from '../controllers/adminController.js';
 import favoritesController from '../controllers/favoritesController.js';
 
-import stripeController from '../controllers/stripeController.js';
-
-
 import { isLoggedIn } from '../middlewares/isLoggedInMiddleware.js'
 import  isAdmin  from '../middlewares/isAdmin.js'
 import authMiddleware from '../middlewares/authMiddleware.js';
+import stripeController from '../controllers/stripeController.js';
 
 
 // Create a new router instance
@@ -61,13 +59,13 @@ router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
 
 
 
-router.get('/nous-rejoindre', registerController.showRegister)
-router.post('/nous-rejoindre', registerController.register)
+router.get('/nous-rejoindre', registerController.showRegister);
+router.post('/nous-rejoindre', registerController.register);
 
-router.get('/connexion', sessionController.showLogin)
+router.get('/connexion', sessionController.showLogin);
 
-router.post('/connexion', sessionController.login)
-router.post('/connexion', sessionController.logout)
+router.post('/connexion', sessionController.login);
+router.post('/connexion', sessionController.logout);
 
 router.get('/panier', cartController.show);
 
@@ -81,10 +79,9 @@ router.get('/gestion-des-arbres', isAdmin, adminController.show);
 router.get('/a-propos', aboutController.getAboutPage);
 
 //Stripe
-router.post('/', stripeController.createCheckoutSession);
-router.get('/succes',stripeController.successPage);
-router.get('/cancel',stripeController.cancelPage);
-
+router.post('/create-checkout-session', catchErrors(stripeController.pageStripe));
+router.get('/success', catchErrors(stripeController.successPage));
+router.get('/cancel', catchErrors(stripeController.cancelPage));
 
 
 

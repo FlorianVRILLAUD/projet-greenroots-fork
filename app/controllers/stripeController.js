@@ -1,64 +1,71 @@
 import Stripe from "stripe";
-import { Tree } from "../models/Tree";
-import db from "../database";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-const YOUR_DOMAIN = 'http://localhost:3001';
-
-async function sessionBdd(req, res) {
-  try {
-    const { slug } = req.body; // Récupère l'ID du produit depuis la requête
-    const tree = await Tree.findOne({ where: { slug: treeSlug } }); // Récupère le produit de la BDD
-  }
-  //   if (!tree) {
-  //     return res.status(404).send('Produit non trouvé');
-  //   }
-   
-  // }  catch()
-   }  
+import 'dotenv/config';
+import { Tree } from '../models/index.js'
 
 
 
-function createCheckoutSession(req, res) {
-  try {
-    stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price: '{{PRICE_ID}}', // Remplacer?
-          quantity: 1,
+export default { 
+  async pageStripe (req, res) { 
+    const stripe = new Stripe (process.env.STRIPE_SECRET_KEY);
+
+    const cart = req.session.cart || [
+        { name: 'Pommier', price: 15.80, quantity: 4 },
+        { name: 'Chêne', price: 13.50, quantity: 2 }
+      ];
+
+    // const trees = await Tree.findAll({
+    //     where: { id : [5, 8] }
+    // })
+
+    const lineItems = cart.map(item => ({
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: item.name,
+          },
+          unit_amount: item.price * 100,
         },
-      ],
-      mode: 'payment',// session de paiement pour achat unique 
-      success_url: `${MON_DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,//contient id de la session pour verifier plus tard l'information de paiement sur Stripe
-      cancel_url: `${MON_DOMAIN}/cancel`,
-    })
-    .then((session) => {
+        quantity: item.quantity,
+        
+      }));
+
+    
+    const session = await stripe.checkout.sessions.create({
+        line_items: lineItems,
+        mode: 'payment',
+        success_url: 'http://localhost:3000/success',
+        cancel_url: 'http://localhost:3000/cancel',
+      });
+
+      req.session.paymentInProgress = true;
+    
       res.redirect(303, session.url);
-    })
-    .catch((err) => {
-      console.error('Erreur lors de la création de la session:', err);
-      res.status(500).send('Erreur lors de la création de la session');
-    });
-  } catch (err) {
-    console.error('Erreur lors de la création de la session:', err);
-    res.status(500).send('Erreur lors de la création de la session');
-  }
-}
+    
+        },   
+        
+        successPage(req, res) {
+            if (!req.session.paymentInProgress) {
+                // Rediriger l'utilisateur s'il essaie d'accéder à cette page sans avoir fait d'achat
+                return res.redirect('/');
+              }
+            
+              // Supprimer l'état du paiement une fois le succès confirmé
+              req.session.paymentInProgress = false;
 
-function successPage(req, res) {
-  res.render('success')
-  
-}
 
-function cancelPage(req, res) {
-  res.render('cancel');
-}
+            res.render('success')
+            
+          },
+          
+        cancelPage(req, res) {
 
-// Export
-export default {
-  sessionBdd,
-  createCheckoutSession,
-  successPage,
-  cancelPage,
-};
+            if (!req.session.paymentInProgress) {
+
+                return res.redirect('/');
+              }
+            
+              req.session.paymentInProgress = false;
+
+            res.render('cancel');
+          }
+}

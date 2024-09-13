@@ -7,7 +7,7 @@ export default {
         const message = req.session.message || null;
         req.session.message = null;
 
-            res.render('cart', message, {title: "GreenRoots - Mon panier", cssFile: "cart.css", bulma: process.env.BULMA_URL,
+            res.render('cart',{ message, title: "GreenRoots - Mon panier", cssFile: "cart.css", bulma: process.env.BULMA_URL,
             });
     },
 };

@@ -8,9 +8,9 @@ services:
       - '${PORT}:3000'
     environment:
       - PORT=${PORT}
-      - DB_NAME=${DB_NAME_DOCKER}
-      - DB_USER=${DB_USER_DOCKER}
-      - DB_PASSWORD=${DB_PASSWORD_DOCKER}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=${DB_HOST_DOCKER}
     depends_on:
       - db

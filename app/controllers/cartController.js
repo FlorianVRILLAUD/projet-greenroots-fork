@@ -9,9 +9,9 @@ const cartController = {
         // Récupérer les détails des arbres dans le panier
         const cartItems = await Promise.all(cart.map(async (item) => {
             const tree = await Tree.findByPk(item.treeId);
-            const subtotal = tree.price_ttc * item.quantity;
-            total += subtotal;
-            return { ...tree.toJSON(), quantity: item.quantity, subtotal };
+            const subtotal = tree.price_ttc * item.quantity; //Total par article (arbre)
+            total += subtotal; //Ajout au total 
+            return { ...tree.toJSON(), quantity: item.quantity, subtotal }; //Extraire les données par méthode de l'objet Tree afin de les réutiliser
         }));
 
 
@@ -22,17 +22,17 @@ const cartController = {
     // Ajouter un arbre au panier
     async add(req, res) {
         const { treeId, quantity } = req.body;
-        const cart = req.session.cart || [];
+        const cart = req.session.cart || []; //Récupère le panier ou initialise
 
         const existingItem = cart.find(item => item.treeId === parseInt(treeId));
-
+        //Recherche si arbre est dans le panier
         if (existingItem) {
             existingItem.quantity += parseInt(quantity);
         } else {
             cart.push({ treeId: parseInt(treeId), quantity: parseInt(quantity) });
         }
 
-        req.session.cart = cart;
+        req.session.cart = cart; //MAJ panier dans la session
         res.redirect('/panier');
     },
 
@@ -44,8 +44,8 @@ const cartController = {
         const itemIndex = cart.findIndex(item => item.treeId === parseInt(treeId));
 
         if (itemIndex !== -1) {
-            cart[itemIndex].quantity = parseInt(quantity);
-            if (cart[itemIndex].quantity <= 0) {
+            cart[itemIndex].quantity = parseInt(quantity);//MAJ quantité
+            if (cart[itemIndex].quantity <= 0) { //Si quantité <= on retire l'article du panier
                 cart.splice(itemIndex, 1);
             }
         }
@@ -59,7 +59,7 @@ const cartController = {
         const { treeId } = req.body;
         let cart = req.session.cart || [];
 
-        cart = cart.filter(item => item.treeId !== parseInt(treeId));
+        cart = cart.filter(item => item.treeId !== parseInt(treeId)); // On filtre pour retirer le bon arbre du panier
 
         req.session.cart = cart;
         res.redirect('/panier');
@@ -70,7 +70,7 @@ const cartController = {
             // Vider le panier dans la session
             req.session.cart = [];
             
-            // Sauvegarder les changements de session
+            // Sauvegarder les changements de session en asynchone
             await new Promise((resolve, reject) => {
                 req.session.save((err) => {
                     if (err) reject(err);

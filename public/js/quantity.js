@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
+    // Vider le panier
     const clearCartBtn = document.getElementById('clear-cart');
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', clearCart);
@@ -40,16 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             quantity += change;
         }
-
+        // Si quantité = 0, fonction 'remove' prend le relai
         if (quantity <= 0) {
             removeTreeFromCart(treeId);
             return;
         } 
-        if (quantity > 1000) quantity = 1000;
-
+        if (quantity > 10000) quantity = 10000;
+        //Maj valeur de l'input
         input.value = quantity;
 
-        // Envoyer la mise à jour au serveur
+        // Envoi de la quantité mise à jour au serveur
         fetch('/panier/mettre-a-jour', {
             method: 'POST',
             headers: {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('cart-total').textContent = `${total.toFixed(2)} €`;
     }
 
-//Selectionne element du DOM de l'arbre à supprimer
+//Selectionne l'élement du DOM correspondant à l'arbre (treeId) à supprimer
     function removeTreeFromCart(treeId) {
         const card = document.querySelector(`.content-card[data-tree-id="${treeId}"]`);
         if (card) {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Supprimer tous les éléments du panier du DOM
+                // Supprime tous les éléments du panier du DOM
                 const cartItems = document.querySelectorAll('.content-card');
                 cartItems.forEach(item => item.remove());
 

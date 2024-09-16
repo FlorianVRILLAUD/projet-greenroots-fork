@@ -24,6 +24,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    function toggleBuyButton() {
+        const cartItems = document.querySelectorAll('.content-card');
+        const controlSection = document.querySelector('.control');
+        const emptyCartMessage = document.querySelector('.empty-cart-message');
+        
+    
+        if (cartItems.length === 0) {
+            // Si le panier est vide, on cache tout dans .control et on affiche le message
+            if (controlSection) controlSection.style.display = 'none';
+            if (emptyCartMessage) emptyCartMessage.style.display = 'block';
+        } else {
+            // Si des articles sont présents, on affiche tout dans .control et on cache le message
+            if (controlSection) controlSection.style.display = 'block';
+            if (emptyCartMessage) emptyCartMessage.style.display = 'none';
+        }
+    }
+
     // Vider le panier
     const clearCartBtn = document.getElementById('clear-cart');
     if (clearCartBtn) {
@@ -84,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
             total += parseFloat(subtotalElement.textContent);
         });
         document.getElementById('cart-total').textContent = `${total.toFixed(2)} €`;
+
+        toggleBuyButton();
     }
 
 //Selectionne l'élement du DOM correspondant à l'arbre (treeId) à supprimer
@@ -92,6 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (card) {
             // Supprime l'élément du DOM
             card.remove();
+
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+            if (!emptyCartMessage) {
+                const mainElement = document.querySelector('main');
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('empty-cart-message', 'has-text-centered', 'is-size-4', 'my-6');
+                messageDiv.textContent = 'Votre panier est vide';
+                mainElement.appendChild(messageDiv);
+            }
             
             // MAJ total du panier
             updateCartTotal();
@@ -109,6 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (data.success) {
                     console.log('Arbre supprimé du panier avec succès');
                 }
+
+                
             })
             .catch(error => console.error('Error:', error));
         }
@@ -127,6 +158,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Supprime tous les éléments du panier du DOM
                 const cartItems = document.querySelectorAll('.content-card');
                 cartItems.forEach(item => item.remove());
+
+
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+            if (!emptyCartMessage) {
+                const mainElement = document.querySelector('main');
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('empty-cart-message', 'has-text-centered', 'is-size-4', 'my-6');
+                messageDiv.textContent = 'Votre panier est vide';
+                mainElement.appendChild(messageDiv);
+            }
 
                 // Mettre à jour le total
                 updateCartTotal();

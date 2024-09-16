@@ -1,4 +1,4 @@
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     let formFav = document.querySelector('.formFav');
 
     if (formFav) {
@@ -12,7 +12,7 @@
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
                     },
                     body: JSON.stringify(favFormData),
                 });
@@ -33,4 +33,4 @@ const notification = document.getElementById('notification');
         setTimeout(() => {
             notification.style.display = 'none';
         }, 5000);
-    }*/
+    }

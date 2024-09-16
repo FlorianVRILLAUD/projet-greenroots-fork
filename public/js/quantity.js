@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearCartBtn.addEventListener('click', clearCart);
     }
 
+
     //Mise à jour quantité d'un article
     function updateQuantity(treeId, change, newValue = null) { 
         const input = document.querySelector(`.quantity-input[data-tree-id="${treeId}"]`);

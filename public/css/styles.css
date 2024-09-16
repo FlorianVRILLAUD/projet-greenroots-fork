@@ -106,19 +106,23 @@ header hr {
 }
 
 .menu ul li {
-    padding: 1rem;
+    padding: 0;
     text-align: center;
     background-color: #FFFFFF;
     border-bottom: 1px solid #053d2b;
+    width: 100%;
 }
 
 .menu ul li a {
+    display: block; /* Lien en block pour qu'il prenne toute la largeur */
+    padding: 1rem; /* Garde le padding ici pour un espace cohérent */
     color: #053d2b;
     text-decoration: none;
+    width: 100%; /* Assure-toi que le lien occupe 100% de la largeur */
 }
 
 .menu ul li:hover {
-    background-color: #555;
+    background-color: #2B743A; /* Changer la couleur de fond au survol */
 }
 
 .show {

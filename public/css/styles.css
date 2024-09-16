@@ -54,7 +54,6 @@ h2, h3, h4, h5 {
     top: -100px;
 }
 
-.header
 
 .logo-search {
     display: flex;
@@ -122,15 +121,15 @@ header hr {
 }
 
 .menu ul li a {
-    display: block; /* Lien en block pour qu'il prenne toute la largeur */
-    padding: 1rem; /* Garde le padding ici pour un espace cohérent */
+    display: block; 
+    padding: 1rem; 
     color: #053d2b;
     text-decoration: none;
-    width: 100%; /* Assure-toi que le lien occupe 100% de la largeur */
+    width: 100%; 
 }
 
 .menu ul li:hover {
-    background-color: #2B743A; /* Changer la couleur de fond au survol */
+    background-color: #2B743A; 
 }
 
 .show {

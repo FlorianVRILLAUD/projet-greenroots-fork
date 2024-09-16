@@ -16,7 +16,7 @@
     <h1 class="connection">Bienvenue <%= user.firstname %></h1>
 
     <div class="form_container">
-        <form class="form_info">
+        <form class="form_info" action="/profil/update" method="post">
             <label for="lastname">Nom</label>
             <input type="text" name="lastname" id="lastname" placeholder="Nom" value="<%= user.lastname %>">
 
@@ -27,16 +27,41 @@
             <input type="text" name="adress" id="adress" placeholder="Adresse" value="<%= user.adress %>">
 
             <label for="mail">E-Mail</label>
-            <input type="email" id="mail" name="mail" placeholder="mail" value="<%= user.email %>">
+            <input type="email" id="mail" name="email" placeholder="mail" value="<%= user.email %>">
 
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" placeholder="Mot de passe" value="<%= user.password %>">
 
             <button class="button_modify" type="submit">Modifier mes informations</button>
-        </form>        
+        </form> 
 
-        <button class="button_delete" type="button">Supprimer mon compte</button>
+        <!-- Modal supression du compte -->
+        
+        <div class="modal is-hidden">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Confirmation de suppression</p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+                </section>
+                <footer class="modal-card-foot">
+                    <!-- Bouton avertissement pour la suppression -->
+                     <form action="/profil/delete" method="post">
+                    <button class="button is-warning">Supprimer le compte</button>
+                     </form>
+                    <!-- Bouton pour annuler -->
+                    <button class="button is is-success">Annuler</button>
+                </footer>
+            </div>
+        </div>
+        <form  action= >
+        <button class="button_delete" type="submit" >Supprimer mon compte</button>
+        </form>
     </div>
+    <!-- Fin de Modal-->
 
     <hr class="navbar_end">
 
@@ -48,5 +73,5 @@
 
     </div>
 </main>
-
+<script src="/public/js/modal.js" async></script>
 <%- include('partials/footer') %>

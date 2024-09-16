@@ -24,21 +24,21 @@
             <p><span class="has-text-weight-semibold">Quantité : </span>
               <div class="field has-addons"> 
                 <p class="control">
-                  <button type="button" class="button is-primary decrement-btn" data-tree-id="<%= item.id %>">-</button>
+                  <button type="button" class="button is-success decrement-btn" data-tree-id="<%= item.id %>">-</button>
                 </p>
                 <p class="control">
                   <input class="input has-text-centered quantity-input" type="number" value="<%= item.quantity %>" min="1" max="1000" data-tree-id="<%= item.id %>" style="width: 60px;">
                 </p>
                 <p class="control">
-                  <button type="button" class="button is-primary increment-btn" data-tree-id="<%= item.id %>">+</button>
+                  <button type="button" class="button is-success increment-btn" data-tree-id="<%= item.id %>">+</button>
                 </p>
               </div>
             </p>
           </div>
           <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
-            <li>
-              <button type="button" class="button is-danger remove-btn" data-tree-id="<%= item.id %>">Supprimer du panier</button>
-            </li>
+            <!-- <li>
+              <button type="button" class="button is-danger remove-btn" data-tree-id="<%#  item.id%><%= item.id %>">Supprimer du panier</button>
+            </li> -->
           </ul>
         </div>
       <% }); %>
@@ -46,7 +46,7 @@
       <div class="total-section has-text-right">
         <p class="text-green total-ttc"><span id="cart-total">Total TTC : <%= total.toFixed(2) %> €</span></p>
         <div class="buttons is-right">
-          <button id="clear-cart" class="button is-large is-danger mt-2">Vider le panier</button>   
+          <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
           <button class="button is-custom-green is-large mt-2">Passer au paiement</button>
         </div>
       </div>
@@ -55,9 +55,10 @@
         <p>Votre panier est vide</p>
       </div>
     <% } %>
-    
+
+    <!-- Redirection pay CHekout par default -->
     <form action="/create-checkout-session" method="POST">
-        <button type="submit">Checkout</button>
+        <button type="submit">Passer au payment</button>
     </form>
     
   </main>

@@ -78,7 +78,7 @@ export default {
             if (user.role === 'admin') {
                 res.redirect('/gestion-des-arbres');
             } else {
-                res.redirect(`/profil/${user.id}`);
+                res.redirect(`/profil`);
             }
 
         } catch (error) {

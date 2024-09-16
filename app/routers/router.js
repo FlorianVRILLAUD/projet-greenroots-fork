@@ -53,9 +53,9 @@ router.post('/remove-favorite', catchErrors(favoritesController.deleteFavorite))
 router.post('/recherche', catchErrors(treeController.search));
 
 // Profil id
-router.get('/profil/:id(\\d+)', catchErrors(profileController.show)); 
-router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
-router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
+router.get('/profil', catchErrors(profileController.show)); 
+router.post('/profil/update', catchErrors(profileController.update));
+router.post('/profil/delete', catchErrors(profileController.delete));
 
 
 

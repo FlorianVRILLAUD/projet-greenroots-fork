@@ -25,13 +25,12 @@ VALUES
 ('Dattier', 'dattier', 'dattier.webp', 2, 20.50, 24.50, 'Afrique du Nord', 5);
 
 
-
 INSERT INTO "users"
 ("role", "lastname", "firstname", "adress", "email", "password")
 VALUES
-('admin', 'Green', 'Roots', '4 Rue Saint-Florentin, 75001 Paris', 'greenroots@gmail.com', 'uneracineverte'),
-('user', 'Thomas', 'Desquet', '18 rue de Mars, 75003 Paris', 'thomdesquet@gmail.com', 'surlalune'),
-('user', 'Kylian', 'Paquet', '7 avenue de Paris, 17000 La Rochelle', 'kikipaquet@gmail.com', 'untriple');
+('admin', 'Green', 'Roots', '4 Rue Saint-Florentin, 75001 Paris', 'greenroots@gmail.com', '6088eadf30a2abdc700eee5f9bc34c95.84b59979cf019bc7e7793c5bdb3e25f67125f67f87378387003a6bcfb1652647b13dca4a593144ff800a8fb204e2fcd9d7293f25703d0c3cb85aa6b8a2d98ab5'),  -- 'uneracineverte'
+('user', 'Thomas', 'Desquet', '18 rue de Mars, 75003 Paris', 'thomdesquet@gmail.com', 'fd7518ff1f029790dce0a73c52234104.96d54d2692b13683dccb13e4e584ca11703c8d82afc8107da5f8d37da42831d0ba582ce0ac274f33e47cf88d007de19bab9a1b3073df2e49d5f3549b553bf564'),  -- 'surlalune'
+('user', 'Kylian', 'Paquet', '7 avenue de Paris, 17000 La Rochelle', 'kikipaquet@gmail.com', 'f4989dbef2b8911030359ec2611008cc.942b6a42512ae0a47322e14a914311072fb0b5364917905b48ce98101820604b975f95f9071a18776474a501a245606d2dd168027a0d34a6dd9b79cfe47c46eb');  -- 'untriple'
 
 INSERT INTO "command"
 ("date", "status", "total_price", "user_id")

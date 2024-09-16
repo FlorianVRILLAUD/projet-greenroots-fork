@@ -17,6 +17,7 @@ import { isLoggedIn } from '../middlewares/isLoggedInMiddleware.js'
 import  isAdmin  from '../middlewares/isAdmin.js'
 import authMiddleware from '../middlewares/authMiddleware.js';
 import stripeController from '../controllers/stripeController.js';
+import commandController from '../controllers/commandController.js';
 
 
 // Create a new router instance
@@ -57,6 +58,10 @@ router.get('/profil/:id(\\d+)', catchErrors(profileController.show));
 router.patch('/profil/:id(\\d+)', catchErrors(profileController.update));
 router.delete('/profil/:id(\\d+)', catchErrors(profileController.delete));
 
+//Page command
+router.get('/profil/mes-commandes', catchErrors(commandController.showCommands));
+router.get('/profil/mes-commandes/:id', catchErrors(commandController.oneCommand));
+
 
 
 router.get('/nous-rejoindre', registerController.showRegister);
@@ -65,7 +70,7 @@ router.post('/nous-rejoindre', registerController.register);
 router.get('/connexion', sessionController.showLogin);
 
 router.post('/connexion', sessionController.login);
-router.post('/connexion', sessionController.logout);
+router.post('/deconnexion', sessionController.logout);
 
 
 // CART PAGES

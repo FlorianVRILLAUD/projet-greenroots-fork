@@ -15,13 +15,13 @@ const cartController = {
         }));
 
 
-        res.render('cart', { cartItems, total, title: "Panier", cssFile: "cart.css", bulma: process.env.BULMA_URL  });
+        res.render('cart', { cartItems, cart, total, title: "Panier", cssFile: "cart.css", bulma: process.env.BULMA_URL  });
     },
 
 
     // Ajouter un arbre au panier
     async add(req, res) {
-        const { treeId, quantity } = req.body;
+        const { treeId, treeName, treePrice, quantity } = req.body;
         const cart = req.session.cart || []; //Récupère le panier ou initialise
 
         const existingItem = cart.find(item => item.treeId === parseInt(treeId));
@@ -29,7 +29,7 @@ const cartController = {
         if (existingItem) {
             existingItem.quantity += parseInt(quantity);
         } else {
-            cart.push({ treeId: parseInt(treeId), quantity: parseInt(quantity) });
+            cart.push({ treeId: parseInt(treeId), quantity: parseInt(quantity), treeName, treePrice });
         }
 
         req.session.cart = cart; //MAJ panier dans la session

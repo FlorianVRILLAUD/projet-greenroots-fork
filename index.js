@@ -10,6 +10,7 @@ import Stripe from 'stripe';
 
 import router from './app/routers/router.js';
 import { errorHandler, notFound } from './app/middlewares/errorHandlers.js';
+import authMiddleware from './app/middlewares/authMiddleware.js';
 
 // Create Express app
 const app = express();
@@ -40,6 +41,7 @@ app.use(session({
     },
 }));
 
+app.use(authMiddleware);
 
 //Attach all defined routes to the Express application
 app.use(router);

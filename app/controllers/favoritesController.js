@@ -7,25 +7,29 @@ export default {
         const message = req.session.message || null;
         req.session.message = null;
 
-        //req.session.userId     
-        const allTrees = await User.findByPk(1, {
-            include: 
-                {
-                    model: Tree,
-                    as: 'trees',
-                    include: {
-                        model: Variety,
-                        as: 'variety'
-                    }
-                }})
+        if (req.session.user) {
+            const allTrees = await User.findByPk(req.session.user.id, {
+                include: 
+                    {
+                        model: Tree,
+                        as: 'trees',
+                        include: {
+                            model: Variety,
+                            as: 'variety'
+                        }
+                    }})
+            
+                    res.render('favorites', { trees: allTrees.trees, message, title: "GreenRoots - Favoris", cssFile: "favorites.css", bulma: process.env.BULMA_URL });
+        } else {
+            res.redirect('/');
+        }
 
-        res.render('favorites', { trees: allTrees.trees, message, title: "GreenRoots - Favoris", cssFile: "favorites.css", bulma: process.env.BULMA_URL });
     },
     
     async addFavorite (req, res, next) {
         try {
             const { treeId } = req.body;
-            const userId = 1; //req.session.userId  
+            const userId = req.session.user.id; 
 
             const existingFavorite = await UserHasTree.findOne({
                 where: { 
@@ -74,29 +78,35 @@ export default {
 
     async deleteFavorite (req, res) {
         try {
-            const { treeId } = req.body;
-            const userId = 1; // req.session.userId
-    
-            const favorite = await UserHasTree.findOne({
-                where: {
-                    user_id: userId,
-                    tree_id: treeId
-                }
-            });
-    
+            
+            
+            
+            if (req.session.user) {
+                const { treeId } = req.body;
+                const userId = req.session.user.id; 
+                
+                const favorite = await UserHasTree.findOne({
+                    where: {
+                        user_id: userId,
+                        tree_id: treeId
+                    }
+                });
+                
+                await favorite.destroy();
+                
+                req.session.message = {
+                    text: "L'arbre a été supprimé de vos favoris",
+                    type: "is-success"
+                };
+                return res.redirect('back');
+            }
+            
             if (!favorite) {
                 
                 return res.redirect('back');
             }
-    
-            await favorite.destroy();
-    
-            req.session.message = {
-                text: "L'arbre a été supprimé de vos favoris",
-                type: "is-success"
-            };
-            return res.redirect('back');
-    
+
+
         } catch (error) {
             console.error(error);
             return res.redirect('back');

@@ -61,6 +61,8 @@ export default {
         try {
             const message = req.session.message || null;
             req.session.message = null;
+
+            const session = req.session.user;
     
             const treeSlug = req.params.slug;
             const tree = await Tree.findOne({
@@ -72,7 +74,7 @@ export default {
                 return next();
             }        
     
-            res.render("detailTree", { tree, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            res.render("detailTree", { tree, session, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
             
         } catch (error) {
             console.error('Erreur lors de la récupération de l\'arbre:', error);

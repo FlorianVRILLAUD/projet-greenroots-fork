@@ -1,8 +1,21 @@
-//* Functionality: Handle user registration and login
-
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
-import emailValidator from 'email-validator';
+import Joi from "joi";
+import sanitizeHtml from 'sanitize-html';
+
+const userSchema = Joi.object({
+    lastname: Joi.string().min(1).max(255).required(),
+    firstname: Joi.string().min(1).max(255).required(),
+    adress: Joi.string().min(1).max(255).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(5).required(),
+    confirmation: Joi.string().valid(Joi.ref('password')).required(),
+});
+
+const sanitizeOptions = {
+    allowedTags: [],
+    allowedAttributes: {},
+};
 
 export default {
     async showRegister(req, res) {
@@ -14,79 +27,62 @@ export default {
 
     async register(req, res) {
         try { 
-            const {
-                lastname, 
-                firstname, 
-                adress, 
-                email,
-                password,
-                confirmation
-            } = req.body;
-
-            console.log("Données reçues:", req.body);
-            
-            // Est-ce que les champs sont bien présents ? Si non : message d'erreur
-            if (!lastname || !firstname || !adress || !email || !password || !confirmation) {
+            const { error, value } = userSchema.validate(req.body);
+            if (error) {
                 req.session.message = {
-                    text: 'Veuillez remplir tous les champs',
-                    type: 'is-danger' 
-                };
-                return res.redirect('back');
-            }
-            
-            //On vérifie ici la validité de l'email
-            if (!emailValidator.validate(email)) {
-                req.session.message = {
-                    text: 'Email invalide',
-                    type: 'is-danger' 
+                    text: error.details[0].message,
+                    type: 'is-danger'
                 };
                 return res.redirect('back');
             }
 
-            //On vérifie si les MP correspondent
-            if (password !== confirmation) {
-                req.session.message = {
-                    text: 'Les mots de passe ne correspondent pas',
-                    type: 'is-danger' 
-                };
-                return res.redirect('back');
-            }
+            // Sanitize input
+            const sanitizedData = {
+                lastname: sanitizeHtml(value.lastname, sanitizeOptions),
+                firstname: sanitizeHtml(value.firstname, sanitizeOptions),
+                adress: sanitizeHtml(value.adress, sanitizeOptions),
+                email: value.email.toLowerCase(), 
+                password: value.password, 
+            };
 
-            //On vérifie que l'adresse email n'existe pas déjà dans la BDD
-            const existingEmail = await User.findAll({
-                where: { email },
+            console.log("Données reçues", sanitizedData);
+
+            // Check if email already exists
+            const existingEmail = await User.findOne({
+                where: { email: sanitizedData.email },
             });
 
-            if (existingEmail.length >= 1) {
+            if (existingEmail) {
                 req.session.message = {
-                    text: 'Cet email déjà utilisé',
+                    text: 'Cet email est déjà utilisé',
                     type: 'is-danger' 
                 };
                 return res.redirect('back');
             }
 
-            //On hash le MP
-            const hashPassword = Scrypt.hash(password);
+            // Hash the password
+            const hashPassword = Scrypt.hash(sanitizedData.password);
             const role = "utilisateur";
-            //On stock l'utilisateur en BDD
+
+            // Create user in database
             await User.create({
-                lastname, 
-                firstname, 
-                adress, 
-                email,
+                lastname: sanitizedData.lastname, 
+                firstname: sanitizedData.firstname, 
+                adress: sanitizedData.adress, 
+                email: sanitizedData.email,
                 password: hashPassword,
                 role
             });
 
             req.session.message = {
-                text: "Félicitation vous êtes désormais inscris sur GreenRoots",
+                text: "Félicitations, vous êtes désormais inscrit sur GreenRoots",
                 type: "is-success"
             };
-            return res.redirect('back');
+            return res.redirect('/connexion');
 
         } catch (error) {
             console.error(error);
-            res.status(500).json('Erreur création utlisateur');
+            res.status(500).json('Erreur création utilisateur');
         }
     }
 };

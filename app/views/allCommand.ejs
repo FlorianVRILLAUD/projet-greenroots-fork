@@ -1,0 +1,54 @@
+<%- include('partials/header') %>
+
+<main class="is-flex-grow-1 mb-6">
+    <div class="navbar-desktop">
+
+    <div class="buttons_profil ">
+
+        <button class="button_infos" type="submit">Mes informations</button>
+        <button class="button_order" type="submit">Mes commandes</button>
+        <button class="button_fav" type="submit">Mes favoris</button>
+
+    </div>
+</div>
+
+    <hr class="navbar_end navbar-desktop">
+
+    <h1 class="title-page my-2 has-text-centered has-text-left-desktop has-text-weight-bold mb-6">Mes commmandes</h1>
+
+    <section class="is-flex is-flex-direction-column is-align-items-center">
+        <% commands.forEach(command => { %>
+            
+            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
+                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
+                    <p>N°<%= command.id %></p>
+                    <time datetime="2024-09-03"><%= dayjs(command.date).format('DD/MM/YY HH:mm') %></time>
+                </header>
+                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
+                        <img src="../public/images/photos/<%= command.trees[0].image %>" alt="Photo d'un <%= command.trees[0].name %>">
+                        <% if (command.trees.length > 1) { %>
+                            <p>+ <%= command.trees.length - 1 %></p>
+                         
+                        <% } %>
+                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+                        <p><span class="has-text-weight-semibold">Statut : </span><%= command.status %></p>
+                        <p><span class="has-text-weight-semibold">Total : </span><%= command.total_price %> €</p>
+                    </div>
+                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
+                        <!-- <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Suivre la commande ></a></li> -->
+                        <li><a href="/profil/mes-commandes/<%= command.id %>" class="has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a></li>
+                    </ul>
+                    <div class="mobile-link">
+                    </div>
+                </div>
+                <a href="/profil/mes-commandes/<%= command.id %>" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
+            </div>
+
+        <% }) %>
+
+
+    </section>
+
+</main>
+
+<%- include('partials/footer') %>

@@ -79,7 +79,8 @@
                         <li><a href="/connexion">Connexion</a></li>
                     <% } else { %>
                         <li><a href="/profil">Profil</a></li>
-                        <li><a href="/favoris">Favoris</a></li>
+                        <li><a href="/profil/mes-commandes">Mes commmandes</a></li>
+                        <li><a href="/profil/favoris">Favoris</a></li>
                         <% if (locals.user.role === 'admin') { %>
                             <li><a href="/gestion-des-arbres">Gestion des arbres</a></li>
                         <% } %>

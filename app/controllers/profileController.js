@@ -145,8 +145,25 @@ export default {
        
             
         }
-        res.redirect('/');
-    }
+        req.session.user = false; //Efface les infos de session
+        // res.redirect('/');
+        req.session.destroy(() => {
+            res.clearCookie('token'); //Supprime le cookie de session
+            res.redirect('/');
+        }); 
+    
+}
+// req.session.destroy((err) => {
+//     if (err) {
+//         console.error("Erreur lors de la destruction de la session:", err);
+//     }
+//     console.log("Session détruite, redirection vers la page d'accueil");
+//     res.redirect('/');
+// });
+        
+        
+        
+        
 
     // async delete(req, res) {
     //     const id = Number(req.params.id);

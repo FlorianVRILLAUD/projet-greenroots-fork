@@ -79,7 +79,7 @@ input::placeholder {
     text-decoration: none; 
     border-radius: 25px; 
     font-size: 16px;
-    width: 50%;
+    width: 100%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s; 

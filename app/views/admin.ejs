@@ -65,18 +65,18 @@
                     
                 </div>
                 <ul class="is-flex is-flex-direction-column is-justify-content-space-between is-align-items-flex-end link-item">
-                  <li><button class="button is-custom-green is-large open-modal" id="update-tree">Modifier les informations</button></li>
-                  <li><button class="button is-custom-green is-large open-modal" id="delete-tree">Supprimer</button></li>
+                  <li><button class="button is-custom-green is-large open-modal update-tree update-tree" data-id="<%= tree.id %>" >Modifier les informations</button></li>
+                  <li><button class="button is-custom-green is-large open-modal delete-tree delete-tree" data-id="<%= tree.id %>" >Supprimer</button></li>
               </ul>  
             </div>
 
            <!-- MODAL UPDATE TREE -->
-    <div class="modal mx-2 " id="modalUpdateTree">
+    <div class="modal mx-2 " id="modalUpdateTree-<%= tree.id %>">
       
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Ajout d'un arbre</p>
+          <p class="modal-card-title">Modifier un arbre</p>
           <button class="delete close" aria-label="close"></button>
         </header>
         <section class="modal-card-body p-5 m-0 has-background-white-ter">
@@ -169,7 +169,7 @@
     <!-- END MODAL UPDATE TREE -->
 
     <!-- MODAL DELETE TREE -->
-    <div class="modal mx-2 " id="modalDeleteTree">
+    <div class="modal mx-2 " id="modalDeleteTree-<%= tree.id %>">
       
       <div class="modal-background"></div>
       <div class="modal-card">

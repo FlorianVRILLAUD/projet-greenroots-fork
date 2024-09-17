@@ -204,6 +204,25 @@ export default {
         }
     
         res.redirect('/gestion-des-arbres');
+    },
+
+    async delete(req, res) {
+        const treeId = req.params.id;
+        const tree = await Tree.destroy({
+            where: { id: treeId}
+        });
+
+        req.session.message = {
+            text: 'L\'arbre a été supprimé avec succès',
+            type: 'is-success'
+        };
+
+        if(!tree) {
+            return next();
+         }
+
+         res.redirect('/gestion-des-arbres');
+
     }
 
 }

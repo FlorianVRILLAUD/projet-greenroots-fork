@@ -87,7 +87,7 @@ router.get('/gestion-des-arbres', isLoggedIn, isAdmin, catchErrors(adminControll
 router.post('/gestion-des-arbres', upload.single('image'), catchErrors(adminController.create));
 router.post('/gestion-des-arbres/variete', catchErrors(adminController.createVariety))
 router.post('/gestion-des-arbres/mise-a-jour/:id', upload.single('image'), catchErrors(adminController.update));
-router.post('/gestion-des-arbres/supprimer/:id', catchErrors(adminController))
+router.post('/gestion-des-arbres/supprimer/:id', catchErrors(adminController.delete))
 // ABOUT PAGE
 router.get('/a-propos', catchErrors(aboutController.getAboutPage));
 

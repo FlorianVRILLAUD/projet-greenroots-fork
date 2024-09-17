@@ -84,9 +84,9 @@ export default {
 
 
     async delete(req, res) {
-        const treeSlug = req.params.slug;
+        const treeId = req.params.id;
         const tree = await Tree.destroy({
-            where: { slug: treeSlug}
+            where: { id: treeId}
         });
 
         req.session.message = {

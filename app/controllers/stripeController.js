@@ -28,8 +28,8 @@ export default {
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000/success',
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: `http://localhost:${process.env.PORT}/success`,
+        cancel_url: `http://localhost:${process.env.PORT}/cancel`,
       });
       
       req.session.paymentInProgress = true;

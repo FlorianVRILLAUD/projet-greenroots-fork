@@ -12,14 +12,30 @@ document.getElementById('create-variety').addEventListener('click', function() {
 
 // MODAL UPDATE TREE
 
-document.getElementById('update-tree').addEventListener('click', function() {
-    document.getElementById('modalUpdateTree').classList.add('is-active');
+const btnUpdate = document.querySelectorAll('.update-tree');
+btnUpdate.forEach(button => {
+  button.addEventListener('click', function() {
+      
+      const treeId = this.getAttribute('data-id');
+
+      const modal = document.getElementById(`modalUpdateTree-${treeId}`);
+
+      modal.classList.add('is-active');
+  });
 });
 
 // MODAL DELETE TREE
 
-document.getElementById('delete-tree').addEventListener('click', function() {
-  document.getElementById('modalDeleteTree').classList.add('is-active');
+const btnDelete = document.querySelectorAll('.delete-tree');
+btnDelete.forEach(button => {
+  button.addEventListener('click', function() {
+      
+      const treeId = this.getAttribute('data-id');
+
+      const modal = document.getElementById(`modalDeleteTree-${treeId}`);
+
+      modal.classList.add('is-active');
+  });
 });
 
 // CLOSE MODAL

@@ -8,8 +8,6 @@
           <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Panier</h1>
         </div>
       </div>
-    </div>
-  </section>
 
   <% if (typeof total === 'number' && total > 0) { %>
     <% cartItems.forEach((item, index) => { %>
@@ -41,6 +39,7 @@
               </p>
             </div>
           </p>
+
         </div>
       </div>
     <% }) %>
@@ -49,21 +48,24 @@
       <div class="total-section has-text-right">
         <p class="text-green total-ttc"><span id="cart-total">Total TTC : <%= total.toFixed(2) %> €</span></p>
         <div class="buttons is-right">
-          <button id="clear-cart" class="button is-large is-danger mt-2">Vider le panier</button>
-          <form action="/create-checkout-session" class="formBuy" method="POST">
-              <button type="submit" class="button is-custom-green is-large mt-2">Checkout</button>
-          </form>
+
+          <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
+          <button class="button is-custom-green is-large mt-2">Passer au paiement</button>
         </div>
       </div>
-    </div>
-  <% } else { %>
-    <div class="empty-cart-message has-text-centered is-size-4 my-6">
-      <p>Votre panier est vide</p>
-    </div>
-  <% } %>
+    <% } else { %>
+      <div class="empty-cart-message has-text-centered is-size-4 my-6">
+        <p>Votre panier est vide</p>
+      </div>
+    <% } %>
 
-</main>
+    <form action="/create-checkout-session" method="POST">
+        <button type="submit">Passer au paiement</button>
+    </form>
+    
+  </main>
+  <script src="/public/js/quantity.js"></script>
+</body>
 
-<script src="/public/js/quantity.js" defer></script>
 
 <%- include('partials/footer') %>

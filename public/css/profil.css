@@ -74,17 +74,20 @@ input::placeholder {
 
 .button_modify { 
     display: inline-block; 
-    padding: 10px 10px; 
+    padding: 15px 10px; 
     background-color: #2b743a; 
     color: white; 
-    text-decoration: none; 
+    text-decoration: none;
+    border:none; 
     border-radius: 25px; 
-    font-size: 16px;
+    font-size: 18px;
     width: 80%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s; 
 }
+
+
 
 .button_login:hover {
     background-color: #053d2b;
@@ -161,4 +164,18 @@ input::placeholder {
     width: 80%;
     font-family: "Montserrat";
     font-weight: bold;
+}
+.button_modal_delete { 
+    display: inline-block; 
+    padding: 15px 20px; /* Adjust padding to increase the size */
+    background-color: #d9d9d9; 
+    color: #3c3c3b; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 18px; /* Adjust font-size */
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    transition: background-color 0.3s;
 }

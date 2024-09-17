@@ -24,10 +24,6 @@ h1, h2, h3, h4, h5, h6, button {
     color: #0A290E;
 }
 
-button {
-    color: #2B743A;
-}
-
 .button.is-custom-green {
     background-color: #2B743A;
     color: white;

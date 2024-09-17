@@ -18,6 +18,22 @@ body, .navbar {
 
 }
 
+.modal-card-head {
+    background-color: #053D2B !important;
+}
+
+input::placeholder {
+    color: #0A290E !important;
+}
+
+.validate {
+    background-color: #053D2B !important;
+}
+
+.back {
+    background-color: rgba(167, 11, 11, 0.695) !important;
+}
+
 
 h1, h2, h3, h4, h5, h6, button {
     font-family: "Montserrat";

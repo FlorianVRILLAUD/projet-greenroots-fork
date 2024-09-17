@@ -17,6 +17,7 @@ import  isLoggedIn  from '../middlewares/isLoggedIn.js';
 import  isAdmin  from '../middlewares/isAdmin.js';
 import stripeController from '../controllers/stripeController.js';
 import commandController from '../controllers/commandController.js';
+import upload from '../modules/uploadImage.js';
 
 
 // Create a new router instance
@@ -32,7 +33,6 @@ router.get('/contact', catchErrors(contactController.contactView));
 router.post('/contact', catchErrors(contactController.createContact));
 
 // CREATE TREE
-router.post('/mon-espace/gestion-des-arbres', catchErrors(treeController.create));
 
 // UPDATE TREE
 router.patch('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.update));
@@ -53,7 +53,6 @@ router.post('/remove-favorite', isLoggedIn, catchErrors(favoritesController.dele
 router.post('/recherche', catchErrors(treeController.search));
 
 // Profil id
-
 router.get('/profil', isLoggedIn, catchErrors(profileController.show)); 
 router.post('/profil/update', isLoggedIn, catchErrors(profileController.update));
 router.post('/profil/delete', isLoggedIn, catchErrors(profileController.delete));
@@ -85,6 +84,8 @@ router.post('/panier/vider', catchErrors(cartController.clearCart));
 
 
 router.get('/gestion-des-arbres', isLoggedIn, isAdmin, catchErrors(adminController.show));
+router.post('/gestion-des-arbres', upload.single('image'), catchErrors(adminController.create));
+router.post('/gestion-des-arbres/variete', catchErrors(adminController.createVariety))
 
 
 // ABOUT PAGE

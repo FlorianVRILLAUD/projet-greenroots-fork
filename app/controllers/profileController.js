@@ -145,7 +145,14 @@ export default {
        
             
         }
-        res.redirect('/');
+
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("Erreur lors de la destruction de la session:", err);
+            }
+            console.log("Session détruite, redirection vers la page d'accueil");
+            res.redirect('/');
+        });
     }
 
     // async delete(req, res) {

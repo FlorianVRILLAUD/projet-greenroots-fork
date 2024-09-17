@@ -41,7 +41,7 @@ router.patch('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.
 router.delete('/mon-espace/gestion-des-arbres/:slug', catchErrors(treeController.delete));
 
 // FAVORITES PAGE
-router.get('/favoris', isLoggedIn, catchErrors(favoritesController.show));
+router.get('/profil/favoris', isLoggedIn, catchErrors(favoritesController.show));
 
 // ADD TREE IN FAVORITE
 router.post('/add-favorite', isLoggedIn, catchErrors(favoritesController.addFavorite))

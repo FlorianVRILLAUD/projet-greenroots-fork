@@ -53,9 +53,11 @@ router.post('/remove-favorite', isLoggedIn, catchErrors(favoritesController.dele
 router.post('/recherche', catchErrors(treeController.search));
 
 // Profil id
-router.get('/profil/:id(\\d+)', isLoggedIn, catchErrors(profileController.show)); 
-router.patch('/profil/:id(\\d+)', isLoggedIn, catchErrors(profileController.update));
-router.delete('/profil/:id(\\d+)', isLoggedIn, catchErrors(profileController.delete));
+
+router.get('/profil', isLoggedIn, catchErrors(profileController.show)); 
+router.post('/profil/update', isLoggedIn, catchErrors(profileController.update));
+router.post('/profil/delete', isLoggedIn, catchErrors(profileController.delete));
+
 
 //Page command
 router.get('/profil/mes-commandes', catchErrors(commandController.showCommands));

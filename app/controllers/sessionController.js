@@ -68,11 +68,16 @@ export default {
                     console.log("Redirection vers la gestion des arbres");
                     res.redirect('/gestion-des-arbres');
                 } else {
-                    console.log("Redirection vers le profil:", `/profil/${user.id}`);
-                    res.redirect(`/profil/${user.id}`);
+                    console.log("Redirection vers le profil:", `/profil`);
+                    res.redirect(`/profil/`);
                 }
             });
 
+
+            delete user.dataValues.password;
+            delete user._previousDataValues.password;
+
+           
         } catch (error) {
             console.error("Erreur lors de la connexion:", error);
             req.session.message = {

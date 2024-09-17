@@ -1,5 +1,7 @@
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
+import Joi from "joi";
+
 
 const loginSchema = Joi.object({
     email: Joi.string().email().required(),

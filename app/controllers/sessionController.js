@@ -1,6 +1,17 @@
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
-import emailValidator from 'email-validator';
+import Joi from "joi";
+import sanitizeHtml from 'sanitize-html';
+
+const loginSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required()
+});
+
+const sanitizeOptions = {
+    allowedTags: [],
+    allowedAttributes: {},
+};
 
 export default {
     async showLogin(req, res) {
@@ -11,43 +22,41 @@ export default {
 
     async login(req, res) {
         try {
-            const { email, password } = req.body;
-
-            console.log("Données reçues:", { email });
-
-            if (!email || !password) {
+            // Validate input
+            const { error, value } = loginSchema.validate(req.body);
+            if (error) {
                 req.session.message = {
-                    text: 'Veuillez remplir tous les champs',
-                    type: 'is-danger' 
+                    text: error.details[0].message,
+                    type: 'is-danger'
                 };
                 return res.redirect('back');
             }
 
-            if (!emailValidator.validate(email)) {
-                req.session.message = {
-                    text: 'Email invalide',
-                    type: 'is-danger' 
-                };
-                return res.redirect('back');
-            }
+            // Sanitize input
+            const sanitizedData = {
+                email: sanitizeHtml(value.email, sanitizeOptions).toLowerCase(),
+                password: value.password 
+            };
+
+            console.log("Données reçues:", { email: sanitizedData.email });
 
             const user = await User.findOne({
-                where: { email },
+                where: { email: sanitizedData.email },
             });
 
             if (!user) {
-                console.log("Utilisateur non trouvé pour l'email:", email);
+                console.log("Utilisateur non trouvé pour l'email:", sanitizedData.email);
                 req.session.message = {
-                    text: 'Utilisateur introuvable',
+                    text: 'Identifiants invalides',
                     type: 'is-danger' 
                 };
                 return res.redirect('back');
             }
             
-            if (!Scrypt.compare(password, user.password)) {
+            if (!Scrypt.compare(sanitizedData.password, user.password)) {
                 console.log("Échec de la comparaison du mot de passe pour l'utilisateur:", user.id);
                 req.session.message = {
-                    text: 'Les mots de passe ne correspondent pas',
+                    text: 'Identifiants invalides',
                     type: 'is-danger' 
                 };
                 return res.redirect('back');

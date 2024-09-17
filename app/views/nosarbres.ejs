@@ -15,8 +15,8 @@
         <div class="select-tree">
             <select class="mb-6" name="variety" id="variety-tree">
                 <option value="all-varieties">Toutes les variétés</option>
-                <% varieties.forEach(variety => { %>
-                    <option value="<%= variety.slug %>"><%= variety.name %></option>
+                    <% varieties.forEach(variety => { %>
+                <option value="<%= variety.slug %>"><%= variety.name %></option>
                     <% }); %>
             </select>
         </div>
@@ -31,32 +31,26 @@
                                     src="../public/images/photos/<%= tree.image %>"
                                     alt="Photo d'un <%= tree.name %>"
                                     /></a>
-                                </figure>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
                             </div>
-                            <div class="card-content">
-                                <div class="media">
-                                </div>
-                                
                                 <div class="content">
                                     <h2  class="title-card has-text-centered is-size-4 has-text-dark m-2"><%= tree.name %></h2>
                                     <p class="has-text-centered is-size-5"><%= tree.variety.name %></p>
-                                    <p class="has-text-centered is-size-5">À partir de <%= tree.price_ttc %> €</p>
-                                    
-                                    
+                                    <p class="has-text-centered is-size-5">À partir de <%= tree.price_ttc %> €</p>                                    
                                 </div>
-                                <a href="/nos-arbres/<%= tree.slug %>"><button class="button details is-size-4">Plus de détails</button></a>
-                            </div>
+                                <a href="/nos-arbres/<%= tree.slug %>"><button class="button details is-size-4">Détails</button></a>
                         </div>
-                    </article>
+                    </div>
+                </article>
                     
-                    <% }) %>
-                    
-                </section>
-                
-                
-                
-            </main>
-            <script src="/public/js/selectCategory.js" defer></script>
-            <%- include('partials/footer') %>
+            <% }) %>                
+    </section>
+     
+</main>
+<script src="/public/js/selectCategory.js" defer></script>
+<%- include('partials/footer') %>           
             
             

@@ -1,15 +1,14 @@
 <%- include('partials/header') %> 
 
-<body>
-  <main class="is-flex-grow-1 mb-6">
-    <section class="section mb-6"> 
-      <div class="container has-text-centered">
-        <div class="columns is-vcentered mb-4">
-          <div class="column"> 
-            <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Panier</h1>
-          </div>
+<main class="is-flex-grow-1 mb-6">
+  <section class="section mb-6"> 
+    <div class="container has-text-centered">
+      <div class="columns is-vcentered mb-4">
+        <div class="column"> 
+          <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Panier</h1>
         </div>
       </div>
+
     </section>
   
     <% if (typeof total === 'number' && total > 0) { %>
@@ -41,11 +40,14 @@
             </li> -->
           </ul>
         </div>
-      <% }); %>
-      
+      </div>
+    <% }) %>
+
+    <div class="control">
       <div class="total-section has-text-right">
         <p class="text-green total-ttc"><span id="cart-total">Total TTC : <%= total.toFixed(2) %> €</span></p>
         <div class="buttons is-right">
+
           <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
           <button class="button is-custom-green is-large mt-2">Passer au paiement</button>
         </div>
@@ -56,13 +58,13 @@
       </div>
     <% } %>
 
-    <!-- Redirection pay CHekout par default -->
     <form action="/create-checkout-session" method="POST">
-        <button type="submit">Passer au payment</button>
+        <button type="submit">Passer au paiement</button>
     </form>
     
   </main>
   <script src="/public/js/quantity.js"></script>
 </body>
+
 
 <%- include('partials/footer') %>

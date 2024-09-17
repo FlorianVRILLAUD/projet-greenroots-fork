@@ -86,8 +86,8 @@ router.post('/panier/vider', catchErrors(cartController.clearCart));
 router.get('/gestion-des-arbres', isLoggedIn, isAdmin, catchErrors(adminController.show));
 router.post('/gestion-des-arbres', upload.single('image'), catchErrors(adminController.create));
 router.post('/gestion-des-arbres/variete', catchErrors(adminController.createVariety))
-
-
+router.post('/gestion-des-arbres/mise-a-jour/:id', upload.single('image'), catchErrors(adminController.update));
+router.post('/gestion-des-arbres/supprimer/:id', catchErrors(adminController))
 // ABOUT PAGE
 router.get('/a-propos', catchErrors(aboutController.getAboutPage));
 

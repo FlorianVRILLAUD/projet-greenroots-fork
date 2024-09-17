@@ -1,4 +1,3 @@
-import uploadImage from '../modules/uploadImage.js'
 import { Tree, Variety } from '../models/index.js';
 import Joi from 'joi';
 
@@ -141,50 +140,70 @@ export default {
     },
 
     async update(req, res, next) {
-        const treeSlug = req.params.slug;
-        const { name, slug, image, size, price_ht, price_ttc, origin} = req.body;
-
+        const treeId = req.params.id;
+        console.log(treeId);
+        
+        const { name, slug, size, price_ht, price_ttc, origin, variety, current_image } = req.body;
+        console.log(req.body);
+        
+    
         const schema = Joi.object({
-           name: Joi.string().min(1).max(255),
-           slug: Joi.string().min(1).max(255),
-           image: Joi.string().min(1).max(255),
-           size: Joi.number().min(0),
-           price_ht: Joi.number().min(0),
-           price_ttc: Joi.number().min(0),
-           origin: Joi.string().min(1).max(255),
+            name: Joi.string().min(1).max(255),
+            slug: Joi.string().min(1).max(255),
+            size: Joi.number().min(0),
+            price_ht: Joi.number().min(0),
+            price_ttc: Joi.number().min(0),
+            origin: Joi.string().min(1).max(255),
+            variety: Joi.number().min(1).max(255),
+            current_image: Joi.string()
         });
-
+    
         const { error } = schema.validate(req.body);
         if (error) {
-           return next(error)
+            return next(error);
         }
-
-         // Verify if tree name is already created
-       const isTreeExistAlready = !!(await Tree.count({
-           where: { name: req.body.name },
-       }));
-
-       if (isTreeExistAlready) {
-           const error = new Error("Un arbre à déjà le même nom !");
-           error.status = 409;
-           next(error);
-       }
-
-        const tree = await Tree.findOne({
-           where: { slug: treeSlug}
-       });
-
-        if(!tree) {
-           return next();
+    
+        // Vérifier si une nouvelle image a été uploadée, sinon utiliser l'image actuelle
+        let image;
+        if (req.file) {
+            image = req.file.filename; // Utiliser la nouvelle image uploadée
+        } else if (current_image) {
+            image = current_image; // Utiliser l'image actuelle si aucune nouvelle image n'est uploadée
+        } else {
+            const error = new Error("Une image est requise");
+            error.status = 400;
+            return next(error);
         }
-        
-        const updateTree = await tree.update({ name: name, slug: slug, image: image, size: size, price_ht: price_ht, price_ttc: price_ttc, origin: origin });
-        req.session.message = {
-           text: 'L\'arbre a été mis à jour avec succès',
-           type: 'is-success'
-       };
-       
-       return res.redirect('back');
-    },
+    
+        // Vérifier si un autre arbre existe déjà avec le même nom
+        const isTreeExistAlready = !!(await Tree.count({
+            where: { name: req.body.name },
+        }));
+    
+        if (isTreeExistAlready) {
+            const error = new Error("Un arbre à déjà le même nom !");
+            error.status = 409;
+            return next(error);
+        }
+    
+        const tree = await Tree.findByPk(treeId)
+    
+        if (!tree) {
+            return next();
+        }
+    
+        const updateTree = await tree.update({
+            name, slug, image, size, price_ht, price_ttc, origin, variety_id: variety
+        });
+    
+        if (updateTree) {
+            req.session.message = {
+                text: 'L\'arbre a été mis à jour avec succès',
+                type: 'is-success'
+            };
+        }
+    
+        res.redirect('/gestion-des-arbres');
+    }
 
 }

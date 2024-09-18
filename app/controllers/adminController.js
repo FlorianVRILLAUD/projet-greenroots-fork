@@ -206,6 +206,7 @@ export default {
         res.redirect('/gestion-des-arbres');
     },
 
+
     async delete(req, res) {
         const treeId = req.params.id;
         const tree = await Tree.destroy({
@@ -224,5 +225,6 @@ export default {
          res.redirect('/gestion-des-arbres');
 
     }
+
 
 }

@@ -2,6 +2,15 @@
 
 <main class="homepage has-background-white">
 
+
+     <!--  message dans la session -->
+     <% if (typeof message !== 'undefined') { %>
+        <div class="notification is<%= message.type %>">
+            <button class="delete"></button>
+            <%= message.content %>
+        </div>
+    <% } %>
+
     <section class="intro">
         <h1>Reforestons ensemble</h1>
         <p>Green Roots est une plateforme dédiée à la vente d'arbres à planter, vous offrant la possibilité de participer activement à la lutte contre la déforestation et de soutenir la reforestation. Face aux défis environnementaux actuels, il est essentiel de trouver des solutions et Green Roots se veut être une réponse à cette cause.</p>

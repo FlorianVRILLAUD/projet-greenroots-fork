@@ -38,9 +38,16 @@
             
             <nav class="nav">
                 <ul class="nav-mobile">
+                    <% if (!locals.user) { %>
                     <li class="nav-mobile"><a class="nav-mobile" href="#"><img class="nav-mobile" src="/public/images/icones/loupe.svg" alt="Recherche"></a></li>
-                    <li class="nav-mobile"><a class="nav-mobile" href="/panier"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
+                    <% } else { %>
+                    <li class="nav-mobile"><a class="nav-mobile" href="/profil"><img class="nav-mobile" src="/public/images/icones/connexion.svg" alt="Profil"></a></li>
+                    <% if (locals.user.role === 'admin') { %>
+                        <li class="nav-mobile"><a class="nav-mobile" href="/gestion-des-arbres"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Gestion des arbres"></a></li>
+                    <% } %>
+                    <% } %>
                     <li class="nav-mobile"><a class="nav-mobile burger" href="#"><img class="nav-mobile" src="/public/images/icones/burger.svg" alt="Menu"></a></li>
+                    <li class="nav-mobile"><a class="nav-mobile" href="/panier"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
                 </ul>
                 <ul class="nav-desktop">
                     <% if (!locals.user) { %>
@@ -48,25 +55,25 @@
                         <li class="nav-desktop"><a class="nav-desktop" href="/connexion"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Connexion">Connexion</a></li>
                         <li class="nav-desktop"><a class="nav-desktop" href="/panier"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
                         <% } else { %>
-                        <li class="nav-desktop"><a class="nav-desktop" href="/profil/<%= locals.user.id %>"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Profil">Profil</a></li>
-                        <li class="nav-desktop"><a class="nav-desktop" href="/favoris"><img class="nav-desktop" src="/public/images/icones/favoris.svg" alt="Favoris">Favoris</a></li>
+                        <li class="nav-desktop"><a class="nav-desktop" href="/profil"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Profil">Profil</a></li>
+                        <li class="nav-desktop"><a class="nav-desktop" href="/profil/favoris"><img class="nav-desktop" src="/public/images/icones/favoris.svg" alt="Favoris">Favoris</a></li>
+                        <li class="nav-desktop"><a class="nav-desktop" href="/panier"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
                         <% if (locals.user.role === 'admin') { %>
-                            <li class="nav-desktop"><a class="nav-desktop" href="/gestion-des-arbres"><img class="nav-desktop" src="" alt="Gestion des arbres">Gestion des arbres</a></li>
+                            <li class="nav-desktop"><a class="nav-desktop" href="/gestion-des-arbres"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Gestion des arbres">Admin</a></li>
                         <% } %>
+                        <li class="nav-desktop is-align-content-center">
+                            <form class="nav-desktop" action="/deconnexion" method="POST">
+                                <button class="nav-desktop" type="submit" class="button is-light">
+                                    <span class="icon nav-desktop">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </span>
+                                    <span>Déconnexion</span>
+                                </button>
+                            </form>
+                        </li>
                        
-                   
-                    <li>
-                        <form action="/deconnexion" method="POST">
-                            <button type="submit" class="button is-light">
-                                <span class="icon">
-
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </span>
-                                <span>Déconnexion</span>
-                            </button>
-                        </form>
-                    </li>
-                    <% } %>
+                     <% } %>
+                    
                 </ul>
             </nav>
             
@@ -101,9 +108,7 @@
                 </ul>
             </div>
         </div>
-        <hr>
+        <hr class="my-3">
     </header>
 
 
-</body>
-</html>

@@ -46,7 +46,7 @@
 
     <div class="control">
       <div class="total-section has-text-right">
-        <p class="text-green total-ttc"><span id="cart-total">Total TTC : <%= total.toFixed(2) %> €</span></p>
+        <p class="text-green is-size-3 has-text-weight-semibold total-ttc">Total TTC : <span id="cart-total"><%= total.toFixed(2) %> €</span></p>
         <div class="buttons is-right">
 
           <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
@@ -62,7 +62,7 @@
     <% } %>
     
   </main>
-  <script src="/public/js/quantity.js"></script>
+  <script src="/public/js/cart.js"></script>
 </body>
 
 

@@ -9,36 +9,37 @@
         </div>
       </div>
 
-    </section>
-  
-    <% if (typeof total === 'number' && total > 0) { %>
-      <% cartItems.forEach((item, index) => { %>
-        <div class="content-card is-flex is-justify-content-space-around p-2 mb-6" data-tree-id="<%= item.id %>">
-          <img src="../public/images/photos/<%= item.image %>" alt="Photo de <%= item.name %>">
-          <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
-            <p><span class="has-text-weight-semibold">Nom : </span><%= item.name %></p>
-            <p><span class="has-text-weight-semibold">Taille : </span><%= item.size %> m</p>
-            <p><span class="has-text-weight-semibold">Prix : </span><span class="item-price"><%= item.price_ttc %></span> €</p>
-            <p><span class="has-text-weight-semibold">Sous-total : </span><span class="item-subtotal"><%= item.subtotal.toFixed(2) %></span> € </p>
-            <p><span class="has-text-weight-semibold">Quantité : </span>
-              <div class="field has-addons"> 
-                <p class="control">
-                  <button type="button" class="button is-success decrement-btn" data-tree-id="<%= item.id %>">-</button>
-                </p>
-                <p class="control">
-                  <input class="input has-text-centered quantity-input" type="number" value="<%= item.quantity %>" min="1" max="1000" data-tree-id="<%= item.id %>" style="width: 60px;">
-                </p>
-                <p class="control">
-                  <button type="button" class="button is-success increment-btn" data-tree-id="<%= item.id %>">+</button>
-                </p>
-              </div>
-            </p>
-          </div>
-          <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
-            <!-- <li>
-              <button type="button" class="button is-danger remove-btn" data-tree-id="<%#  item.id%><%= item.id %>">Supprimer du panier</button>
-            </li> -->
-          </ul>
+  <% if (typeof total === 'number' && total > 0) { %>
+    <% cartItems.forEach((item, index) => { %>
+      <div class="content-card is-flex is-justify-content-space-around p-2 mb-6" data-tree-id="<%= item.id %>">
+        <img src="../public/images/photos/<%= item.image %>" alt="Photo de <%= item.name %>">
+        <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
+          <p><span class="has-text-weight-semibold">Nom : </span><%= item.name %></p>
+          <p><span class="has-text-weight-semibold">Taille : </span><%= item.size %> m</p>
+          <p><span class="has-text-weight-semibold">Prix : </span><span class="item-price"><%= item.price_ttc %></span> €</p>
+          <p><span class="has-text-weight-semibold">Sous-total : </span><span class="item-subtotal"><%= item.subtotal.toFixed(2) %></span> € </p>
+          <p><span class="has-text-weight-semibold">Quantité : </span> </p>
+            <div class="field has-addons"> 
+              <p class="control">
+                <button type="button" class="button is-primary decrement-btn" data-tree-id="<%= item.id %>">-</button>
+              </p>
+              <p class="control">
+                <input class="input has-text-centered quantity-input" 
+       type="number" 
+       value="<%= item.quantity %>" 
+       min="1" 
+       max="10000" 
+       step="1" 
+       data-tree-id="<%= item.id %>" 
+       style="width: 60px;"
+       oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value < 1) this.value = 1; if(this.value > 10000) this.value = 10000;">
+              </p>
+              <p class="control">
+                <button type="button" class="button is-primary increment-btn" data-tree-id="<%= item.id %>">+</button>
+              </p>
+            </div>
+          </p>
+
         </div>
       </div>
     <% }) %>

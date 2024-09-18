@@ -145,6 +145,10 @@ export default {
        
             
         }
+
+
+
+
         req.session.destroy((err) => {
             if (err) {
                 console.error("Erreur lors de la destruction de la session:", err);
@@ -152,20 +156,18 @@ export default {
             console.log("Session détruite, redirection vers la page d'accueil");
             res.redirect('/');
 
-            //message après destruction de la session
-        // req.session = null; // Réinitialiser la session
-        // req.session = {
-        //     message: {
-        //         type: 'success',
-        //         content: 'Votre compte a été supprimé avec succès.'
-        //     }
-        // };
-
-        // res.redirect('/');
         });
-        
-        //res.redirect('/');
     }
+ }
+};        
+        
+        
+        
+
+
+
+        
+       
+    
  
    
-};

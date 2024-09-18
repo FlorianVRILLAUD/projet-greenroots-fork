@@ -20,12 +20,12 @@ window.addEventListener("scroll", function () {
     }
 });
 
-const notification = document.getElementById('notification');
+const menu = document.getElementById('notification');
     
-    if (notification) {
-        notification.style.display = 'block';
+    if (menu) {
+        menu.style.display = 'block';
 
         setTimeout(() => {
-            notification.style.display = 'none';
+            menu.style.display = 'none';
         }, 5000);
     }

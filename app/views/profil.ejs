@@ -6,7 +6,17 @@
  
 <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
 
+    
     <h1 class="connection">Bienvenue <%= user.firstname %></h1>
+
+    <div class="buttons_profil">
+
+        <a href="/profil/" class="button_infos">Mes informations</a>
+        <a href="/profil/mes-commandes" class="button_order">Mes commandes</a>
+        <a href="/profil/favoris" class="button_fav">Mes favoris</a>
+
+    </div>
+
 
     <div class="form_container">
         <form class="form_info" action="/profil/update" method="post">
@@ -24,8 +34,8 @@
 
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" placeholder="Mot de passe" value="<%= user.password %>">
+            <button class="button_modify" type="submit">Modifier mon profil</button>
 
-            <button class="button_modify" type="submit">Modifier mes informations</button>
         </form> 
 
         <!-- Modal supression du compte -->
@@ -38,34 +48,25 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Confirmation de suppression</p>
+            <p class="confirm modal-card-title">Confirmation de suppression</p>
             <button class="delete" aria-label="close" id="closeModal"></button>
         </header>
         <section class="modal-card-body">
-            <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+            <p class="phrase_delete">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
         </section>
         <footer class="modal-card-foot">
             <!-- Bouton avertissement pour la suppression -->
             <form action="/profil/delete" method="post">
-                <button class="button_modal_delete is-warning" type="submit">Supprimer mon compte</button>
+                <button class="button_modal_delete is-warning" type="submit">Confirmer</button>
             </form>
 
             <!-- Bouton pour annuler -->
-            <button id="cancelModal" class="button is-success">Annuler</button>
+            <button class="button_cancel" id="cancelModal" class="button is-success">Annuler</button>
         </footer>
     </div>
 </div>
     <!-- Fin de Modal-->
 
-    <hr class="navbar_end">
-
-    <div class="buttons_profil">
-
-        <a href="/profil/" class="button_infos">Mes informations</a>
-        <a href="/profil/mes-commandes" class="button_order">Mes commandes</a>
-        <a href="/profil/favoris" class="button_fav">Mes favoris</a>
-
-    </div>
 </main>
 <script src="/public/js/modal.js" ></script>
 <%- include('partials/footer') %>

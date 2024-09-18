@@ -50,7 +50,9 @@
         <div class="buttons is-right">
 
           <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
-          <button class="button is-custom-green is-large mt-2">Passer au paiement</button>
+            <form action="/create-checkout-session" method="POST">
+              <button class="button is-custom-green is-large mt-2" type="submit">Passer au paiement</button>
+            </form>        
         </div>
       </div>
     <% } else { %>
@@ -58,10 +60,6 @@
         <p>Votre panier est vide</p>
       </div>
     <% } %>
-
-    <form action="/create-checkout-session" method="POST">
-        <button type="submit">Passer au paiement</button>
-    </form>
     
   </main>
   <script src="/public/js/quantity.js"></script>

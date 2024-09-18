@@ -61,27 +61,28 @@ input {
     border: solid 1px;
     padding: 10px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1,5rem;
     color: #0A290E;
-    width: 200px;
+    width: 300px;
 }
 
 input::placeholder {
     color: #3c3c3b;
 }
 
-/* BOUTON */
+/* BOUTONS */
 
 .button_modify { 
+    margin-top: 1rem;
     display: inline-block; 
-    padding: 15px 10px; 
+    padding: 10px 10px; 
     background-color: #2b743a; 
     color: white; 
     text-decoration: none;
     border:none; 
-    border-radius: 25px; 
+    border-radius: 30px; 
     font-size: 18px;
-    width: 80%;
+    width: 100%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s; 
@@ -103,7 +104,7 @@ input::placeholder {
     border-radius: 25px; 
     border: none;
     font-size: 16px;
-    width: 80%;
+    width: 85%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s; 
@@ -111,7 +112,7 @@ input::placeholder {
 }
 
 .buttons_profil { 
-
+    text-align: center;
     width: 100%;
     max-width: 400px;
     padding: 20px;
@@ -165,17 +166,45 @@ input::placeholder {
     font-family: "Montserrat";
     font-weight: bold;
 }
+
 .button_modal_delete { 
     display: inline-block; 
-    padding: 15px 20px; /* Adjust padding to increase the size */
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
+    padding: 10px 10px; 
+    background-color: #eb5a36; 
+    color:#000; 
     text-decoration: none; 
     border-radius: 25px; 
     border: none;
-    font-size: 18px; /* Adjust font-size */
-    width: 80%;
+    font-size: 18px; 
+    width: 100%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s;
+}
+
+.button_cancel { 
+    margin: 0 30px;
+    padding: 10px 10px; 
+    background-color: #2b743a; 
+    color: #d9d9d9; 
+    text-decoration: none; 
+    border-radius: 25px; 
+    border: none;
+    font-size: 18px; 
+    width: 100%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.confirm { 
+    font-family: "Montserrat";
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.phrase_delete { 
+    font-family: "Montserrat";
+    font-size: 2rem;
+    color: #d9d9d9;
 }

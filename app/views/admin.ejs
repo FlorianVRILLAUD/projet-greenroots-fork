@@ -1,58 +1,348 @@
 <%- include('partials/header') %>
 
-    <hr class="navbar_end">
-
-
     <main class="is-flex-grow-1 mb-6">
 
-        <hr class="navbar_end navbar-desktop">
 
-        <section class="section mb-6>
+        <section class="section mb-6">
             <div class="container has-text-centered">
               <div class="columns is-vcentered mb-4">
                 <div class="column">
                   <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Gestion des arbres</h1>
                 </div>
                 <div class="column is-narrow has-text-centered-mobile has-text-right-tablet">
-                  <button class="button is-custom-green is-large">
+                  <button class="button is-custom-green is-large open-modal" id="create-tree">
                     Créer une page
+                  </button>
+                </div>
+                <div class="column is-narrow has-text-centered-mobile has-text-right-tablet"></div>
+                  <button class="button is-custom-green is-large open-modal" id="create-variety">
+                    Ajouter variété
                   </button>
                 </div>
               </div>
             </div>
+            <div class="notification-container mx-6">
+              <% if (message) { %>
+                  
+                  <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
+                      <p class="has-text-centered"><%= message.text %></p>
+                  </div>
+                  <% delete message; %>
+              <% } %>
+          </div>
           </section>
 
         <section class="is-flex is-flex-direction-column is-align-items-center">
             
+          <% trees.forEach(tree => { %>
+              
+           
             <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
                 <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
-                    <p>N°1111</p>
-                    <time datetime="2024-09-03">03/09/24</time>
+                    <p>N° <%= tree.id%></p>
+                    <time datetime= "<%= new Date(tree.created_at).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) %>"></time> <%# Voir sur nagigateur affichagede la date%>
+                   
                 </header>
                 <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
-                    <img src="../public/images/cedre.jpg" alt="Photo d'un cèdre">
+                    
                     <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
-                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier l'image ></a></li>
+                      
+                        <a href="/nos-arbres/<%= tree.slug %>">
+                          <img
+                            src="../public/images/photos/<%= tree.image %>"
+                            alt="Photo d'un <%= tree.name %>"/>
+                          </a>
+                        
+                        
                     </ul>
                     <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
-                        <p><span class="has-text-weight-semibold">Nom : </span>Cèdre</p>
-                        <p><span class="has-text-weight-semibold">Taille : </span>1</p>
-                        <p><span class="has-text-weight-semibold">Variété : </span>Papaye</p>
-                        <p><span class="has-text-weight-semibold">Prix : </span>18,99 €</p>
+                        <p><span class="has-text-weight-semibold">Nom : </span><%= tree.name %></p>
+                        <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %></p>
+                        <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
+                        <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
+                        <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
                     </div>
-                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
-                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Modifier les informations ></a></li>
-                        <li><a href="#" class="has-text-weight-semibold has-text-right mr-6 pb-2">Supprimer la page ></a></li>
-                    </ul>
-                    <div class="mobile-link">
-                    </div>
+                    
                 </div>
-                <a href="#" class="mobile-link has-text-weight-semibold has-text-right mr-6 pb-2">Détails ></a>   
+                <ul class="is-flex is-flex-direction-column is-justify-content-space-between is-align-items-flex-end link-item">
+                  <li><button class="button is-custom-green is-large open-modal update-tree update-tree" data-id="<%= tree.id %>" >Modifier les informations</button></li>
+                  <li><button class="button is-custom-green is-large open-modal delete-tree delete-tree" data-id="<%= tree.id %>" >Supprimer</button></li>
+              </ul>  
             </div>
+
+           <!-- MODAL UPDATE TREE -->
+    <div class="modal mx-2 " id="modalUpdateTree-<%= tree.id %>">
+      
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modifier un arbre</p>
+          <button class="delete close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body p-5 m-0 has-background-white-ter">
+          <p class="is-size-5 mb-5"><span class="has-text-danger">*</span> Champs obligatoire</p>
+
+          <form action="/gestion-des-arbres/mise-a-jour/<%= tree.id %>" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" name="current_image" value="<%= tree.image %>">
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="name">Nom de l'arbre <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.name %>" name="name" id="name" type="text" placeholder="Cerisier, chêne, ...">
+            </div>
+            
+          </div>
+          
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="slug">Slug <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.slug %>" name="slug" id="slug" type="text" placeholder="cerisier, chene, ...">
+            </div>
+            
+          </div>
+          
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="image">Image (5MB max) <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium"  name="image" id="image" type="file" accept="image/png, image/jpeg" placeholder="cerisier.jpg, chene.webp, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="size">Taille <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.size %>" name="size" id="size" type="number" placeholder="1, 7, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="price_ht">Prix HT <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.price_ht %>" name="price_ht" id="price_ht" type="text" placeholder="8.80, 15.70, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="price_ttc">Prix TTC <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.price_ttc %>" name="price_ttc" id="price_ttc" type="text" placeholder="10.20, 18.90, ...">
+            </div>
+           
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="origin">Origine <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" value="<%= tree.origin %>" name="origin" id="origin" type="text" placeholder="France, Espagne, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="variety">Variété <span class="has-text-danger">*</span></label>
+            <div class="select is-medium">
+              <select class="mb-2 has-background-grey-lighter	has-text-black" name="variety" id="variety">
+                <option value="<%= tree.variety.id %>"><%= tree.variety.name %></option>
+                <% varieties.forEach(variety => { %>
+                    <option value="<%= variety.id %>"><%= variety.name %></option>
+                    <% }); %>
+            </select>
+            </div>
+            
+          </div>
+          
+            <div class="buttons mt-6">
+              <button class="button validate">Valider informations</button>
+              <button type="button" class="button close back">Annuler</button>
+            </div>
+          
+        </form>
+
+        </section>
+      </div>
+    </div>
+
+    <!-- END MODAL UPDATE TREE -->
+
+    <!-- MODAL DELETE TREE -->
+    <div class="modal mx-2 " id="modalDeleteTree-<%= tree.id %>">
+      
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Supprimer un arbre</p>
+          <button class="delete close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body p-5 m-0 has-background-white-ter">
+          <p class="is-size-5 mb-5">Supprimer <span class="has-text-danger">"<%= tree.name %>"</span></p>
+
+          <form action="/gestion-des-arbres/supprimer/<%= tree.id %>" method="POST">
+          
+            <div class="buttons mt-6">
+              <button class="button validate">Supprimer</button>
+              <button type="button" class="button close back">Annuler</button>
+            </div>
+          
+        </form>
+
+        </section>
+      </div>
+    </div>
+
+    <!-- END MODAL DELETE TREE -->
+            <% }); %>
             
         </section>
 
     </main>
 
+<!-- MODAL CREATE TREE -->
+    <div class="modal mx-2 " id="modalCreateTree">
+      
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Ajout d'un arbre</p>
+          <button class="delete close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body p-5 m-0 has-background-white-ter">
+          <p class="is-size-5 mb-5"><span class="has-text-danger">*</span> Champs obligatoire</p>
+
+          <form action="/gestion-des-arbres" method="POST" enctype="multipart/form-data">
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="name">Nom de l'arbre <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="name" id="name" type="text" placeholder="Cerisier, chêne, ...">
+            </div>
+            
+          </div>
+          
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="slug">Slug <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="slug" id="slug" type="text" placeholder="cerisier, chene, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="image">Image (5MB max) <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="image" id="image" type="file" accept="image/png, image/jpeg" placeholder="cerisier.jpg, chene.webp, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="size">Taille <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="size" id="size" type="number" placeholder="1, 7, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="price_ht">Prix HT <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="price_ht" id="price_ht" type="text" placeholder="8.80, 15.70, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="price_ttc">Prix TTC <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="price_ttc" id="price_ttc" type="text" placeholder="10.20, 18.90, ...">
+            </div>
+           
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="origin">Origine <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="origin" id="origin" type="text" placeholder="France, Espagne, ...">
+            </div>
+            
+          </div>
+
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="variety">Variété <span class="has-text-danger">*</span></label>
+            <div class="select is-medium">
+              <select class="mb-2 has-background-grey-lighter	has-text-black" name="variety" id="variety">
+                <% varieties.forEach(variety => { %>
+                    <option value="<%= variety.id %>"><%= variety.name %></option>
+                    <% }); %>
+            </select>
+            </div>
+            
+          </div>
+          
+            <div class="buttons mt-6">
+              <button class="button validate">Ajouter l'arbre</button>
+              <button type="button" class="button close back">Annuler</button>
+            </div>
+          
+        </form>
+
+        </section>
+      </div>
+    </div>
+
+    <!-- END MODAL CREATE TREE -->
+
+
+    <!-- MODAL CREATE VARIETY -->
+
+    <div class="modal mx-2 " id="modalCreateVariety">
+      
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Ajout d'une variété</p>
+          <button class="delete close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body p-5 m-0 has-background-white-ter">
+          
+          <p class="is-size-5 mb-5"><span class="has-text-danger">*</span> Champs obligatoire</p>
+
+          <form action="/gestion-des-arbres/variete" method="POST">
+          <div class="field">
+            <label class="label has-text-dark is-size-4" for="nameVariety">Nom de la variété <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="name" id="nameVariety" type="text" placeholder="Conifères, Arbres fruitiers, ...">
+            </div>
+            
+          </div>
+
+          <div class="field"></div>
+            <label class="label has-text-dark is-size-4" for="slugVariety">Slug <span class="has-text-danger">*</span></label>
+            <div class="control">
+              <input class="input has-background-grey-lighter	has-text-black is-medium" name="slug" id="slugVariety" type="text" placeholder="coniferes, arbres fruitiers, ...">
+            </div>
+            
+          </div>
+                    
+            <div class="buttons mt-6">
+              <button class="button validate">Ajouter la variété</button>
+              <button type="button" class="button close back">Annuler</button>
+            </div>
+          
+        </form>
+
+        </section>
+      </div>
+    </div>
+
+
+
+    <!-- END MODAL CREATE VARIETY -->
+
+
+    
 
     <%- include('partials/footer') %>
+    <script src="/public/js/modalAdmin.js" defer></script>

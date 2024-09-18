@@ -74,6 +74,9 @@ h2, h3, h4, h5 {
     background-color: #053d2b !important;
 }
 
+.link-item {
+    gap: 2rem;
+}
 /* LIGNE DE SÉPARATION */
 
 .nav ul {

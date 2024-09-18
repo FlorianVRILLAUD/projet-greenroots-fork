@@ -22,7 +22,7 @@ export default {
         const message = req.session.message || null;
         req.session.message = null;
         
-        res.render('register', {message, title: "GreenRoots - Nous rejoindre", cssFile: "register.css", bulma: process.env.BULMA_URL });
+        res.render('register', {message, title: "GreenRoots - Nous rejoindre", cssFile: "register.css" });
     },
 
     async register(req, res) {

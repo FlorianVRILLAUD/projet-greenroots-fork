@@ -1,0 +1,193 @@
+html {
+    font-size: 62.5%; 
+    background-color: #ffffff;
+}
+
+button {
+    color: #2B743A;
+}
+
+.all-tree-button {
+    width: 100%;
+    margin-top: 3rem;
+   
+}
+
+/* PHOTO PAGE D ACCUEIL*/
+.intro {
+    background-image: url("/public/images/photos/hero7.jpg");
+    height: 86vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* HERO HOMEPAGE */
+.intro h1 {
+    font-size: 2.4rem;
+    color: #FFFAF0 ;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+    text-transform: uppercase;
+    margin: 3rem 2rem 0;
+    text-align: center;
+}
+.intro p {
+    color: #FFFAF0 ;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0 2rem;
+}
+
+
+.intro button {
+    padding: 1rem 3rem; 
+    background-color: #d9d9d9; 
+    color: #3b3b3a; 
+    text-decoration: none; 
+    border-radius: 30px; 
+    border: none;
+    font-size: 1.2rem;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: bold;
+    margin: 0 10% 3rem;
+    
+    
+}
+
+.intro button:hover {
+    background-color: #2B743A;
+    color: #FFFFFF;
+}
+
+/* CARD BODY HOMEPAGE*/
+.homepage article {
+    border-radius: 30px;
+    margin: 2rem 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    width: 15rem;
+    
+}
+
+.homepage .card-tree {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.homepage .card-tree h1 {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.homepage .card-tree h2 {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+
+.homepage .card-content .content h3 {
+    color: #053d2b;
+}
+
+.homepage .card-content .content p {
+    color: #3c3c3b;
+}
+
+
+.homepage .content {
+    line-height: 0.5rem;
+    height: 4rem;
+    width: auto;
+}
+
+.homepage .details {
+    background-color: #fff;
+}
+
+.homepage .card button {
+    font-family: "Montserrat";
+    font-weight: bold;
+    background-color: #2B743A;
+    width: 95%;
+    margin: 2rem 2.5% 0 ;
+    border-radius: 30px;
+    height: 3rem;
+    color: #FFFFFF;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.homepage .card button:hover {
+    background-color: #053d2b;
+}
+
+.homepage .card-tree > a {
+    width: 100%;
+    margin: 0 0 2rem 0;
+}
+
+.homepage .card-tree .all-tree-button > a button {
+    background-color: #2B743A;
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 30vw;
+    margin: 0 35vw;
+    padding: 1 3rem;
+    border-radius: 30px;
+    height: 4rem;
+    color: #FFFFFF;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.homepage .card-tree > a button:hover {
+    background-color: #2B743A;
+}
+
+
+
+@media (min-width: 1024px) {
+    .homepage .card-tree {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0 8rem;
+        margin-bottom: 5rem;
+    }
+    
+    .homepage .card-tree h2 {
+        text-align: center;
+        margin: 5rem 0;
+        width: 100%;
+    }
+    
+    .homepage .card-tree a {
+        text-align: center;
+        margin-top: 3rem;
+        width: 100%;
+    }
+    
+    .homepage .card-tree > a button {
+        width: 30%;
+        margin: 2rem 35% 0 ;
+        border-radius: 30px;
+        height: 3rem;
+        color: #FFFFFF;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .homepage .card-tree > a button:hover {
+        background-color: #2B743A;
+    }
+    
+}

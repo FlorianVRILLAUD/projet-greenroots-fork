@@ -40,59 +40,9 @@ export default {
             user, 
             message, 
             title: "GreenRoots - Mon profil", 
-            cssFile: "profil.css", 
-            bulma: process.env.BULMA_URL 
+            cssFile: "profil.css" 
         });
     },
-
-
-    // async update(req, res, next) {
-
-
-
-    //     const id = Number(req.session.user.id)
-
-
-    //     const {lastname, firstname, adress, email, password} = req.body;
-
-    //     const schema = Joi.object({
-    //         lastname: Joi.string().min(1).max(255),
-    //         firstname: Joi.string().min(1).max(255),
-    //         adress:Joi.string().min(1).max(255),
-    //         email:Joi.string().email().min(5).max(255),
-    //         password:Joi.string().min(6).max(255),
-    //     });
-
-
-    //     const { error }= schema.validate(req.body);
-    //       if(error) {
-    //         return next(error)
-    //       }
-
-    // const isIdExistAlready = !!(await User.count({
-    //     where: {id: id},
-
-    //     if (isIdExistAlready) {
-    //         const error = new Error('Mail non trouvé');
-    //         error.status = 409;
-    //         next(error);
-    //     }
-    //     }));
-
-    // const user = await User.findOne({
-    //     where: { id : id}
-
-    // });
-
-    // if(!user){
-    //     return next();
-    // }
-
-    // const updateUser = await user.update({lastname: lastname, firstname: firstname, adress: adress, email: email, password: password});
-    // res.redirect('back');
-
-
-
 
     async update(req, res, next) {
         const id = Number(req.session.user.id);

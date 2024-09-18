@@ -13,7 +13,7 @@ export default {
             include: 'trees'
         });
 
-        res.render('allCommand', { commands, dayjs, title: "GreenRoots - Mes commandes", cssFile: "allcommands.css", bulma: process.env.BULMA_URL })
+        res.render('allCommand', { commands, dayjs, title: "GreenRoots - Mes commandes", cssFile: "allcommands.css" })
     } else {
         res.redirect('/');
     }
@@ -45,7 +45,7 @@ export default {
             return res.redirect('/');
         }
 
-        res.render('detailCommand', { command, title: `GreenRoots - Commande n°${commandId}`, cssFile: "oneCommand.css", bulma: process.env.BULMA_URL });
+        res.render('detailCommand', { command, title: `GreenRoots - Commande n°${commandId}`, cssFile: "oneCommand.css" });
         
     } else {
         res.redirect('/');

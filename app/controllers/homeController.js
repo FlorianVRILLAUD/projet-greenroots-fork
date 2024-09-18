@@ -8,7 +8,7 @@ export default {
                 order: [['name', 'DESC']] 
             });
 
-            res.render("homePage", {trees: trees,  bulma: process.env.BULMA_URL});
+            res.render("homePage", { trees: trees, cssFile: "homepage.css" });
 
         } catch (error) {
             console.error('Erreur dans la récupération des abres:', error);

@@ -5,8 +5,7 @@ export default {
   async getAboutPage (req, res) { 
         res.render('about',
             {title: "GreenRoots - A Propos", 
-            cssFile :"about.css", 
-            bulma: process.env.BULMA_URL
+            cssFile :"about.css"
             }
         )},       
 }

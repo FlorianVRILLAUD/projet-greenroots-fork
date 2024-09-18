@@ -5,34 +5,30 @@ html {
     font-size: 62.5%;
 }
 
-body { 
-    height: 100vh;
-    width: 100vw;
-    display: flexbox;
+form {
+    width: 70rem;
+}
+
+.form_container {
+    flex-grow: 1;
+    margin-top: 5rem;
+    align-self: center;
 }
 
 body, .navbar {
     background-color: #ffffff;
 }
 
-h1, h2, h3, h4, h5, h6, button {
-    font-family: "Montserrat";
-}
-
-p { 
-    font-family: "Roboto";
-}
-
 .connection { 
     text-align: center;
-    font-size: large;
+    font-size: 2.4rem;
     font-weight: bold;
-    color: #0A290E;
+    color: #053d2b;
 }
 
 .form_container {
     width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     padding: 20px;
     background-color: white;
     display: flex;
@@ -44,11 +40,12 @@ p {
 .form_login {
     display: flex;
     flex-direction: column; 
-    gap: 20px;
+    align-items: center;
+    gap: 2rem;
 }
 
 label {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #0A290E;
     text-align: center;
     font-family: "Montserrat";
@@ -62,27 +59,29 @@ input {
     border-radius: 5px;
     font-size: 1rem;
     color: #0A290E;
-    width: 200px;
+    width: 40%;
 }
 
 input::placeholder {
-    color: #3c3c3b;
+    color: #3c3c3b8c;
+    font-size: 1.2rem;
 }
 
 /* BOUTON */
 
 .button_login { 
     display: inline-block; 
-    padding: 10px 10px; 
+    padding: 1rem 1rem; 
     background-color: #2b743a; 
     color: white; 
     text-decoration: none; 
     border-radius: 25px; 
-    font-size: 16px;
-    width: 100%;
+    font-size: 1.6rem;
+    width: 40%;
     font-family: "Montserrat";
     font-weight: bold;
     transition: background-color 0.3s; 
+    margin-top: 5rem;
 }
 
 .button_login:hover {

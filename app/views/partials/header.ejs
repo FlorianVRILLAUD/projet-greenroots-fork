@@ -6,21 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/reset.css">
     <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/3eed0a192a.js" crossorigin="anonymous"></script>
-    
-    
-    <% if (typeof bulma !== 'undefined' && bulma) { %>
-        <link rel="stylesheet" href="<%= bulma %>">
-    <% } %>
     
     <% if (typeof cssFile !== 'undefined' && cssFile) { %>
         <link rel="stylesheet" href="/public/css/<%= cssFile %>">
     <% } %>
     
- 
     <title><%= typeof title !='undefined' ? title : 'GreenRoots' %></title>
 </head>
+
 <body class="has-background-white">
+    
     <header class="header has-background-white">
         <div class="logo-search">
             <div class="logo">

@@ -9,13 +9,14 @@ button {
 /* PHOTO PAGE D ACCUEIL*/
 .intro {
     background-image: url("/public/images/photos/hero7.jpg");
-    height: 90vh;
+    height: calc(100vh - 100px);
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
+    overflow: auto;
 }
 
 /* HERO HOMEPAGE */

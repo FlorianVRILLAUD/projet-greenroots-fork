@@ -40,10 +40,10 @@ h2, h3, h4, h5 {
 }
 
 
-.header {
+header {
     background-color: #FFFFFF;
     padding: 0 2rem;
-    height: 10vh;
+    max-height: 130px;
     position: sticky;
     top: 0;
     z-index: 6;
@@ -54,7 +54,7 @@ h2, h3, h4, h5 {
     
 }
 
-.header.hide { 
+header.hide { 
     top: -100px;
 }
 

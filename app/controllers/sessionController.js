@@ -1,6 +1,18 @@
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
-import emailValidator from 'email-validator';
+import Joi from "joi";
+
+
+const loginSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().required()
+});
+
+const sanitizeOptions = {
+    allowedTags: [],
+    allowedAttributes: {},
+};
+
 
 export default {
     async showLogin(req, res) {
@@ -11,43 +23,41 @@ export default {
 
     async login(req, res) {
         try {
-            const { email, password } = req.body;
-
-            console.log("Données reçues:", { email });
-
-            if (!email || !password) {
+            // Validate input
+            const { error, value } = loginSchema.validate(req.body);
+            if (error) {
                 req.session.message = {
-                    text: 'Veuillez remplir tous les champs',
-                    type: 'is-danger' 
+                    text: error.details[0].message,
+                    type: 'is-danger'
                 };
                 return res.redirect('back');
             }
 
-            if (!emailValidator.validate(email)) {
-                req.session.message = {
-                    text: 'Email invalide',
-                    type: 'is-danger' 
-                };
-                return res.redirect('back');
-            }
+            // Sanitize input
+            const sanitizedData = {
+                email: sanitizeHtml(value.email, sanitizeOptions).toLowerCase(),
+                password: value.password 
+            };
+
+            console.log("Données reçues:", { email: sanitizedData.email });
 
             const user = await User.findOne({
-                where: { email },
+                where: { email: sanitizedData.email },
             });
 
             if (!user) {
-                console.log("Utilisateur non trouvé pour l'email:", email);
+                console.log("Utilisateur non trouvé pour l'email:", sanitizedData.email);
                 req.session.message = {
-                    text: 'Utilisateur introuvable',
+                    text: 'Identifiants invalides',
                     type: 'is-danger' 
                 };
                 return res.redirect('back');
             }
             
-            if (!Scrypt.compare(password, user.password)) {
+            if (!Scrypt.compare(sanitizedData.password, user.password)) {
                 console.log("Échec de la comparaison du mot de passe pour l'utilisateur:", user.id);
                 req.session.message = {
-                    text: 'Les mots de passe ne correspondent pas',
+                    text: 'Identifiants invalides',
                     type: 'is-danger' 
                 };
                 return res.redirect('back');
@@ -59,27 +69,29 @@ export default {
                 role: user.role
             };
             
-            req.session.save((err) => {
-                if (err) {
-                    console.error("Erreur lors de la sauvegarde de la session:", err);
-                    return res.redirect('/connexion');
-                }
-                if (user.role === 'admin') {
-                    console.log("Redirection vers la gestion des arbres");
-                    res.redirect('/gestion-des-arbres');
-                } else {
-                    console.log("Redirection vers le profil:", `/profil`);
-                    res.redirect(`/profil/`);
-                }
-            });
 
+            const token = jwt.sign(
+                { userId: user.id },
+                process.env.JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+
+            res.cookie('token', token, { 
+                httpOnly: true, 
+                secure: process.env.NODE_ENV === 'production' 
+            });
 
             delete user.dataValues.password;
             delete user._previousDataValues.password;
 
-           
+            if (user.role === 'admin') {
+                res.redirect('/gestion-des-arbres');
+            } else {
+                res.redirect(`/profil`);
+            }
+
         } catch (error) {
-            console.error("Erreur lors de la connexion:", error);
+            console.error(error);
             req.session.message = {
                 text: 'Une erreur est survenue lors de la connexion',
                 type: 'is-danger'
@@ -89,13 +101,12 @@ export default {
     },
 
     async logout(req, res) {
-        console.log("Déconnexion de l'utilisateur");
-        req.session.destroy((err) => {
-            if (err) {
-                console.error("Erreur lors de la destruction de la session:", err);
-            }
-            console.log("Session détruite, redirection vers la page d'accueil");
+
+
+        req.session.user = false; //Efface les infos de session
+        req.session.destroy(() => {
+            res.clearCookie('token'); //Supprime le cookie de session
             res.redirect('/');
         }); 
     } 
-}
+}                                  

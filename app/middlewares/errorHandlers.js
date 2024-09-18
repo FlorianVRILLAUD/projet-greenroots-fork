@@ -1,5 +1,5 @@
 function notFound(req, res, next) {
-    const error = new Error("La page que vous cherchez n'existe pas");
+    const error = new Error("Accroches-toi mon petit chat, on retourne à la page d'accueil");
 
     error.status = 404;
     

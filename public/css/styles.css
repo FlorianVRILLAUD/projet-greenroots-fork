@@ -46,7 +46,14 @@ h2, h3, h4, h5 {
     position: sticky;
     top: 0;
     z-index: 6;
+    transition: top 0.5s ease, opacity 0.4s ease; 
+    opacity: 2;
 }
+
+.header.hide { 
+    top: -100px;
+}
+
 
 .logo-search {
     display: flex;
@@ -109,19 +116,23 @@ header hr {
 }
 
 .menu ul li {
-    padding: 1rem;
+    padding: 0;
     text-align: center;
     background-color: #FFFFFF;
     border-bottom: 1px solid #053d2b;
+    width: 100%;
 }
 
 .menu ul li a {
+    display: block; 
+    padding: 1rem; 
     color: #053d2b;
     text-decoration: none;
+    width: 100%; 
 }
 
 .menu ul li:hover {
-    background-color: #555;
+    background-color: #2B743A; 
 }
 
 .show {

@@ -62,7 +62,7 @@ const cartController = {
         cart = cart.filter(item => item.treeId !== parseInt(treeId)); // On filtre pour retirer le bon arbre du panier
 
         req.session.cart = cart;
-        res.redirect('/panier');
+        res.json({ success: true, message: 'Article supprimé avec succès' });
     },
 
     async clearCart(req, res) {

@@ -1,17 +1,10 @@
-html {
-    font-size: 62.5%; 
-    background-color: #ffffff;
-}
+
 
 button {
     color: #2B743A;
 }
 
-.all-tree-button {
-    width: 100%;
-    margin-top: 3rem;
-   
-}
+
 
 /* PHOTO PAGE D ACCUEIL*/
 .intro {
@@ -27,7 +20,7 @@ button {
 
 /* HERO HOMEPAGE */
 .intro h1 {
-    font-size: 2.4rem;
+    font-size: 4rem;
     color: #FFFAF0 ;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
     text-transform: uppercase;
@@ -37,13 +30,19 @@ button {
 .intro p {
     color: #FFFAF0 ;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
-    font-size: 1.4rem;
+    font-size: 2rem;
     text-align: center;
     margin: 0 2rem;
 }
 
 
-.intro button {
+.intro a {
+    width: 100%;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.button-intro {
     padding: 1rem 3rem; 
     background-color: #d9d9d9; 
     color: #3b3b3a; 
@@ -51,10 +50,10 @@ button {
     border-radius: 30px; 
     border: none;
     font-size: 1.2rem;
-    width: 80%;
+    width: 250px;
     font-family: "Montserrat";
     font-weight: bold;
-    margin: 0 10% 3rem;
+    margin: 0 0 3rem;
     
     
 }
@@ -69,7 +68,7 @@ button {
     border-radius: 30px;
     margin: 2rem 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    width: 15rem;
+    width: 250px;
     
 }
 
@@ -80,29 +79,30 @@ button {
 
 }
 
-.homepage .card-tree h1 {
-    text-align: center;
-    margin: 5rem 0;
-}
-
 .homepage .card-tree h2 {
     text-align: center;
     margin: 5rem 0;
+    font-size: 3.2rem;
 }
 
 
 .homepage .card-content .content h3 {
     color: #053d2b;
+    font-size: 2.4rem;
 }
 
 .homepage .card-content .content p {
     color: #3c3c3b;
+    font-size: 1.6rem;
 }
 
 
 .homepage .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     line-height: 0.5rem;
-    height: 4rem;
+    height: 10rem;
     width: auto;
 }
 
@@ -132,13 +132,20 @@ button {
     margin: 0 0 2rem 0;
 }
 
+.all-tree-button {
+    width: 100%;
+    margin-top: 3rem;
+    text-align: center;
+   
+}
+
 .homepage .card-tree .all-tree-button > a button {
     background-color: #2B743A;
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 1.2rem;
-    width: 30vw;
-    margin: 0 35vw;
+    width: 250px;
+    /* margin: auto; */
     padding: 1 3rem;
     border-radius: 30px;
     height: 4rem;
@@ -148,13 +155,27 @@ button {
 }
 
 
-.homepage .card-tree > a button:hover {
-    background-color: #2B743A;
+.homepage .card-tree .all-tree-button > a button:hover {
+    background-color: #053d2b;
 }
 
 
 
 @media (min-width: 1024px) {
+    .intro h1 {
+        font-size: 6rem;
+        
+    }
+    .intro p {
+        font-size: 3.2rem;
+    }
+
+
+    .button-intro {
+        font-size: 2rem;
+
+    }
+
     .homepage .card-tree {
         display: flex;
         flex-direction: row;
@@ -170,24 +191,6 @@ button {
         width: 100%;
     }
     
-    .homepage .card-tree a {
-        text-align: center;
-        margin-top: 3rem;
-        width: 100%;
-    }
-    
-    .homepage .card-tree > a button {
-        width: 30%;
-        margin: 2rem 35% 0 ;
-        border-radius: 30px;
-        height: 3rem;
-        color: #FFFFFF;
-        text-align: center;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    .homepage .card-tree > a button:hover {
-        background-color: #2B743A;
-    }
+
     
 }

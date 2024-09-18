@@ -4,8 +4,9 @@
 /* Import la police google font Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-html {
-    font-size: 62.5%; 
+
+:root {
+    font-size: 62.5%;
     background-color: #ffffff;
 }
 

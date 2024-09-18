@@ -19,22 +19,17 @@ body, .navbar {
 }
 
 
-h1, h2, h3, h4, h5, h6, button {
-    font-family: "Montserrat";
-    color: #0A290E;
-}
-
 button {
     color: #2B743A;
 }
 
 h1 {
-    font-size: 3.2rem;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #053d2b;
 }
 
-h2, h3, h4, h5 {
-    font-size: 2.4rem;
-}
+
 
 main {
     flex-grow: 1;
@@ -98,17 +93,12 @@ textarea {
         font-size: 2.4rem;
     }
 
-    h1 {
-        font-size: 4rem;
-    }
 
     section {
         margin: 8rem 10rem;
     }
 
-    .title-page {
-        margin: 10rem;
-    }
+    
 
     .test {
         display: flex;

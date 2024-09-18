@@ -31,7 +31,8 @@
     "sanitize-html": "^2.13.0",
     "scrypt-js": "^3.0.1",
     "sequelize": "^6.37.3",
-    "stripe": "^16.11.0"
+    "stripe": "^16.11.0",
+    "tarteaucitronjs": "^1.19.0"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.2",

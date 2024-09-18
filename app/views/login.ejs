@@ -11,18 +11,20 @@
     <% } %>
 </div>
 
-<h2 class="connection">Connexion</h2>
+<h2 class="connection mt-6">Connexion</h2>
 
 <div class="form_container">
     <form class="form_login" method="POST" action="/connexion">
-        <label for="email">Identifiant</label>
+        <label for="email" class="has-text-weight-semibold">Identifiant</label>
         <input type="email" id="email" name="email" placeholder="email" required>
 
-        <label for="password">Mot de passe</label>
+        <label for="password" class="has-text-weight-semibold">Mot de passe</label>
         <input type="password" id="password" name="password" placeholder="mot de passe" required>
 
         <button class="button_login" type="submit">Se connecter</button>
     </form>            
+    <a href="/nous-rejoindre" class="link-register has-text-grey-darker">Pas encore de compte ?</a>
 </div>
+
 
 <%- include('partials/footer') %>

@@ -9,56 +9,60 @@
                 <p class="has-text-centered"><%= message.text %></p>
             </div>
             <% delete message; %>
-        <% } %>
-    </div>
-    
-    <section>
-        <article class="article-tree p-5 mb-6">
-            <div class="title-tree">
-                <h2 class="has-text-centered mb-3 is-underlined has-text-weight-semibold"><%= tree.name %></h2>
-            </div>
-            
-            <div class="image-tree">
-                <a href="#"> <img class="mb-5" src="../public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a>
-            </div>                
-            
-            <div class="infos-tree has-text-centered  has-text-dark">
-                <div class="text-tree has-text-justified">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugit saepe iusto ut, laudantium similique nemo ratione odit distinctio velit, quibusdam voluptates magnam incidunt! Et molestias unde minus maiores corrupti.</p>
+            <% } %>
+        </div>
+        
+        <section>
+            <article class="article-tree p-5 my-6">
+                <div class="title-tree">
+                    <h1 class="has-text-centered mb-3 has-text-weight-semibold"><%= tree.name %></h1>
                 </div>
-                <div class=" features has-text-justified">
-                    <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
-                    <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %> m</p>
-                    <p><span class="has-text-weight-semibold">Origine: </span><%= tree.origin %></p>
-                    <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
-                    <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
+                
+                <div class="image-tree">
+                    <img class="mb-5" src="../public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>">
+                </div>                
+                
+                <div class="infos-tree has-text-centered  has-text-dark">
+                    <div class="text-tree has-text-justified">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, fugit saepe iusto ut, laudantium similique nemo ratione odit distinctio velit, quibusdam voluptates magnam incidunt! Et molestias unde minus maiores corrupti.</p>
+                    </div>
+                    <div class=" features has-text-justified">
+                        <p><span class="has-text-weight-bold">Variété : </span><%= tree.variety.name %></p>
+                        <p><span class="has-text-weight-bold">Taille : </span><%= tree.size %> m</p>
+                        <p><span class="has-text-weight-bold">Origine: </span><%= tree.origin %></p>
+                        <p><span class="has-text-weight-bold">Prix HT: </span><%= tree.price_ht %> €</p>
+                        <p><span class="has-text-weight-bold">Prix TTC: </span><%= tree.price_ttc %> €</p>
+                    </div>
                 </div>
-            </div>
-        </article>
-    </section>
-    
-    <div class="button-action">
-        <form action="/panier/ajouter" method="POST" class="formAddToCart">
-            <input type="hidden" name="treeId" value="<%= tree.id %>">
-            <input type="hidden" name="treeName" value="<%= tree.name %>">
-            <input type="hidden" name="treePrice" value="<%= tree.price_ttc %>">
-            <input type="number" name="quantity" value="1" min="1" max="10000" class="quantity-input">
-            <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
-        </form>
-
-        <% if (session) { %>
-            <form action="/add-favorite" method="POST" class="formFav" id="fav">
+            </article>
+        </section>
+        
+        <div class="button-action">
+            <form action="/panier/ajouter" method="POST" class="formAddToCart">
                 <input type="hidden" name="treeId" value="<%= tree.id %>">
-                <button class="button-back mt-6 favorite" type="submit">Ajouter aux favoris</button>
+                <input type="hidden" name="treeName" value="<%= tree.name %>">
+                <input type="hidden" name="treePrice" value="<%= tree.price_ttc %>">
+                <label for="quantity" class="has-text-weight-semibold">Quantité : </label>
+                <input type="number" name="quantity" id="quantity" value="1" min="1" max="10000" class="quantity-input">
+                <button class="button-buy mt-6" type="submit">Ajouter au Panier</button>
             </form>
-         
-        <% } %>
-        <a href="/nos-arbres"><button class="button-back mt-6" type="">Retour a nos arbres</button></a>
-    </div>
-</main>
-
-<%- include('partials/footer') %>
-
-<script src="/public/js/addFavorite.js" async></script>
-
-
+            
+            <% if (session) { %>
+                <form action="/add-favorite" method="POST" class="formFav" id="fav">
+                    <input type="hidden" name="treeId" value="<%= tree.id %>">
+                    <button class="button-back mt-6 favorite" type="submit">Ajouter aux favoris</button>
+                </form>
+                
+                <% } %>
+                <div class="back-tree">
+                    <a href="/nos-arbres" ><button class="button-back mt-6" type="">Retour a nos arbres</button></a>
+                </div>
+            </div>
+        </main>
+        
+        <%- include('partials/footer') %>
+        
+        <script src="/public/js/addFavorite.js" async></script>
+        
+        
+        

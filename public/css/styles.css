@@ -8,7 +8,9 @@
 :root {
     font-size: 62.5%;
     background-color: #ffffff;
+    scrollbar-color: #053d2b #d9d9d9;
 }
+
 
 body { 
     max-height: auto;
@@ -48,7 +50,6 @@ header {
     top: 0;
     z-index: 9999;
     transition: top 0.5s ease; 
-    /* opacity: 1; */
     border-bottom: solid 1px #053d2b;
     margin: 0 2rem;
     

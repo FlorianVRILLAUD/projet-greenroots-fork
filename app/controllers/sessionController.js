@@ -1,7 +1,7 @@
 import { Scrypt } from "../Auth/Scrypt.js";
 import { User } from "../models/User.js";
 import Joi from "joi";
-
+import sanitizeHtml from 'sanitize-html';
 
 const loginSchema = Joi.object({
     email: Joi.string().email().required(),
@@ -68,18 +68,6 @@ export default {
                 email: user.email,
                 role: user.role
             };
-            
-
-            const token = jwt.sign(
-                { userId: user.id },
-                process.env.JWT_SECRET,
-                { expiresIn: '1h' }
-            );
-
-            res.cookie('token', token, { 
-                httpOnly: true, 
-                secure: process.env.NODE_ENV === 'production' 
-            });
 
             delete user.dataValues.password;
             delete user._previousDataValues.password;

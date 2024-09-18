@@ -39,6 +39,11 @@ h2, h3, h4, h5 {
     font-size: 2.4rem;
 }
 
+.formAddToCart {
+    width: 50%;
+    margin: 0 25%;
+}
+
 section {
     margin: 0 2rem;
 }
@@ -55,7 +60,7 @@ article {
 }
 
 main img {
-    /* height: 16rem; */
+    height: 50rem;
     width: 80%;
     margin: 0 10%;
     border-radius: 10px;
@@ -73,14 +78,13 @@ main img {
     border-radius: 25px; 
     border: none;
     font-size: 1.6rem;
-    width: 50%;
+    width: 37.5%;
     font-family: "Montserrat";
     font-weight: bold;
-    margin: 0 25%;
+    margin: 0 31.25%;
 }
 
 .button-buy { 
-    display: inline-block; 
     padding: 1rem 1rem; 
     background-color: #2b743a; 
     color: #FFFFFF; 
@@ -88,10 +92,20 @@ main img {
     border-radius: 25px; 
     border: none;
     font-size: 1.6rem;
-    width: 50%;
+    width: 75%;
     font-family: "Montserrat";
     font-weight: bold;
-    margin: 0 25%;
+    margin: 0 12.5%;
+   
+}
+
+.quantity-input {
+    width: 15%;
+    text-align: center;
+    font-family: "Montserrat";
+    font-weight: bold;
+    margin: 0 42.5%;
+    border-radius: 5px;
 }
 
 @media (min-width: 1024px) {
@@ -134,4 +148,6 @@ main img {
     .text-tree {
         margin: 3rem 0;
     }
+
+    
   }

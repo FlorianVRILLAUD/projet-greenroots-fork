@@ -158,8 +158,7 @@ export default {
 
         });
     }
- }
-};        
+ };        
         
         
         

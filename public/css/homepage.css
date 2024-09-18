@@ -9,7 +9,8 @@ button {
 /* PHOTO PAGE D ACCUEIL*/
 .intro {
     background-image: url("/public/images/photos/hero7.jpg");
-    height: calc(100vh - 100px);
+    /* top: 130px; */
+    height: calc(100vh - 90px);
     background-size: cover;
     display: flex;
     flex-direction: column;

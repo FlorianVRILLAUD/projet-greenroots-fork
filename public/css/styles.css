@@ -10,8 +10,9 @@ html {
 }
 
 body { 
-    min-height: 100vh;
-    margin: 0 auto;
+    max-height: auto;
+    min-width: auto;
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,19 +35,22 @@ h1, h2, h3, h4, h5, h6, button {
 
 
 h2, h3, h4, h5 {
-    font-size: 2.4rem;
+    font-size: 3.2rem;
 }
 
 
 .header {
     background-color: #FFFFFF;
-    padding: 1rem 1rem;
-    height: 14vh;
+    padding: 0 2rem;
+    height: 10vh;
     position: sticky;
     top: 0;
     z-index: 6;
     transition: top 0.5s ease, opacity 0.4s ease; 
     opacity: 2;
+    border-bottom: solid 1px #053d2b;
+    margin: 0 2rem;
+    
 }
 
 .header.hide { 
@@ -60,18 +64,25 @@ h2, h3, h4, h5 {
     align-items: center;
 }
 
+.logo {
+    width: 50%;
+    height: 50%;
+    margin-top: 1rem;
+}
+
 .logo img {
-    height: 4rem; 
-    width: 4rem;
-    margin: -7.5% 0;
+    /* display: inline; */
+    height: auto; 
+    width: 7rem;
+    padding-bottom: 1rem;
 }
 
-.searchbar::placeholder {
-    color: #053d2b !important;
+.searchform .searchbar::placeholder {
+    color: #053d2b;
 }
 
-#button-search {
-    background-color: #053d2b !important;
+.searchform #button-search {
+    background-color: #053d2b;
 }
 
 .link-item {
@@ -87,13 +98,14 @@ h2, h3, h4, h5 {
 
 .nav ul li {
     display: inline-block;
+    margin-top: 1rem;
 
 }
 
 .nav ul li a img {
-    width: 2.8rem;
+    width: 6rem;
     
-    height: 2.8rem;
+    height: 6rem;
 }
 
 
@@ -115,7 +127,7 @@ header hr {
 .menu {
     display: none;
     position: absolute;
-    top: 12vh;
+    top: 10vh;
     right: 0;
     width: 100%;
     z-index: 5;
@@ -155,8 +167,8 @@ header hr {
     }
     
     .logo img {
-        height: 6rem;
-        width: 8rem;
+        height: 10vh;
+        width: 10vw;
     }
     
     .logo {
@@ -172,9 +184,12 @@ header hr {
     
     .nav-desktop {
         display: flex;
-        gap: 2rem;
-        /* margin: 0 0.2rem 0 0; */
-        /* width: 100%; */
+        gap: 2rem;      
+    }
+
+    .search {
+        width: 50vw;
+        margin-top: 3rem;
     }
         
     nav input {
@@ -188,23 +203,29 @@ header hr {
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);      
     }
 
-    /* form {
-        width: 50%;
-    } */
-
     
     .nav-desktop li a {
         text-decoration: none;
-        color: black;
-        font-size: 1rem;
+        color: #053d2b;
+        font-size: 1.6rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 0;
+        
+        
     }
     
     
+}
+
+@media (max-width: 1024px) {
+    .nav ul li a img {
+        width: 6rem;
+        
+        height: 6rem;
+    }
 }
 
 
@@ -216,16 +237,17 @@ header hr {
 footer {
     background-color: #053d2b; /* Couleur de fond du pied de page */
     padding: 2rem; /* Espacement intérieur */
-    text-align: center; /* Centre le texte et les liens */
+    text-align: justify; /* Centre le texte et les liens */
     border-top: 0.1rem solid #ddd; /* Ligne supérieure pour délimiter le pied de page */
     color: #ffffff;
+    margin-top: 5rem;
 
 }
 
 .a_propos { 
     
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 
@@ -260,7 +282,7 @@ footer .a_propos {
 .footer-links a {
     text-decoration: none; /* Supprime le soulignement des liens */
     color: #ffffff; /* Couleur des liens */
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     
 }
 

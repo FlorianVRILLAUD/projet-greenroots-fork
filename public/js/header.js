@@ -24,3 +24,10 @@ header.addEventListener('mouseleave', () => {
         header.classList.add('hide');
     }
 });
+
+// LOGOUT
+function submitPostRequest() {
+    const form = document.getElementById('logout');
+
+    form.submit();
+}

@@ -1,18 +1,13 @@
 BEGIN;
 
-ALTER TABLE "user_has_tree" DROP CONSTRAINT IF EXISTS user_has_tree_user_id_fkey;
-ALTER TABLE "user_has_tree" DROP CONSTRAINT IF EXISTS user_has_tree_tree_id_fkey;
-ALTER TABLE "command_has_tree" DROP CONSTRAINT IF EXISTS command_has_tree_tree_id_fkey;
-ALTER TABLE "command_has_tree" DROP CONSTRAINT IF EXISTS command_has_tree_command_id_fkey;
-ALTER TABLE "tree" DROP CONSTRAINT IF EXISTS tree_variety_id_fkey;
-ALTER TABLE "command" DROP CONSTRAINT IF EXISTS command_user_id_fkey;
+ALTER TABLE IF EXISTS "user_has_tree" DROP CONSTRAINT IF EXISTS user_has_tree_user_id_fkey;
+ALTER TABLE IF EXISTS "user_has_tree" DROP CONSTRAINT IF EXISTS user_has_tree_tree_id_fkey;
+ALTER TABLE IF EXISTS "command_has_tree" DROP CONSTRAINT IF EXISTS command_has_tree_tree_id_fkey;
+ALTER TABLE IF EXISTS "command_has_tree" DROP CONSTRAINT IF EXISTS command_has_tree_command_id_fkey;
+ALTER TABLE IF EXISTS "tree" DROP CONSTRAINT IF EXISTS tree_variety_id_fkey;
+ALTER TABLE IF EXISTS "command" DROP CONSTRAINT IF EXISTS command_user_id_fkey;
 
-DROP TABLE IF EXISTS "command_has_tree" CASCADE;
-DROP TABLE IF EXISTS "user_has_tree" CASCADE;
-DROP TABLE IF EXISTS "command" CASCADE;
-DROP TABLE IF EXISTS "users" CASCADE;
-DROP TABLE IF EXISTS "tree" CASCADE;
-DROP TABLE IF EXISTS "variety" CASCADE;
+
 
 DROP TABLE IF EXISTS "command_has_tree", "user_has_tree", "command", "users", "tree", "variety";
 

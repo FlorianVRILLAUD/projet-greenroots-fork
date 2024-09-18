@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { Command } from '../models/index.js'
+import { Command, CommandHasTree } from '../models/index.js'
 
 import 'dotenv/config';
 
@@ -36,9 +36,12 @@ export default {
                     association: 'trees',
                     include: [
                         { association: 'variety' }
-                    ]
+                    ],
+                    through: {
+                        attributes: ['quantity']
+                    }
                 }
-            ]
+            ],
         });
     
         if (!command) {

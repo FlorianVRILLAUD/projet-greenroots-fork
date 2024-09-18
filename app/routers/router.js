@@ -98,5 +98,6 @@ router.get('/cancel', catchErrors(stripeController.cancelPage));
 
 
 
+
 export default router;
 

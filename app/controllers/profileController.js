@@ -145,27 +145,27 @@ export default {
        
             
         }
-        res.redirect('/');
-    }
+        req.session.destroy((err) => {
+            if (err) {
+                console.error("Erreur lors de la destruction de la session:", err);
+            }
+            console.log("Session détruite, redirection vers la page d'accueil");
+            res.redirect('/');
 
-    // async delete(req, res) {
-    //     const id = Number(req.params.id);
-    //     console.log(`Tentative de suppression de l'utilisateur avec l'ID: ${id}`);
+            //message après destruction de la session
+        // req.session = null; // Réinitialiser la session
+        // req.session = {
+        //     message: {
+        //         type: 'success',
+        //         content: 'Votre compte a été supprimé avec succès.'
+        //     }
+        // };
+
+        // res.redirect('/');
+        });
         
-    //     const result = await User.destroy({where: {id: id}});
-
-    //     if (result === 0) {
-    //         req.session.message = {
-    //             text: 'Utilisateur non trouvé',
-    //             type: 'is-danger'
-    //         };
-    //         return res.redirect('back');
-    //     } else {
-    //         req.session.message = {
-    //             text: 'Suppression effectuée avec succès',
-    //             type: 'is-success'
-    //         };
-    //         return res.redirect('/'); 
-    //     } 
-    // }
+        //res.redirect('/');
+    }
+ 
+   
 };

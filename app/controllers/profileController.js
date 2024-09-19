@@ -1,5 +1,6 @@
 //* Functionnality : user profile infos and track orders
 import { User } from '../models/index.js'
+import { Scrypt } from "../Auth/Scrypt.js";
 import Joi from 'joi';
 
 export default { 
@@ -60,7 +61,7 @@ export default {
         if (error) {
             return next(error);
         }
-
+        
         const user = await User.findByPk(id);
         if (!user) {
             req.session.message = {
@@ -69,13 +70,14 @@ export default {
             };
             return res.redirect('back');
         }
-
+        const hashPassword = Scrypt.hash(password);
+        
         const updateUser = await user.update({
             lastname, 
             firstname, 
             adress, 
             email, 
-            password
+            password: hashPassword
         });
 
         req.session.message = {

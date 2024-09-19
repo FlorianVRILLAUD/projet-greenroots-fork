@@ -9,12 +9,9 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    display: flexbox;
 }
 
-body, .navbar {
-    background-color: #ffffff;
-}
+
 
 h1, h2, h3, h4, h5, h6, button {
     font-family: "Montserrat";
@@ -56,7 +53,7 @@ label {
 
 }
 
-input {
+.form_container input {
     background-color: #d9d9d9;
     border: solid 1px;
     padding: 10px;
@@ -88,10 +85,8 @@ input::placeholder {
     transition: background-color 0.3s; 
 }
 
-
-
-.button_login:hover {
-    background-color: #053d2b;
+.button_modify:hover {
+    background-color: #053D2B;
 }
 
 
@@ -111,61 +106,8 @@ input::placeholder {
 
 }
 
-.buttons_profil { 
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: white;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 30px;
 
-    
-}
 
-.button_infos { 
-    display: inline-block; 
-    padding: 10px 10px; 
-    background-color: #2b743a; 
-    color: white; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    font-size: 16px;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-    transition: background-color 0.3s; 
-}
-
-.button_order { 
-    display: inline-block; 
-    padding: 10px 10px; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
-    font-size: 16px;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-}
-
-.button_fav { 
-    display: inline-block; 
-    padding: 10px 10px; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
-    font-size: 16px;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-}
 
 .button_modal_delete { 
     display: inline-block; 
@@ -207,4 +149,21 @@ input::placeholder {
     font-family: "Montserrat";
     font-size: 2rem;
     color: #d9d9d9;
+}
+
+.nav-connect-button {
+    font-size: 2.4rem;
+    color: #2B743A;
+}
+
+.nav-connect-button .button-profil {
+    background-color: #2B743A;
+    color: #FFFFFF;
+
+}
+
+
+
+.nav-connect-button .button-profil:hover {
+    background-color: #053D2B;
 }

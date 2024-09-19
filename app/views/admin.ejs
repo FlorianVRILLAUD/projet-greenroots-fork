@@ -1,76 +1,58 @@
 <%- include('partials/header') %>
 
-    <main class="is-flex-grow-1 mb-6">
+<main class="is-flex-grow-1 mb-6">
+  
+  
+    
+    <h1 class="has-text-weight-bold has-text-centered	my-6">Gestion des arbres</h1>
+    
+    <div class="button-head has-text-centered mb-6">
+      
+      <button class="button button-create  open-modal" id="create-tree">
+        Créer une page
+      </button>
+      
+      <button class="button button-create open-modal" id="create-variety">
+        Ajouter variété
+      </button>
+      
+    </div>
+    
+    <div class="notification-container  is-align-content-baseline mx-6">
+      <% if (message) { %>
+        
+        <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
+          <p class="has-text-centered"><%= message.text %></p>
+        </div>
+        <% delete message; %>
+        <% } %>
+      </div>   
 
-
-        <section class="section mb-6">
-            <div class="container has-text-centered">
-              <div class="columns is-vcentered mb-4">
-                <div class="column">
-                  <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Gestion des arbres</h1>
-                </div>
-                <div class="column is-narrow has-text-centered-mobile has-text-right-tablet">
-                  <button class="button is-custom-green is-large open-modal" id="create-tree">
-                    Créer une page
-                  </button>
-                </div>
-                <div class="column is-narrow has-text-centered-mobile has-text-right-tablet"></div>
-                  <button class="button is-custom-green is-large open-modal" id="create-variety">
-                    Ajouter variété
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="notification-container mx-6">
-              <% if (message) { %>
-                  
-                  <div class="notification <%= message.type %> mb-6 mx-6" id="notification">
-                      <p class="has-text-centered"><%= message.text %></p>
-                  </div>
-                  <% delete message; %>
-              <% } %>
-          </div>
-          </section>
-
-        <section class="is-flex is-flex-direction-column is-align-items-center">
-            
+        <section id="list-cards">
           <% trees.forEach(tree => { %>
-              
            
-            <div class="container is-fluid mx-6 is-flex is-flex-direction-column is-flex-wrap-nowrap p-4 pt-5 mb-6">
-                <header class="is-flex is-justify-content-space-between mx-5 has-text-weight-semibold">
-                    <p>N° <%= tree.id%></p>
-                    <time datetime= "<%= new Date(tree.created_at).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }) %>"></time> <%# Voir sur nagigateur affichagede la date%>
-                   
-                </header>
-                <div class="content-card is-flex is-justify-content-space-around p-2 mb-6">
-                    
-                    <ul class="follow-command is-flex is-flex-direction-column is-justify-content-space-between">
-                      
-                        <a href="/nos-arbres/<%= tree.slug %>">
-                          <img
-                            src="../public/images/photos/<%= tree.image %>"
-                            alt="Photo d'un <%= tree.name %>"/>
-                          </a>
-                        
-                        
-                    </ul>
-                    <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
-                        <p><span class="has-text-weight-semibold">Nom : </span><%= tree.name %></p>
-                        <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %></p>
-                        <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
-                        <p><span class="has-text-weight-semibold">Prix HT: </span><%= tree.price_ht %> €</p>
-                        <p><span class="has-text-weight-semibold">Prix TTC: </span><%= tree.price_ttc %> €</p>
-                    </div>
-                    
-                </div>
-                <ul class="is-flex is-flex-direction-column is-justify-content-space-between is-align-items-flex-end link-item">
-                  <li><button class="button is-custom-green is-large open-modal update-tree update-tree" data-id="<%= tree.id %>" >Modifier les informations</button></li>
-                  <li><button class="button is-custom-green is-large open-modal delete-tree delete-tree" data-id="<%= tree.id %>" >Supprimer</button></li>
-              </ul>  
-            </div>
-
-           <!-- MODAL UPDATE TREE -->
+              <article class=" p-5 mb-6">
+                  <p class="has-text-weight-bold mb-4">N° <%= tree.id%></p>
+                  <h2 class="has-text-centered mb-5 has-text-weight-semibold"><%= tree.name %></h2>
+                  <a href="/nos-arbres/<%= tree.slug %>"> <img class="mb-5" src="/public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a>
+                  <div class="has-text-justified text-infos mb-6">
+                    <p><span class="has-text-weight-bold">Nom : </span><%= tree.name %></p>
+                    <p><span class="has-text-weight-bold">Taille : </span><%= tree.size %></p>
+                    <p><span class="has-text-weight-bold">Variété : </span><%= tree.variety.name %></p>
+                    <p><span class="has-text-weight-bold">Prix HT: </span><%= tree.price_ht %> €</p>
+                    <p><span class="has-text-weight-bold">Prix TTC: </span><%= tree.price_ttc %> €</p>
+                  </div>
+                  <div class="has-text-centered all-buttons">
+                    <button class="button is-custom-green is-large open-modal update-tree update-tree" data-id="<%= tree.id %>" >Modifier les informations</button>
+                    <button class="button is-custom-green is-large open-modal delete-tree delete-tree" data-id="<%= tree.id %>" >Supprimer</button>
+                  </div>
+                  
+              </article>
+      
+          
+      
+        
+        <!-- MODAL UPDATE TREE -->
     <div class="modal mx-2 " id="modalUpdateTree-<%= tree.id %>">
       
       <div class="modal-background"></div>

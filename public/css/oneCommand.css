@@ -133,8 +133,8 @@ main img {
 
 .button-back {  
     padding: 1rem 1rem; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
+    background-color: #2b743a; 
+    color: #fff; 
     text-decoration: none; 
     border-radius: 25px; 
     border: none;
@@ -143,6 +143,10 @@ main img {
     font-family: "Montserrat";
     font-weight: bold;
     margin: 0 25%;
+}
+
+.button-back:hover {
+    background-color: #0A290E;
 }
 
 @media (min-width: 1024px) {

@@ -1,18 +1,11 @@
-<%- include('partials/header') %>
+<%- include('partials/headerConnect') %>
 
 <main class="is-flex-grow-1 mb-6">
-<div class="buttons_profil navbar-desktop">
-        
-    <a href="/profil/"><button class="button_infos" type="submit">Mes informations</button></a>
-    <a href="/profil/mes-commandes"><button class="button_order" type="submit">Mes commandes</button></a>
-    <a href="profil/favoris"><button class="button_fav" type="submit">Mes favoris</button></a>
-    
-</div>
-
-<hr class="navbar_end navbar-desktop">
 
 
-    <h1 class="title-page my-2 has-text-centered has-text-left-desktop has-text-weight-semibold mb-6">Ma commande n° <%= command.id %></h1>
+
+
+    <h1 class="title-page my-2 has-text-centered has-text-centered-desktop has-text-weight-semibold mb-6">Ma commande n° <%= command.id %></h1>
     
     <section>
 
@@ -38,7 +31,7 @@
         
         
     </section>
-    <a href="/profil/mes-commandes"><button class="button-back mt-6">Retour à mes commandes</button></a>
+    <a href="/profil/mes-commandes"><button class="button-back mt-6">Mes commandes</button></a>
     
 </main>
 

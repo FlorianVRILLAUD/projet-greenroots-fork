@@ -48,13 +48,14 @@ Ici, notre équipe a été conviée pour créer un site éco-friendly, sur la ba
 3. Assurez-vous d'avoir Node.js installé.
 4. Exécutez `npm install` pour installer les dépendances.
 5. Configurez les variables d'environnement nécessaires ainsi que le fichier `.env`
-6. Exécutez `npm start` pour lancer l'application qui se lancera par défaut sur le port `localhost:3000`
+6. Créer une base de donnée avec postgres, vous pouvez consulter leur doc très bien faîte pour vous aider.
+7. Exécutez `npm start` pour lancer l'application qui se lancera par défaut sur le port `localhost:3000`
 
 ## Notre équipe
 
 4 développeurs en herbes, avec des compétences et des profils différents, qui ont contribués à la réussite de ce site beau 
 et fluide, accessible et pensé de façon éco-friendly. 
-Quelques jours avant la mise en production le ligthhoust indique une accèssibilité de 96, bonnes pratiques à 93 et SEO à 91.
+Quelques jours avant la mise en production le ligthhouse indique une accèssibilité de 96, bonnes pratiques à 93 et SEO à 91.
 Nous travaillons durement pour améliorer les performances , à commencer par minifier les feuilles de styles ainsi que les interactions en JS.
 
 

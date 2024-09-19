@@ -65,62 +65,10 @@ section {
     gap: 5rem;
 }
 
-.buttons_profil { 
-
-    width: 100%;
-
-    padding: 2rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 3rem;
-
-    
+.nav-connect-button .button-command {
+    background-color: #2b743a;
+    color: #FFFFFF;
 }
-
-.button_infos { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-    transition: background-color 0.3s; 
-}
-
-.button_order { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #2b743a; 
-    color: #FFFFFF; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
-    font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-}
-
-.button_fav { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
-    font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-}
-
 
 @media (max-width: 1024px) { 
     .content-card > ul > li {

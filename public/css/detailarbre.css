@@ -43,9 +43,9 @@ article {
 }
 
 .image-tree {
-    height: 165px;
+    height: 180px;
     width: 80%;
-    margin: 0 10%;
+    margin: 0 10% ;
     border-radius: 10px;
     
 }
@@ -53,6 +53,8 @@ article {
 .image-tree img {
     border-radius: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    height: 180px;
+    width: 230px;
 }
 
 .formAddToCart {

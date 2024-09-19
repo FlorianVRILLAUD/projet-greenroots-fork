@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../public/images/icones/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/reset.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/3eed0a192a.js" crossorigin="anonymous"></script>
+    
+    <% if (typeof cssFile !== 'undefined' && cssFile) { %>
+        <link rel="stylesheet" href="/public/css/<%= cssFile %>">
+        <% } %>
+        
+        <title><%= typeof title !='undefined' ? title : 'GreenRoots' %></title>
+    </head>
+    
+    <body class="has-background-white">
+        
+        <header class="header has-background-white">
+            <div class="logo-search">
+                <div class="logo">
+                    <a href="/">
+                        <img src="/public/images/Logos/logo-mobile-3.svg" alt="GreenRoots Logo" class="responsive-logo">
+                    </a>
+                </div>
+
+                <div class="search">
+                <form action="/recherche" method="post" class="is-hidden-touch searchform">
+                    <div class="field is-grouped is-large">
+                        <input class="searchbar input has-background-grey-lighter has-text-success-dark is-large" name="output" type="search" placeholder="Recherche">
+                        <button class="button  is-size-4" id="button-search" type="submit">Recherche</button>
+                    </div>
+                </form>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav-mobile">
+                        <% if (locals.user?.role === 'admin') { %>
+                            <li class="nav-mobile"><a class="nav-mobile" href="/gestion-des-arbres"><img class="nav-mobile" src="/public/images/icones/admin.svg" alt="Gestion des arbres"></a></li>
+                            <% } %>
+                            <% if (locals.user) { %>
+                                <!-- <li class="nav-mobile"><a class="nav-mobile" href="/profil"><img class="nav-mobile" src="/public/images/icones/connexion.svg" alt="Profil"></a></li> -->
+                                <% } %>
+                                
+                                <li class="nav-mobile"><a class="nav-mobile" href="#"><img class="nav-mobile" src="/public/images/icones/loupe.svg" alt="Recherche"></a></li>
+                                <li class="nav-mobile"><a class="nav-mobile" href="/panier"><img class="nav-mobile" src="/public/images/icones/panier.svg" alt="Panier"></a></li>
+                                <li class="nav-mobile"><a class="nav-mobile burger" href="#"><img class="nav-mobile" src="/public/images/icones/burger.svg" alt="Menu"></a></li>
+                            </ul>
+                            <ul class="nav-desktop">
+                                <% if (locals.user?.role === 'admin') { %>
+                                    <li class="nav-desktop"><a class="nav-desktop" href="/gestion-des-arbres"><img class="nav-desktop" src="/public/images/icones/admin.svg" alt="Gestion des arbres">Admin</a></li>
+                                    <% } %>
+                                    <% if (locals.user) { %>
+                                        <li class="nav-desktop"><a class="nav-desktop" href="/profil"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Profil">Profil</a></li>
+                                        <li class="nav-desktop"><a class="nav-desktop" href="/profil/favoris"><img class="nav-desktop" src="/public/images/icones/favoris.svg" alt="Favoris">Favoris</a></li>
+                                        
+                                        <% } %>
+                                        
+                                        <% if (!locals.user) { %>
+                                            
+                                            <li class="nav-desktop"><a class="nav-desktop" href="/nous-rejoindre"><img class="nav-desktop" src="/public/images/icones/inscription.svg" alt="Nous rejoindre">Nous rejoindre</a></li>
+                                            <li class="nav-desktop"><a class="nav-desktop" href="/connexion"><img class="nav-desktop" src="/public/images/icones/connexion.svg" alt="Connexion">Connexion</a></li>
+                                            <% } %>
+                                            <li class="nav-desktop"><a class="nav-desktop" href="/panier"><img class="nav-desktop" src="/public/images/icones/panier.svg" alt="Panier">Panier</a></li>
+                                            <% if (locals.user) { %>
+                                                <form action="/deconnexion" method="POST" id="logout">
+                                                    <li class="nav-desktop"><a class="nav-desktop" href="#" onclick="submitPostRequest()"><img class="nav-desktop" src="/public/images/icones/deconnexion.svg" alt="Panier">Déconnexion</a></li>
+                                                </form>
+                                                
+                                                
+                                                <% } %>
+                                                
+                                                
+                                                
+                                            </ul>
+                                        </nav>
+                                        
+                                        <div id="burger-menu" class="menu">
+                                            <ul>
+                                                <li><a href="/">Accueil</a></li>
+                                                <li><a href="/nos-arbres">Nos arbres</a></li>
+                                                <% if (!locals.user) { %>
+                                                    <li><a href="/nous-rejoindre">Nous rejoindre</a></li>
+                                                    <li><a href="/connexion">Connexion</a></li>
+                                                    <% } else { %>
+                                                        <li><a href="/profil">Profil</a></li>
+                                                        <li><a href="/profil/mes-commandes">Mes commmandes</a></li>
+                                                        <li><a href="/profil/favoris">Favoris</a></li>
+                                                        <% if (locals.user.role === 'admin') { %>
+                                                            <li><a href="/gestion-des-arbres">Gestion des arbres</a></li>
+                                                            <% } %>
+                                                            
+                                                            <li><a href="/panier">Panier</a></li>
+                                                            <li><a href="/contact">Contact</a></li>
+                                                            <li>
+                                                                <form action="/deconnexion" method="POST">
+                                                                    <button type="submit" class="button is-light">
+                                                                        <span class="icon">
+                                                                            <i class="fas fa-sign-out-alt"></i>
+                                                                        </span>
+                                                                        <span>Déconnexion</span>
+                                                                    </button>
+                                                                </form>
+                                                            </li>
+                                                            <% } %>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </header>
+                                            <div class="nav-connect is-hidden-touch">
+                                                <ul class="nav-connect-list">
+                                                    <li><a class="nav-connect-button" href="/profil"><button class="button-profil">Mes informations</button></a></li>
+                                                    <li><a class="nav-connect-button" href="/profil/mes-commandes"><button class="button-command">Mes commandes</button></a></li>
+                                                    <li><a class="nav-connect-button" href="/profil/favoris"><button class="button-favoris">Mes favoris</button></a></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            
+                                            

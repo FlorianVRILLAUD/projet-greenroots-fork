@@ -111,10 +111,6 @@ header.hide {
 }
 
 
-header hr {
-    margin: 0.5rem 0.5rem;
-}
-
 .nav-desktop {
     display: none;
 }
@@ -123,6 +119,31 @@ header hr {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+}
+
+.nav-connect {
+    border-bottom: solid 1px #053d2b;
+    margin: 0 2rem 5rem;
+}
+
+.nav-connect-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 2rem 10rem;
+
+
+}
+
+.nav-connect-button button {
+    background-color: #d9d9d9;
+    width: 350px;
+    border-radius: 18px;
+    height: 5rem;
+    font-weight: 600;
+
+
 }
 
 /* MENU BURGER */
@@ -158,6 +179,7 @@ header hr {
 .show {
     display: block;
 }
+
 
 
 

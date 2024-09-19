@@ -91,7 +91,7 @@ export default {
       req.session.paymentInProgress = false;
       req.session.cart = null;
   
-      res.render('success', { commandId: newCommand.id });
+      res.render('success', { commandId: newCommand.id, title: "GreenRoots - Paiement réussi", cssFile: "stripe.css" });
   
     } catch (error) { 
       console.error('Erreur dans successPage:', error);
@@ -110,6 +110,6 @@ export default {
     
     req.session.paymentInProgress = false;
     
-    res.render('cancel');
+    res.render('cancel', { title: "GreenRoots - Paiement annulé", cssFile: "stripe.css" });
   }
 }

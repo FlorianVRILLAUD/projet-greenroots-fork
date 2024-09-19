@@ -1,0 +1,42 @@
+/* Import la police google font Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Import la police google font Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html { 
+    font-size: 62.5%;
+}
+
+body { 
+   min-height: 100vh;
+    min-width: 100vw;
+}
+
+.payment-page {
+    text-align: center;
+    margin: 5rem 5rem 0 ;
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #053d2b;
+}
+
+.payment-page .text-payment {
+    font-size: 1.6rem;
+}
+
+.payment-page a button {
+    font-size: 1.6rem;
+    background-color: #2B743A;
+    color: #FFFFFF;
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
+}
+
+.payment-page a button:hover {
+    background-color: #053d2b;
+}

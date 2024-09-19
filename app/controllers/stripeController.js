@@ -65,7 +65,7 @@ export default {
 
   
       const newCommand = await Command.create({
-        user_id: req.session?.user.id ?? 1,
+        user_id: req.session?.user?.id || 1,
         amount: session.amount_total / 100,
         items: JSON.stringify(cart), 
         status: 'completed',

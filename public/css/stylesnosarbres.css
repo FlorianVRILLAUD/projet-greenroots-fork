@@ -12,31 +12,38 @@ html {
 body {
   
     min-height: 100vh;
-    width: 100vw;
+    font-size: 1.6rem; 
+    max-width: 100vw;
 }
 
-body, .navbar {
-    background-color: #FFFFFF;
-    font-family: "Roboto";
-    font-size: 1.6rem;
-
-}
 /* SCRIPT SELECT CATEGORY */
-.hide {
+.hide-card {
   display: none;
 }
 
-
 h1, h2, h3, h4, h5, h6, button {
     font-family: "Montserrat";
+
 }
 
 h1 {
+    text-align: center;
+    margin: 5rem 0 3rem;
     font-size: 3.2rem;
+    width: 100%;
+
 }
 
 h2, h3, h4, h5 {
     font-size: 2.4rem;
+}
+
+.card-content h2 {
+  color: #053D2B;
+}
+
+.card-content p {
+  color: #3C3C3B;
 }
 
 /* MENU SELECT */
@@ -54,53 +61,34 @@ h2, h3, h4, h5 {
   background-color: #C0C0C0;
 }
 
-@media (min-width: 1024px) { 
-  .select-tree {
-    width: 100%;
-    position: absolute;
-    left: 8rem;
-  }
-
-  .select-tree select {
-    width: 10%;
-    position: absolute;
-    top: -7rem;
-  }
+.card-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }
 
+.tree {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
 
-
-
-/* .card {
-    position: relative;
-    border-radius: 30px;
-  } */
+@media (min-width: 1024px) { 
   
-  .image.is-4by3 {
-    margin: 0; 
-  }
+}
+
+/* CARD TREE */
   
   .card-content {
-    
     bottom: 0;
     width: 100%;
-    height: 50%;
+    height: 150px;
     background-color: #D9D9D9; 
     padding: 0;
   }
-  
-  .title.is-4,
-  .m-3 {
-    margin: 0.75rem; 
-  }
-  
 
   article {
-    justify-content: center;
     width: 200px;
     height: 300px;
   }
-
 
   .details {
     font-weight: bold;
@@ -110,12 +98,12 @@ h2, h3, h4, h5 {
     border-top-right-radius: 0;
     height: 4rem;
     border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
   }
- 
 
-  /* img {
-    border-radius: 30px;
-  } */
+  .details:hover {
+    background-color: #053d2b;
+  }
 
   .content {
     line-height: 0.5rem;
@@ -127,30 +115,51 @@ h2, h3, h4, h5 {
   gap: 4rem;
 }
 
-@media (max-width: 1024px) { 
-  main {
-      flex-direction: column;
-  }
-}
+
 @media (min-width: 1024px) {
+  .select-tree {
+    width: 100%;
+    margin: 0;
+    height: 50px;
+  }
+
+  .select-tree select {
+    width: 250px;
+    margin: 0;
+  }
+
+  .tree {
+    width: 350px;
+    height: auto;
+  }
 
   .card-tree {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 4rem;
+    align-items: center;
+    gap: 5rem;
     flex-wrap: wrap;
-
-  } 
-
-  section {
-    margin: 0 0 0 8rem;
+    margin: 0 5%;
+    width: 90%;
   }
+
+  article {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 5%;
+  }
+
 }
 
-  
 
-  
-  
   
  

@@ -19,7 +19,7 @@ export default {
                         }
                     }})
             
-                    res.render('favorites', { trees: allTrees.trees, message, title: "GreenRoots - Favoris", cssFile: "favorites.css", bulma: process.env.BULMA_URL });
+                    res.render('favorites', { trees: allTrees.trees, message, title: "GreenRoots - Favoris", cssFile: "favorites.css" });
         } else {
             res.redirect('/');
         }

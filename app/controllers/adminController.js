@@ -18,7 +18,7 @@ export default {
             order: [['name', 'ASC']]
         })
 
-        res.render('admin', {message, trees : trees, varieties, title: "GreenRoots - Gestion des arbres", cssFile: "tree-management.css", bulma: process.env.BULMA_URL })
+        res.render('admin', {message, trees : trees, varieties, title: "GreenRoots - Gestion des arbres", cssFile: "tree-management.css" })
     },
 
     async create(req, res, next) {

@@ -15,7 +15,7 @@ const cartController = {
         }));
 
 
-        res.render('cart', { cartItems, cart, total, title: "Panier", cssFile: "cart.css", bulma: process.env.BULMA_URL  });
+        res.render('cart', { cartItems, cart, total, title: "Panier", cssFile: "cart.css" });
     },
 
 

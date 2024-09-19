@@ -18,7 +18,7 @@ export default {
     async showLogin(req, res) {
         const message = req.session.message || null;
         req.session.message = null;
-        res.render('login', {message, title: "GreenRoots - Se connecter", cssFile: "connection.css", bulma: process.env.BULMA_URL });
+        res.render('login', {message, title: "GreenRoots - Se connecter", cssFile: "connection.css" });
     },
 
     async login(req, res) {

@@ -1,6 +1,6 @@
 //* functionality : trees to offer, view tree details, and handle purchases
 import 'dotenv/config';
-import { Op, fn, col } from 'sequelize';
+import { Op } from 'sequelize';
 import { Tree, Variety } from '../models/index.js'
 import Joi from 'joi';
 
@@ -23,7 +23,7 @@ export default {
         const varieties = await Variety.findAll();
 
 
-        res.render('nosarbres', { trees, message, varieties, title: "GreenRoots - Nos arbres", subtitle: "Nos arbres", cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL })
+        res.render('nosarbres', { trees, message, varieties, title: "GreenRoots - Nos arbres", subtitle: "Nos arbres", cssFile: "stylesnosarbres.css" })
     },
 
     async search (req, res, next) {
@@ -46,7 +46,7 @@ export default {
 
         const varieties = await Variety.findAll();
     
-        res.render('nosarbres', {trees, varieties, output, title: `GreenRoots - Résultat de recherche: ${search}`, subtitle: " Résultat de recherche" , cssFile: "stylesnosarbres.css", bulma: process.env.BULMA_URL})
+        res.render('nosarbres', {trees, varieties, output, title: `GreenRoots - Résultat de recherche: ${search}`, subtitle: " Résultat de recherche" , cssFile: "stylesnosarbres.css" });
         
       } catch (error) {
         console.error('Erreur lors de la recherche des produits :', error);
@@ -74,30 +74,12 @@ export default {
                 return next();
             }        
     
-            res.render("detailTree", { tree, session, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css", bulma: process.env.BULMA_URL});
+            res.render("detailTree", { tree, session, message, title: `GreenRoots - ${tree.name}`, cssFile: "detailarbre.css"});
             
         } catch (error) {
             console.error('Erreur lors de la récupération de l\'arbre:', error);
             next(error); // Passer l'erreur au middleware d'erreur
         }
-    },
-
-
-    async delete(req, res) {
-        const treeId = req.params.id;
-        const tree = await Tree.destroy({
-            where: { id: treeId}
-        });
-
-        req.session.message = {
-            text: 'L\'arbre a été supprimé avec succès',
-            type: 'is-success'
-        };
-
-        if(!tree) {
-            return next();
-         }
-
     }
 };
 

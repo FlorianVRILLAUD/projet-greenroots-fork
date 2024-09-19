@@ -7,7 +7,7 @@ import { sendEmailWithTemplate } from '../modules/sendEmail.js';
 export default { 
     contactView (req, res) {
         res.render('contact', 
-            { title: "GreenRoots - Contact", cssFile: "contact.css", bulma: process.env.BULMA_URL }
+            { title: "GreenRoots - Contact", cssFile: "contact.css" }
             
         )
     },

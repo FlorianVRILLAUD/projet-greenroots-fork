@@ -1,7 +1,7 @@
 <%- include('partials/header') %>
 
-<main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
-    <h1><%= subtitle %></h1>
+<main class="is-flex is-flex-direction-column is-align-items-center  is-flex-grow-1">
+    <h1 class="has-text-weight-semibold"><%= subtitle %></h1>
     
     <% if (trees.length === 0) { %>
         <p>Nous n'avons pas d'arbres qui correspondent à la recherche "<%= output %>"</p>
@@ -11,7 +11,7 @@
 
     
     <!-- Premiere carte  -->
-    <section class="card-tree is-flex-grow-1">
+    <section class="card-tree">
         <div class="select-tree">
             <select class="mb-6" name="variety" id="variety-tree">
                 <option value="all-varieties">Toutes les variétés</option>
@@ -23,21 +23,21 @@
             
             
             <% trees.forEach(tree => { %>
-                <article class="tree <%= tree.variety.slug %>">
+                <article class="tree <%= tree.variety.slug %> ">
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">
                                 <a href="/nos-arbres/<%= tree.slug %>"><img
-                                    src="../public/images/photos/<%= tree.image %>"
+                                    src="/public/images/photos/<%= tree.image %>"
                                     alt="Photo d'un <%= tree.name %>"
                                     /></a>
                             </figure>
                         </div>
-                        <div class="card-content">
+                        <div class="card-content has-background-white-bis is-flex is-flex-direction-column is-justify-content-space-between	">
                             <div class="media">
                             </div>
-                                <div class="content">
-                                    <h2  class="title-card has-text-centered is-size-4 has-text-dark m-2"><%= tree.name %></h2>
+                                <div class="content is-flex is-flex-direction-column is-justify-content-space-between is-flex-grow-1">
+                                    <h2  class="title-card has-text-centered is-size-4 m-2"><%= tree.name %></h2>
                                     <p class="has-text-centered is-size-5"><%= tree.variety.name %></p>
                                     <p class="has-text-centered is-size-5">À partir de <%= tree.price_ttc %> €</p>                                    
                                 </div>

@@ -12,7 +12,7 @@ export default {
 
         } catch (error) {
             console.error('Erreur dans la récupération des abres:', error);
-            res.status(500).render("error", { message: "Erreur lors du chargement de la page d'accueil." });
+            res.status(500).render("error", { message: "Erreur lors du chargement de la page d'accueil.", title: "Greenroots - Page d'erreur", cssFile: "error.css" });
         }
     }
 };

@@ -14,7 +14,7 @@ function errorHandler(error, req, res, next) {
 
     const status = error.status || 500;
 
-    res.status(status).render('404', { message: error.message });
+    res.status(status).render('404', { message: error.message, title: 'Greenroots - Page introuvable', cssFile: "404.css" });
 }
 
 export { notFound, errorHandler };

@@ -1,21 +1,19 @@
-<%- include('partials/header') %>
+<%- include('partials/headerConnect') %>
 
-<div class="notification-container mx-6">
-   
-</div>
+<div class="notification-container">
+    <% if (message) { %>
+        
+        <div class="notification <%= message.type %> mb-6" id="notification">
+            <p class="has-text-centered"><%= message.text %></p>
+        </div>
+        <% delete message; %>
+        <% } %>
+    </div>
  
 <main class="is-flex is-flex-direction-column is-align-items-center is-justify-content-space-between is-flex-grow-1">
 
     
     <h1 class="connection">Bienvenue <%= user.firstname %></h1>
-
-    <div class="buttons_profil">
-
-        <a href="/profil/" class="button_infos">Mes informations</a>
-        <a href="/profil/mes-commandes" class="button_order">Mes commandes</a>
-        <a href="/profil/favoris" class="button_fav">Mes favoris</a>
-
-    </div>
 
 
     <div class="form_container">

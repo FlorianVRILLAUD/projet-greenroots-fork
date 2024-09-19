@@ -1,25 +1,22 @@
 <%- include('partials/header') %> 
 
-<main class="is-flex-grow-1 mb-6">
-  <section class="section mb-6"> 
-    <div class="container has-text-centered">
-      <div class="columns is-vcentered mb-4">
-        <div class="column"> 
-          <h1 class="title-page has-text-centered-mobile has-text-left-tablet has-text-weight-bold">Panier</h1>
-        </div>
-      </div>
+<main class="is-flex-grow-1 mt-6">
+  <h1 class=" has-text-centered mb-6">Panier</h1>
+  <section> 
+    
+       
 
   <% if (typeof total === 'number' && total > 0) { %>
     <% cartItems.forEach((item, index) => { %>
-      <div class="content-card is-flex is-justify-content-space-around p-2 mb-6" data-tree-id="<%= item.id %>">
+      <div class="content-card is-flex is-justify-content-space-around py-6" data-tree-id="<%= item.id %>">
         <img src="../public/images/photos/<%= item.image %>" alt="Photo de <%= item.name %>">
         <div class="is-flex is-flex-direction-column is-flex-wrap-nowrap is-justify-content-space-between">
-          <p><span class="has-text-weight-semibold">Nom : </span><%= item.name %></p>
-          <p><span class="has-text-weight-semibold">Taille : </span><%= item.size %> m</p>
-          <p><span class="has-text-weight-semibold">Prix : </span><span class="item-price"><%= item.price_ttc %></span> €</p>
-          <p><span class="has-text-weight-semibold">Sous-total : </span><span class="item-subtotal"><%= item.subtotal.toFixed(2) %></span> € </p>
-          <p><span class="has-text-weight-semibold">Quantité : </span> </p>
-            <div class="field has-addons"> 
+          <p class="mt-2"><span class="has-text-weight-semibold">Nom : </span><%= item.name %></p>
+          <p class="mt-2"><span class="has-text-weight-semibold">Taille : </span><%= item.size %> m</p>
+          <p class="mt-2"><span class="has-text-weight-semibold">Prix : </span><span class="item-price"><%= item.price_ttc %></span> €</p>
+          <p class="mt-2"><span class="has-text-weight-semibold">Sous-total : </span><span class="item-subtotal"><%= item.subtotal.toFixed(2) %></span> € </p>
+          <p class="mt-2"><span class="has-text-weight-semibold ">Quantité : </span> </p>
+            <div class="field has-addons mt-2"> 
               <p class="control">
                 <button type="button" class="button is-primary decrement-btn" data-tree-id="<%= item.id %>">-</button>
               </p>
@@ -44,20 +41,22 @@
       </div>
     <% }) %>
 
-    <div class="control">
+    <div class="control mt-6">
       <div class="total-section has-text-right">
-        <p class="text-green is-size-3 has-text-weight-semibold total-ttc">Total TTC : <span id="cart-total"><%= total.toFixed(2) %> €</span></p>
-        <div class="buttons is-right">
-
-          <button id="clear-cart" class="button is-large is-warning mt-2">Vider le panier</button>   
-            <form action="/create-checkout-session" method="POST">
-              <button class="button is-custom-green is-large mt-2" type="submit">Passer au paiement</button>
-            </form>        
+        <p class="text-green is-size-3 has-text-weight-semibold total-ttc mb-4">Total TTC : <span id="cart-total"><%= total.toFixed(2) %> €</span></p>
+        <div class="buttons is-right all-buttons">
+          
+          <form action="/create-checkout-session" method="POST" class="formCart ">
+            <button class="button-validate mt-2" type="submit">Passer au paiement</button>
+          </form>        
+          <button id="clear-cart" class="button-delete mt-2">Vider le panier</button>   
         </div>
       </div>
+    </div>
     <% } else { %>
       <div class="empty-cart-message has-text-centered is-size-4 my-6">
-        <p>Votre panier est vide</p>
+        <p>Votre panier est vide </p>
+        <p class="mt-4">Nous avons pleins d'arbres sur notre catalogue en <a class="empty-cart-link" href="/nos-arbres">cliquant ici</a></p>
       </div>
     <% } %>
     

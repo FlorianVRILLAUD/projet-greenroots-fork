@@ -55,6 +55,8 @@ header {
     
 }
 
+
+
 header.hide { 
     top: -100px;
 }
@@ -111,6 +113,7 @@ header.hide {
 }
 
 
+
 .nav-desktop {
     display: none;
 }
@@ -142,8 +145,11 @@ header.hide {
     border-radius: 18px;
     height: 5rem;
     font-weight: 600;
+}
 
-
+.nav-connect-button button:hover {
+    background-color: #053d2b;
+    color: #FFFFFF;
 }
 
 /* MENU BURGER */
@@ -179,7 +185,6 @@ header.hide {
 .show {
     display: block;
 }
-
 
 
 
@@ -277,14 +282,14 @@ footer {
 
 
 .footer-content h4 {
-    margin: 0 0 1rem 0; /* Supprime la marge en haut et ajoute un espace en bas */
-    font-size: 2.4rem; /* Taille du titre */
+    margin: 0 0 1rem 0;
+    font-size: 2.4rem; 
     color: #ffffff;
     text-decoration: underline;
 }
 
 .footer-content p {
-    margin: 0 0 2rem 0; /* Espacement en bas du paragraphe */
+    margin: 0 0 2rem 0;
     font-size: 1.6rem;
 }
 
@@ -294,23 +299,23 @@ footer .a_propos {
 }
 
 .footer-links {
-    list-style-type: none; /* Supprime les puces */
-    margin: 0; /* Supprime les marges */
-    padding: 0; /* Supprime le padding */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     
 }
 
 .footer-links li {
-    margin: 0.5rem 0; /* Espacement entre les éléments de la liste */
+    margin: 0.5rem 0;
 }
 
 .footer-links a {
-    text-decoration: none; /* Supprime le soulignement des liens */
-    color: #ffffff; /* Couleur des liens */
+    text-decoration: none;
+    color: #ffffff;
     font-size: 1.6rem;
     
 }
 
 .footer-links a:hover {
-    text-decoration: underline; /* Souligne les liens au survol */
+    text-decoration: underline;
 }

@@ -1,18 +1,5 @@
-<%- include('partials/header') %>
+<%- include('partials/headerConnect') %>
 
-<div class="buttons_profil navbar-desktop">
-        
-    <div class="buttons_profil">
-
-        <a href="/profil/" class="button_infos">Mes informations</a>
-        <a href="/profil/mes-commandes" class="button_order">Mes commandes</a>
-        <a href="/profil/favoris" class="button_fav">Mes favoris</a>
-
-    </div>
-    
-</div>
-
-<hr class="navbar_end navbar-desktop">
 
 <div class="notification-container mx-6">
     <% if (message) { %>
@@ -26,7 +13,7 @@
 
 
 <main class="is-flex-grow-1 mb-6">
-    <h1 class="title-page my-2 has-text-centered  has-text-weight-semibold mb-6">Mes favoris</h1>
+    <h1 class="my-2 has-text-centered  has-text-weight-semibold mb-6">Mes favoris</h1>
 
     <% if (trees.length === 0) { %>
      <p>Pas de favoris enregistré</p>
@@ -36,20 +23,20 @@
         <% trees.forEach(tree => { %>
          
             <article class=" p-5 mb-6">
-                <h2 class="has-text-centered mb-3 is-underlined has-text-weight-semibold"><%= tree.name %></h2>
-                <a href="#"> <img class="mb-5" src="../public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a>
-                <div class="has-text-centered  has-text-dark">
-                    <p><span class="has-text-weight-semibold">Variété : </span><%= tree.variety.name %></p>
-                    <p><span class="has-text-weight-semibold">Taille : </span><%= tree.size %> m</p>
-                    <p><span class="has-text-weight-semibold">Quantité : </span>1</p>
-                    <p><span class="has-text-weight-semibold">Prix TTC : </span><%= tree.price_ttc %> €</p>
+                <h2 class="has-text-centered mb-3 has-text-weight-semibold"><%= tree.name %></h2>
+                <a href="/nos-arbres/<%= tree.slug %>"> <img class="mb-5" src="/public/images/photos/<%= tree.image %>" alt="Photo d'un <%= tree.name %>"></a>
+                <div class="has-text-justified text-infos">
+                    <p><span class="has-text-weight-bold">Variété : </span><%= tree.variety.name %></p>
+                    <p><span class="has-text-weight-bold">Taille : </span><%= tree.size %> m</p>
+                    <p><span class="has-text-weight-bold">Quantité : </span>1</p>
+                    <p><span class="has-text-weight-bold">Prix TTC : </span><%= tree.price_ttc %> €</p>
                 </div>
-                
-                <a href="/nos-arbres/<%= tree.slug %>"><button class="button-buy">Voir la page de l'arbre</button></a>
-
-                <form action="/remove-favorite" method="POST">
+                <div class="has-text-centered">
+                <a href="/nos-arbres/<%= tree.slug %>"><button class="button-redirect">Voir la page de l'arbre</button></a>
+                </div>
+                <form action="/remove-favorite" method="POST" class="has-text-centered">
                     <input type="hidden" name="treeId" value="<%= tree.id %>">
-                    <button type="submit" class="button-buy">Supprimer</button>
+                    <button type="submit" class="button-redirect">Supprimer</button>
                 </form>
                 
             </article>

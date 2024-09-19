@@ -145,8 +145,11 @@ header.hide {
     border-radius: 18px;
     height: 5rem;
     font-weight: 600;
+}
 
-
+.nav-connect-button button:hover {
+    background-color: #053d2b;
+    color: #FFFFFF;
 }
 
 /* MENU BURGER */

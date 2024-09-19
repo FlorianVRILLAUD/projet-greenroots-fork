@@ -1,22 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-html {
-    font-size: 62.5%;
-}
 
 body {
     min-height: 100vh;
     color: #3C3C3B;
     max-width: auto;
-}
-
-body, .navbar {
-    background-color: #FFFFFF;
-    font-family: "Roboto";
     font-size: 1.6rem;
-
 }
+
 
 
 h1, h2, h3, h4, h5, h6, button {
@@ -24,46 +16,33 @@ h1, h2, h3, h4, h5, h6, button {
     color: #0A290E;
 }
 
-.button.is-custom-green {
-    background-color: #2B743A;
-    color: white;
-    font-size: medium;
-    font-weight: bolder;
-    border-radius: 5%;
-  }
-  
-  .button.is-custom-green:hover {
-    background-color: #235e2f;
-  }
-
-
 h1 {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #053d2b;
 }
 
 h2, h3, h4, h5 {
     font-size: 2.4rem;
 }
 
+
+
 section {
     margin: 0 2rem;
 }
 
-.container {
-    background-color: #d9d9d9;
-    border-radius: 10px; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 
 main img {
-    height: 10rem;
-    width: 14rem;
+    height: 100px;
+    width: 140px;
     border-radius: 8px;
+    margin: 1rem;
 }
 
 .content-card {
     gap: 2rem;
+    border-bottom: 1px solid #053d2b;
 }
 
 container, a {
@@ -74,125 +53,68 @@ section {
     gap: 5rem;
 }
 
-.buttons_profil { 
-
-    width: 100%;
-
-    padding: 2rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 3rem;
-
-    
-}
-
-.button_infos { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
+.button-delete {
+    background-color: #FFB70F;
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
     font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
-    transition: background-color 0.3s; 
+    font-weight: 600;
 }
 
-.button_order { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #2b743a; 
-    color: #FFFFFF; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
+
+.button-validate {
+    background-color: #2B743A;
+    color: #FFFFFF;
+    height: 40px;
+    width: 200px;
+    border-radius: 15px;
     font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
+    font-weight: 600;
+    margin: 0 auto;
+  }
+  
+  
+
+.button.is-custom-green:hover {
+    background-color: #235e2f;
 }
 
-.button_fav { 
-    display: inline-block; 
-    padding: 1rem 1rem; 
-    background-color: #d9d9d9; 
-    color: #3c3c3b; 
-    text-decoration: none; 
-    border-radius: 25px; 
-    border: none;
-    font-size: 1.6rem;
-    width: 80%;
-    font-family: "Montserrat";
-    font-weight: bold;
+.empty-cart-link {
+    color: #2B743A;
+    text-decoration: underline;
 }
 
+.empty-cart-link:hover {
+    color: #235e2f;
+}
 
-@media (max-width: 1024px) { 
-    .content-card > ul > li {
-        display: none;
+@media (max-width: 1024px) {
+    .text-green {
+        text-align: center;
     }
 
-    .follow-command {
-        display: none;
-    }
-
-    .info-command {
-        width: 100%;
-    }
-
-    /* .buttons_profil {
+    .all-buttons {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+
     }
 
-    .navbar-desktop {
-        display: none;
-    }*/
- } 
+}
+
 
 @media (min-width: 1024px) {
     
-    .mobile-link {
-        display: none;
-    }
-
-    body, .navbar {
-        font-size: 2.4rem;
-    
-    }
-
-    h1 {
-        font-size: 4rem;
-    }
-
-    .title-page {
-        margin: 10rem;
-    }
-
-    section {
-        margin: 10rem;
-    }
-
-    .container {
-      border-radius: 16px;
-      margin: 0 10rem;
-    }
-
-    .container, header {
-        padding: 1rem;
-    }
-
     .content-card {
-        margin-left: 10rem;
         gap: 18rem;
+        margin: 0 10rem;
     }
 
     main img {
-        height: 16rem;
-        width: 24rem;
+        height: 160px;
+        width: 240px;
+        margin-top: 1rem;
     }
 
 
@@ -200,7 +122,8 @@ section {
         flex-direction: row;
     }
 
-    main {
-        flex-direction: row;
-    } 
+
+    .control {
+        margin: 0 10rem 0 0;
+    }
 }

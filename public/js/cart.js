@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const cartItems = document.querySelectorAll('.content-card');
         const controlSection = document.querySelector('.control');
         const emptyCartMessage = document.querySelector('.empty-cart-message');
+        console.log(emptyCartMessage);
+        
         
     
         if (cartItems.length === 0) {
@@ -167,7 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const mainElement = document.querySelector('main');
                 const messageDiv = document.createElement('div');
                 messageDiv.classList.add('empty-cart-message', 'has-text-centered', 'is-size-4', 'my-6');
-                messageDiv.textContent = 'Votre panier est vide';
+                messageDiv.innerHTML = '<p>Votre panier est vide </p> <p class="m-4">Nous avons pleins darbres sur notre catalogue en <a class="empty-cart-link" href="/nos-arbres">cliquant ici</a></p>';
+                
                 mainElement.appendChild(messageDiv);
             }
 
